@@ -173,8 +173,9 @@ Composite controls combines two or more control results from pipeline, in order 
 
 ## reporting
 
-East does provide automated report generation, as it provides mostly JSON files with control and evaluation status. The idea is to use separate tooling to create reports, which are fairly trivial to automate via MD creation scripts and tools such as [Pandoc](https://github.com/jgm/pandoc#the-universal-markup-converter) 
-- This repo includes example automation for report creation with pandoc 
+EAST is not focsed to provide automated report generation, as it provides mostly JSON files with control and evaluation status. The idea is to use separate tooling to create reports, which are fairly trivial to automate via MD creation scripts and tools such as [Pandoc](https://github.com/jgm/pandoc#the-universal-markup-converter) 
+
+- While focus is not on the reporting, this repo includes example automation for report creation with pandoc to ease reading of the results in single document format.
 
 
 ---
