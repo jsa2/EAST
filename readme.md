@@ -24,6 +24,8 @@ This tool is currently being developed by yours truly @[Nixu](https://www.nixu.c
     - [Composite](#composite)
   - [reporting](#reporting)
     - [Running EAST scan](#running-east-scan)
+      - [Detailed Prerequisites](#detailed-prerequisites)
+      - [Login Az CLI and run the scan](#login-az-cli-and-run-the-scan)
   - [Licensing](#licensing)
 - [Tool operation](#tool-operation-1)
   - [Principles](#principles)
@@ -185,14 +187,15 @@ This part has guide how to run this either on BASH@linux, or BASH on Azure Cloud
 
 
 
-**Fire and forget setup on on Cloud Shell (bash) full version below**
+**Fire and forget prerequisites on cloud shell**
 
+```bash
+curl -o- https://github.com/jsa2/EAST/blob/public/sh/initForuse.sh | bash
+``` 
 
-``curl -o- https://github.com/jsa2/EAST/blob/public/sh/initForuse.sh | bash`` 
+[jump to](#login-az-cli-and-run-the-scan)
 
-
----
-
+#### Detailed Prerequisites
 
 **Prerequisites**
 ```bash
@@ -211,7 +214,21 @@ npm install
 
 ``` 
 
-**Login Az CLI and run the scan**
+**Pandoc installation on cloud shell**
+```bash
+# Get pandoc for reporting (first time only)
+wget  "https://github.com/jgm/pandoc/releases/download/2.17.1.1/pandoc-2.17.1.1-linux-amd64.tar.gz"; 
+tar xvzf "pandoc-2.17.1.1-linux-amd64.tar.gz" --strip-components 1 -C ~
+
+```
+
+**Installing pandoc on distros that support APT**
+```bash
+# Get pandoc for reporting (first time only)
+sudo apt install pandoc
+``` 
+
+#### Login Az CLI and run the scan
 
 ```bash 
 
@@ -231,32 +248,23 @@ node ./plugins/main.js --batch=10 --nativescope=true --roleAssignments=true --he
 
 
 
-**Generation of EAST report with pandoc linux (Cloud Shell example below)**
-```bash
-# Get pandoc for reporting (first time only)
-wget  "https://github.com/jgm/pandoc/releases/download/2.17.1.1/pandoc-2.17.1.1-linux-amd64.tar.gz"; 
-tar xvzf "pandoc-2.17.1.1-linux-amd64.tar.gz" --strip-components 1 -C ~
 
-```
 
 **Generate report**
 
 ``cd east; node templatehelpers/eastReports.js --doc`` 
 
-- if you want to include all Azure Security Benchmark results in the report
+- If you want to include all Azure Security Benchmark results in the report
 
 ``cd east; node templatehelpers/eastReports.js --doc --asb`` 
 
 **Export report from cloud shell**
 
+`` pandoc -s fullReport2.md -f markdown -t docx --reference-doc=pandoc-template.docx -o fullReport2.docx `` 
+
 ![image](https://user-images.githubusercontent.com/58001986/161531433-4254e231-445f-4443-a7e4-22f4a81f1df3.png)
 
 
-**Installing pandoc on distros that support APT**
-```bash
-# Get pandoc for reporting (first time only)
-sudo apt install pandoc
-``` 
 
 --- 
 ## Licensing
