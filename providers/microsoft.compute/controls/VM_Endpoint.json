@@ -1,0 +1,5 @@
+{
+"ControlId": "VM_endpointProtection",
+"Category": "Protection",
+"Description": "ASB:Install endpoint protection solution on virtual machines"
+}

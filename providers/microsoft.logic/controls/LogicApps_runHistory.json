@@ -1,0 +1,5 @@
+{
+"ControlId": "LogicApps_runHistory",
+"Category": "Data",
+"Description": "Review workflow history for sensitive contents such as secrets and authentication keys"
+}

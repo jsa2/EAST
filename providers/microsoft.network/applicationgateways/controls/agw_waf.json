@@ -1,0 +1,5 @@
+{
+    "ControlId": "afd_waf",
+    "Category": "Network",
+    "Description": "Ensure Web Application Firewall is enabled"
+    }

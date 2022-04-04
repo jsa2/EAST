@@ -1,0 +1,5 @@
+{
+"ControlId": "eh_avoidNamespacePolicies",
+"Category": "Data",
+"Description": "\n\nAZSK Migrated: Service bus clients (senders/receivers) must not use 'namespace' level access policies\n\n*A 'namespace' level access policy provides access to all Queues/Topics in a namespace. However, using an access policy at entity (Queue/Topic) level provides access only to the specific entity. Thus using the latter is inline with the principle of least privilege.*"
+  }

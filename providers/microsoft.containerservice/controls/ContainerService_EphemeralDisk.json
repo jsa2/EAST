@@ -1,0 +1,5 @@
+{
+"ControlId": "ContainerService_EphemeralDisk",
+"Category": "Review",
+"Description": "Using Ephemeral disk ensures, that no Cluster state persist outside of the AKS VM"
+}

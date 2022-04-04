@@ -1,0 +1,5 @@
+{
+"ControlId": "storage_aadAuth",
+"Category": "Access",
+"Description": "Prefer AAD based authentication with storage accoutnts"
+}

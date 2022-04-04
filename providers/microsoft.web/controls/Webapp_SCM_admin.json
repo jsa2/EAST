@@ -1,0 +1,5 @@
+{
+    "ControlId": "AppSVC_SCM",
+    "Category": "Access",
+    "Description": "\n\n**Source**: [MS Control](https://docs.microsoft.com/en-us/azure/app-service/deploy-configure-credentials?tabs=cli#disable-basic-authentication)\n\n*Some organizations need to meet security requirements and would rather disable access via FTP or WebDeploy. This way, the organization's members can only access its App Services through APIs that are controlled by Azure Active Directory (Azure AD).*\n\n**From Azure Policy**\n\n*Disable local authentication methods for SCM sites so that your App Services exclusively require Azure Active Directory identities for authentication. Learn more at: https://aka.ms/app-service-disable-basic-auth*"
+}

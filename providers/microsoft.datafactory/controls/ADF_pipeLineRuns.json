@@ -1,0 +1,5 @@
+{
+"ControlId": "ADF_Linked_Services",
+"Category": "Data",
+"Description": "\r\n\r\n[source](https://docs.microsoft.com/en-us/security/benchmark/azure/baselines/data-factory-security-baseline#im-7-eliminate-unintended-credential-exposure)\r\n\r\nIf you’re using Data Factory’s visual UI-based authoring tool, then all credentials and secrets stored in linked services are either directly encrypted by the service or can be referenced by runtime using key vault. So no credentials as such will show up in the JSON code. These credentials can never be retrieved by code or visual UI. \r\n-\tIn this report failed credentials are marked as \"safeCredential\": false” the recommendation is store all secrets into Key Vault.\r\n\r\n this will also check for variables containing plaintext secrets"
+}

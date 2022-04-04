@@ -1,0 +1,5 @@
+{
+  "ControlId": "\r\n HTTPSOnly\r\n",
+  "Category": "Encryption",
+  "Description": "\r\nConsider using only HTTPS based connections towards azure functions"
+}

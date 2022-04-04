@@ -1,0 +1,5 @@
+{
+"ControlId": "Storage_BlobDiagnostics",
+"Category": "Logs",
+"Description": "Ensure important blobs are logged for access"
+}

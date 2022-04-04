@@ -1,0 +1,5 @@
+{
+"ControlId": "acr_fireWall",
+"Category": "Data",
+"Description": "Do not allow anonymous pull on the registry unless registry is meant be public registry"
+}

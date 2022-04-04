@@ -1,0 +1,5 @@
+{
+"ControlId": "Storage_httpsOnly",
+"Category": "Encryption",
+"Description": "Ensure storage access requires HTTPS"
+}

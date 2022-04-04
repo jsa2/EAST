@@ -1,0 +1,5 @@
+{
+"ControlId": "sf_ClusterProtectionLevel",
+"Category": "Data",
+"Description": "AZ Policy <br> Service Fabric provides three levels of protection (None, Sign and EncryptAndSign) for node-to-node communication using a primary cluster certificate. Set the protection level to ensure that all node-to-node messages are encrypted and digitally signed"
+}

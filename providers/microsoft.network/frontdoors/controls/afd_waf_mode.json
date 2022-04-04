@@ -1,0 +1,5 @@
+{
+"ControlId": "afd_waf_mode",
+"Category": "Network",
+"Description": "Ensure WAF is operating on prevention mode instead of detection mode. Detection mode should only be used initially to tune the rules of WAF - It's aim being to enable prevention mode as soon as possible "
+}

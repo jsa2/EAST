@@ -1,0 +1,5 @@
+{
+"ControlId": "IOT_DisableLocalAuth",
+"Category": "access",
+"Description": "AzPol: Disable local authentication methods so that your Azure IoT Hub exclusively require Azure Active Directory identities for authentication. Learn more at: https://aka.ms/iothubdisablelocalauth."
+}

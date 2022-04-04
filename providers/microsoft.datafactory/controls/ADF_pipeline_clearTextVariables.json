@@ -1,0 +1,5 @@
+{
+    "ControlId": "adf_pipeline_svc_mapping",
+    "Category": "Data",
+    "Description": "Review if pipelines expose cleartext credentials in variables"
+}

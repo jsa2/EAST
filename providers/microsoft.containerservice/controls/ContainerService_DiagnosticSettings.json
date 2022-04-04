@@ -1,0 +1,5 @@
+{
+"ControlId": "ContainerService_DiagnosticSettings",
+"Category": "Logs",
+"Description": "Ensure logs are enabled"
+}

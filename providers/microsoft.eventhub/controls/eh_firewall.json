@@ -1,0 +1,5 @@
+{
+"ControlId": "eh_avoidNamespacePolicies",
+"Category": "Network",
+"Description": "Enable network restrictions If consumers of service can be identified by static network conditions"
+}

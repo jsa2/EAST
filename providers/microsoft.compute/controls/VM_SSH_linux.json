@@ -1,0 +1,5 @@
+{
+"ControlId": "VM_LinuxSSH",
+"Category": "Protection",
+"Description": "ASB:Authentication to Linux machines should require SSH key"
+}

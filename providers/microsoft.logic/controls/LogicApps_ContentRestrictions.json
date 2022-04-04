@@ -1,0 +1,5 @@
+{
+"ControlId": "LogicApps_ContentRestrictions",
+"Category": "Access",
+"Description": "Ensure content restrictions are enabled if Logic App processes sensitive or regulated data, or when you want to ensure RBAC readers cant see data"
+}

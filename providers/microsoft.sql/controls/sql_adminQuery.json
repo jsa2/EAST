@@ -1,0 +1,5 @@
+{
+"ControlId": "sql_adminQuery",
+"Category": "EXAMPLE: Authentication strength, Attack surface reduction",
+"Description": "Queries the server for certain operations"
+}

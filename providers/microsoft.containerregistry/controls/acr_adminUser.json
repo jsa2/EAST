@@ -1,0 +1,5 @@
+{
+"ControlId": "acr_fireWall",
+"Category": "Access",
+"Description": "Only allow non AAD based authentication on the registry if network restrictions are enabled on the registry"
+}

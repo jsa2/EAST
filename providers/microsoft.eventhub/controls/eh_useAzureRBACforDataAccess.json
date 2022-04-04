@@ -1,0 +1,5 @@
+{
+"ControlId": "eh_useAzureRBACforDataAccess",
+"Category": "Access",
+"Description": "\n[source](https://docs.microsoft.com/en-us/azure/event-hubs/authorize-access-shared-access-signature#what-are-shared-access-signatures)\n\n*Azure Event Hubs supports authorizing to Event Hubs resources using Azure Active Directory (Azure AD). Authorizing users or applications using OAuth 2.0 token returned by Azure AD provides superior security and ease of use over shared access signatures (SAS). With Azure AD, there is no need to store the tokens in your code and risk potential security vulnerabilities.*\n\n*Microsoft recommends using Azure AD with your Azure Event Hubs applications when possible. For more information, see Authorize access to Azure Event Hubs resource using Azure Active Directory.*"
+}

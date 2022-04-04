@@ -1,0 +1,5 @@
+{
+"ControlId": "Subscriptions_MDCStatus",
+"Category": "Access",
+"Description": "Ensure security contact information is populated on the subscription"
+}

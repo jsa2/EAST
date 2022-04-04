@@ -1,0 +1,5 @@
+{
+"ControlId": "mysql_sslEnforceMent",
+"Category": "Access",
+"Description": "Ensure secure connection is required for all connections"
+}

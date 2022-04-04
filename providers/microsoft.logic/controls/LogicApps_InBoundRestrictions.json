@@ -1,0 +1,5 @@
+{
+    "ControlId": "LogicApps_ContentRestrictions",
+    "Category": "Network",
+    "Description": "Ensure IP restrictions are enabled when possible"
+    }

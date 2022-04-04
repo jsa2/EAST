@@ -1,0 +1,5 @@
+{
+"ControlId": "Subscriptions_ActivityLog",
+"Category": "Logs",
+"Description": "Ensure logs are enabled"
+}

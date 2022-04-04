@@ -1,0 +1,5 @@
+{
+"ControlId": "KeyVault_Firewall",
+"Category": "Network",
+"Description": "Ensure Azure KeyVault is enabled for firewall when Azure KeyVault consumers support network restrictions"
+}

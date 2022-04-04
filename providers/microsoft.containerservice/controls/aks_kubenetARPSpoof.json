@@ -1,0 +1,5 @@
+{
+"ControlId": "aks_kubenetARPSpoof",
+"Category": "Access",
+"Description": "Kubenet network plugin is susceptible to ARP spoofing. This makes it possible for pods to impersonate as a pod with access to an identity. Using CAP_NET_RAW capability the attacker pod could then request token as a pod it's impersonating.Network plugins like Azure CNI, Calico, Cilium prevents ARP Spoofing. https://github.com/Azure/aad-pod-identity/blob/master/website/content/en/docs/Configure/aad_pod_identity_on_kubenet.md#why-this-change"
+}

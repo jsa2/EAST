@@ -1,0 +1,5 @@
+{
+"ControlId": "Compute_PolicyGuestConfig",
+"Category": "Hardening",
+"Description": "Guest Configuration definitions in Azure Policy allow you to validate settings inside virtual machines. This includes the configuration of the Operating System, applications, or even environmental data. You can use this API to create or update Guest Configuration, and get information about the compliance details of a virtual machine including which specific settings are not compliant with the assigned configuration."
+}

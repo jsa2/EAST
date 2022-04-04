@@ -1,0 +1,5 @@
+{
+  "ControlId": "\r\nftpStatus\r\n",
+  "Category": "Access",
+  "Description": "\r\nFTP is rarely used in Azure Web Apps / Functions."
+}

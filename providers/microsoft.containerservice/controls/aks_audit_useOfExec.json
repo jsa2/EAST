@@ -1,0 +1,5 @@
+{
+    "ControlId": "\nEnsure use of Exec is Audited for users\n",
+    "Category": "Logs",
+    "Description": "\nWhile there is lot of use cases for exec, malicious users can use exec to traverse lateraly withing the cluster. Audit the use of exec in production clusters, where the use of exec is deemed to be low\n\n```powershell\nAzureDiagnostics\n| where TimeGenerated > now()-30m\n| where Category == \"kube-audit\"\n| extend l= parse_json(log_s)\n| where l.objectRef.subresource == \"exec\"\n| distinct tostring(l.user), tostring(l.responseObject.message)\n```\n\n"
+}

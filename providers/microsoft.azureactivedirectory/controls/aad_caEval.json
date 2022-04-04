@@ -1,0 +1,5 @@
+{
+"ControlId": "aad_caEval",
+"Category": "Access",
+"Description": "Ensure the following policies are found MFA, Block Legacy Auth and session for admins"
+}

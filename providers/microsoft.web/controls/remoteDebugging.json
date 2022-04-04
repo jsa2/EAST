@@ -1,0 +1,5 @@
+{
+  "ControlId": "Network restrictions",
+  "Category": "Access",
+  "Description": "\r\n**Disable remote debugging**\r\nSource [MS](https://docs.microsoft.com/en-us/azure/azure-functions/security-concepts#disable-remote-debugging)\r\n\r\n\r\n*Make sure that remote debugging is disabled, except when you are actively debugging your functions. You can disable remote debugging in the General Settings tab of your function app Configuration in the portal.*"
+}

@@ -1,0 +1,5 @@
+{
+"ControlId": "sql_listDatabases",
+"Category": "Review",
+"Description": "EXAMPLE: Ensure The Service calls downstream resources with managed identity"
+}

@@ -1,0 +1,5 @@
+{
+"ControlId": "eh_diagnosticSettings",
+"Category": "Logs",
+"Description": "Ensure logs are enabled for the service"
+}

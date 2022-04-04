@@ -1,0 +1,5 @@
+{
+"ControlId": "Storage_EnableFirewall",
+"Category": "Network",
+"Description": "Review storage for network bypasses, and non IP limited access"
+}

@@ -1,0 +1,5 @@
+{
+    "ControlId": "adf_pipeline_svc_mapping",
+    "Category": "Data",
+    "Description": "Review how pipelines map to linked credentials"
+}

@@ -1,0 +1,5 @@
+{
+  "ControlId": "\r\nmanagedIdentity\r\n",
+  "Category": "Access",
+  "Description": "\r\n Ensure The Service calls downstream resources with managed identity"
+}

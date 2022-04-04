@@ -1,0 +1,5 @@
+{
+    "ControlId": "sd2",
+    "Category": "Network",
+    "Description": "\n“Allow Azure services and resources to access this server” setting for SQL allows a trivial bypass for Azure firewall. Essentially meaning, that if attacker gets the SQL connection string, the protection by network rules does very little to protect from the attack. \n- Unfortunately many Azure Services rely on this setting to access SQL. Consider using this setting only if managed identities are in the ACL for SQL\n  \n![image](https://user-images.githubusercontent.com/58001986/156122091-4e9f7fbb-54eb-4f4c-9c67-cf5234cc8ce1.png)\n\n\n\n"
+    }

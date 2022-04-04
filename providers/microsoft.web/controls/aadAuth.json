@@ -1,0 +1,5 @@
+{
+  "ControlId": "\r\n FuncAuthentication \r\n",
+  "Category": "Access",
+  "Description": "\r\n Enabling authentication with Azure AD allows strong authentication and RBAC to be evaluated for authorized requests"
+}

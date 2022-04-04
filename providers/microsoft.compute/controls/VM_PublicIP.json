@@ -1,0 +1,5 @@
+{
+"ControlId": "VM_PublicIP",
+"Category": "Network",
+"Description": "ASB:All network ports should be restricted on network security groups associated to your virtual machine"
+}

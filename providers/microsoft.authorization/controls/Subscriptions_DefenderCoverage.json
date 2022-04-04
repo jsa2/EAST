@@ -1,0 +1,5 @@
+{
+"ControlId": "Subscriptions_DefenderCoverage",
+"Category": "Protection",
+"Description": "Enabling Azure Defender brings PaaS and IaaS protection to applicable resourceTypes"
+}

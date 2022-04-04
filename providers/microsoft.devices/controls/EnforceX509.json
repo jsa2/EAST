@@ -1,0 +1,5 @@
+{
+"ControlId": "EnforceX509",
+"Category": "Access",
+"Description": "Ensure X509 scheme is instead of string based tokens"
+}

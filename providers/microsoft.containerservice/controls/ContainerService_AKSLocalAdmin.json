@@ -1,0 +1,5 @@
+{
+"ControlId": "\nEnsure AAD Cant be bypassed via admin flag\n",
+"Category": "Access",
+"Description": "\nWhen deploying an AKS Cluster, local accounts are enabled by default. Even when enabling RBAC or Azure Active Directory integration, --admin access still exists, essentially as a non-auditable backdoor option   -- Verbatum [MS Docs](https://docs.microsoft.com/en-us/azure/aks/managed-aad#disable-local-accounts-preview) \n\n**Check the control**\n```BASH\naz aks show --resource-group RG-aks-refInstall --name akssvc5 -o json --query \"disableLocalAccounts\"\n``` \n\n\n\n"
+}

@@ -1,0 +1,5 @@
+{
+"ControlId": "aks_apiServer",
+"Category": "Access",
+"Description": "Ensure API server does not allow"
+}

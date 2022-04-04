@@ -1,0 +1,5 @@
+{
+"ControlId": "aks_PolicyState",
+"Category": "Data",
+"Description": "Review policy failures on component levels"
+}

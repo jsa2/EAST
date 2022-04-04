@@ -1,0 +1,1 @@
+az policy definition list >  plugins/other/defaultPolicydef.json

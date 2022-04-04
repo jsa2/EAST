@@ -1,0 +1,5 @@
+{
+"ControlId": "Microsoft.DocumentDb_Firewall",
+"Category": "Network",
+"Description": "Ensure firewall is enabled"
+}

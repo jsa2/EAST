@@ -1,0 +1,5 @@
+{
+"ControlId": "sql_vulnAssessment",
+"Category": "Protection",
+"Description": "This item uses the Azure Defender For Cloud results for various SQL checks. Having items failure in this item does not indicate major problems, but rather points out audit items created by MDC"
+}

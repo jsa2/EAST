@@ -1,0 +1,5 @@
+{
+"ControlId": "eh_disableLocalAuth",
+"Category": "Access",
+"Description": "\n[source](https://docs.microsoft.com/en-us/azure/event-hubs/policy-reference)\n\n*Disabling local authentication methods improves security by ensuring that Azure Event Hub namespaces exclusively require Azure Active Directory identities for authentication. Learn more at: https://aka.ms/disablelocalauth-eh.*"
+}

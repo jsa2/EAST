@@ -1,0 +1,5 @@
+{
+"ControlId": "acr_fireWall",
+"Category": "Network",
+"Description": "It is recommended to limit the callers of the service by IP addresses, VNET or to private endpoints when callers of the service can be subjected to network requirements"
+}

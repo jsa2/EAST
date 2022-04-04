@@ -1,0 +1,5 @@
+{
+"ControlId": "Keyvault_ReviewAdvancedAccessPolicies",
+"Category": "Access",
+"Description": "\n//Migrated from AZSK\n\nAdvanced access policy allows Azure services (Azure Resource Manager, Virtual Machine, Disk Encryption etc.) to seamlessly access Key Vault. To avoid unintentional access to Key Vault from Azure services, advanced access policies must be configured only as required.\n\n**Remediation**\nRemove any advanced policies that are not required using the command: Remove-AzKeyVaultAccessPolicy -VaultName ‘{VaultName}’ -ResourceGroupName ‘{ResourceGroupName}’ -EnabledForDeployment -EnabledForTemplateDeployment -EnabledForDiskEncryption. Refer: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/Remove-AzKeyVaultAccessPolicy\n"
+} 

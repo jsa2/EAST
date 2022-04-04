@@ -1,0 +1,5 @@
+{
+"ControlId": "network_publicIpAdvanced",
+"Category": "Network",
+"Description": "Review unrestricted public IP's"
+}

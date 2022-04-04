@@ -1,0 +1,5 @@
+{
+"ControlId": "sub_alerts",
+"Category": "Protection",
+"Description": "[AZSK Migrated] Pending Microsoft Defender for Cloud(MDC) alerts must be resolved \r\n Based on the policies that are enabled in the subscription,Microsoft Defender for Cloudraises alerts (which are typically indicative of resources that MDC suspects might be under attack or needing immediate attention). It is important that these alerts/actions are resolved promptly in order to eliminate the exposure to attacks. "
+}

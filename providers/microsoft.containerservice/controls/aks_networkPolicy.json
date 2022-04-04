@@ -1,0 +1,5 @@
+{
+"ControlId": "aks_networkPolicy",
+"Category": "Network",
+"Description": "Using network policies allows the use inter-cluster network security rules. Without network policy cluster can't have any inter-cluster network security rules active \r\n https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/innovate/kubernetes/cluster-application-security#deploy-to-production-and-apply-kubernetes-security-best-practices"
+}

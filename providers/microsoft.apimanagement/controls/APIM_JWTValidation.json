@@ -1,0 +1,5 @@
+{
+"ControlId": "APIM_JWTValidation",
+"Category": "Access",
+"Description": "Prefer JWT validation for validation of API callers"
+}
