@@ -255,11 +255,11 @@ node ./plugins/main.js --batch=10 --nativescope=true --roleAssignments=true --he
 
 **Generate report**
 
-``cd east; node templatehelpers/eastReports.js --doc`` 
+``cd EAST; node templatehelpers/eastReports.js --doc`` 
 
 - If you want to include all Azure Security Benchmark results in the report
 
-``cd east; node templatehelpers/eastReports.js --doc --asb`` 
+``cd EAST; node templatehelpers/eastReports.js --doc --asb`` 
 
 **Export report from cloud shell**
 
