@@ -55,7 +55,7 @@ This tool is currently being developed by yours truly @[Nixu](https://www.nixu.c
 - There are no tests at the moment, apart from certain manual checks, that are run after changes to main.js and various more advanced controls.
 - As the name implies, we use it as tool to evaluate environments. It is not meant to be run as unmonitored for the time being, and should not be run in any internet exposed service that accepts incoming connections.
 - Documentation could be described as incomplete for the time being
-- EAST is mostly focused on PaaS resources. We are working AKS and IaaS controls also
+- EAST is mostly focused on PaaS resource, as most of our Azure assessments focus on this resource type
 
 
 # Tool operation 
