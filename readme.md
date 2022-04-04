@@ -196,7 +196,7 @@ This part has guide how to run this either on BASH@linux, or BASH on Azure Cloud
 curl -o- https://raw.githubusercontent.com/jsa2/EAST/public/sh/initForuse.sh | bash
 ``` 
 
-[jump to](#login-az-cli-and-run-the-scan)
+[jump to next step](#login-az-cli-and-run-the-scan)
 
 #### Detailed Prerequisites
 
@@ -212,7 +212,7 @@ nvm install 14
 
 nvm use 14
 
-cd east;
+cd EAST;
 npm install
 
 ``` 
@@ -241,7 +241,7 @@ az account clear
 az login
 
 #
-cd east
+cd EAST
 subId=6193053b-408b-44d0-b20f-4e29b9b67394
 nvm use 14
 node ./plugins/main.js --batch=10 --nativescope=true --roleAssignments=true --helperTexts=true --checkAad=true --scanAuditLogs --composites --subInclude=$subId
