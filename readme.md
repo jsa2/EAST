@@ -4,8 +4,6 @@ Extensible Azure Security Tool (Later referred as E.A.S.T) is tool for assessing
 
 This tool is currently being developed by yours truly @[Nixu](https://www.nixu.com/) LTD under [MIT license](https://github.com/jsa2/eastdocPriv/blob/main/LICENSE).
 
-
-![img](https://raw.githubusercontent.com/jsa2/EAST/public/img/overview.png)
 ![image](https://user-images.githubusercontent.com/58001986/161073205-66d1ae9e-d182-4089-aed2-3c04d3176bde.png)
 
 
