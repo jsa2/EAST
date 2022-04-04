@@ -60,7 +60,7 @@ This tool is currently being developed by yours truly @[Nixu](https://www.nixu.c
 
 # Tool operation 
 ## Depedencies
-Tooling tries to use very little **direct** depedencies, but to reduce amount of code we use the following depedencies for operation and aesthetics. We are grateful for the package maintainers of these solutions 😊
+To reduce amount of code we use the following depedencies for operation and aesthetics are used (Kudos to the maintainers of these fantastic packages)
   
  package | aesthetics|operation
   -|-|-
