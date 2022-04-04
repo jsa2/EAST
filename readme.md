@@ -181,6 +181,19 @@ This part has guide how to run this either on BASH@linux, or BASH on Azure Cloud
 
 ⚠️ If you are running the tool in Cloud Shell, you might need to reapply some of the installations again as Cloud Shell does not persist various session settings.
 
+
+
+
+
+**Fire and forget setup on on Cloud Shell (bash) full version below**
+
+
+``curl -o- https://github.com/jsa2/EAST/blob/public/sh/initForuse.sh | bash`` 
+
+
+---
+
+
 **Prerequisites**
 ```bash
 
@@ -198,16 +211,7 @@ npm install
 
 ``` 
 
-
 **Login Az CLI and run the scan**
-
-
-**Fire and forget setup on on Cloud Shell (bash)**
-``curl -o- https://github.com/jsa2/EAST/blob/public/sh/initForuse.sh | bash`` 
-
----
-
-**Manual**
 
 ```bash 
 
