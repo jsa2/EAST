@@ -46,7 +46,7 @@ This tool is currently being developed by yours truly @[Nixu](https://www.nixu.c
 
 # Important
 ⚠️ **Current status of the tool is beta** 
-- Fixes, updates etc are done on "Best effort" basis, with no guarantee of time, or quality for the fix
+- Fixes, updates etc. are done on "Best effort" basis, with no guarantee of time, or quality of the possible fix applied
 - We do some additional tuning before using EAST in our daily work, such as apply various run and environment restrictions, besides formalizing ourselves with the environment in question. Thus we currently recommend, that EAST is run in only in test environments, and with **read-only permissions**. 
   - All the calls in the service are largely to Azure Cloud IP's, so it should work well in hardened environments where outbound IP restrictions are applied. This reduces the risk of this tool containing malicious packages which could "phone home" without also having C2 in Azure. 
     - Essentially running it in read-only mode, reduces a lot of the risk associated with possibly compromised NPM packages ([Google compromised NPM](https://www.google.com/search?q=compromised+npm+packages&oq=compromised+npm+p&aqs=edge.0.0i512j69i57j0i20i263i512.2812j0j1&sourceid=chrome&ie=UTF-8))
