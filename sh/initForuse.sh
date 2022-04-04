@@ -20,4 +20,4 @@ git clone https://github.com/jsa2/EAST
 cd EAST;
 npm install
 
-echo "CD east to use"
+echo "cd EAST to use"
