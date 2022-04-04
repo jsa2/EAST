@@ -200,6 +200,15 @@ npm install
 
 
 **Login Az CLI and run the scan**
+
+
+**Fire and forget setup on on Cloud Shell (bash)**
+``curl -o- https://github.com/jsa2/EAST/blob/public/sh/initForuse.sh | bash`` 
+
+---
+
+**Manual**
+
 ```bash 
 
 # Relogin is required to ensure token cache is placed on session on cloud shell
