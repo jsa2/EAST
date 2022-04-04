@@ -190,7 +190,7 @@ This part has guide how to run this either on BASH@linux, or BASH on Azure Cloud
 **Fire and forget prerequisites on cloud shell**
 
 ```bash
-curl -o- https://github.com/jsa2/EAST/blob/public/sh/initForuse.sh | bash
+curl -o- https://raw.githubusercontent.com/jsa2/EAST/public/sh/initForuse.sh | bash
 ``` 
 
 [jump to](#login-az-cli-and-run-the-scan)
