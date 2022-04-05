@@ -2,7 +2,7 @@
 
 Extensible Azure Security Tool (Later referred as E.A.S.T) is tool for assessing Azure and to some extent Azure AD security controls. Primary use case of EAST is Security data collection for evaluation in Azure Assessments. This information (JSON content) can then be used in various reporting tools, which we use to further correlate and investigate the data.
 
-This tool is currently being developed by yours truly @[Nixu](https://www.nixu.com/) LTD under [MIT license](https://github.com/jsa2/EAST/blob/main/LICENSE).
+This tool is currently being developed by yours truly @[Nixu](https://www.nixu.com/) LTD under [MIT license](https://github.com/jsa2/EAST/blob/public/LICENSE).
 
 
 ![img](https://user-images.githubusercontent.com/58001986/161537923-6af229e8-0267-42bb-8979-eddadabb3525.png)
