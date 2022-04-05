@@ -94,7 +94,7 @@ name="aks_apiServer"
 provider="microsoft.containerservice"
 node manualControl.js --name $name --provider $provider
 
-name="LogicApps_ManagedIdentity"
+name="LogicApps_Connections"
 provider="microsoft.logic"
 node manualControl.js --name $name --provider $provider
 

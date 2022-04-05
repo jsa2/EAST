@@ -16,16 +16,18 @@ returnObject.metadata = {}
 returnObject.isHealthy="notApplicable"
 
 if (item?.properties?.definition?.triggers?.manual?.kind.toLowerCase() == "http" && !item.properties?.accessControl?.triggers?.openAuthenticationPolicies) {
-       
-    returnObject.metadata = item?.properties?.definition?.triggers
+    let pol = item.properties?.accessControl?.triggers?.openAuthenticationPolicies
+    let trig = item?.properties?.definition?.triggers
+    returnObject.metadata = {pol,trig}
     returnObject.isHealthy=false
    
     }
 
     
 if (item?.properties?.definition?.triggers?.manual?.kind.toLowerCase() == "http" && item.properties?.accessControl?.triggers?.openAuthenticationPolicies) {
-       
-    returnObject.metadata = item?.properties?.definition?.triggers
+    let pol = item.properties?.accessControl?.triggers?.openAuthenticationPolicies
+    let trig = item?.properties?.definition?.triggers
+    returnObject.metadata = {pol,trig}
     returnObject.isHealthy=true
    
     }

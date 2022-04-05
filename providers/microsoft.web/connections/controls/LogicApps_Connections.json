@@ -1,5 +1,5 @@
 {
-"ControlId": "LogicApps_Connections",
-"Category": "EXAMPLE: Authentication strength, Attack surface reduction",
-"Description": "EXAMPLE: Ensure The Service calls downstream resources with managed identity"
+"ControlId": "LogicApps_Connections_1",
+"Category": "Data",
+"Description": "When possible try to use Azure AD Backed connections instead of local authentication options"
 }

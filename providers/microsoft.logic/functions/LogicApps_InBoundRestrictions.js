@@ -20,7 +20,7 @@ returnObject.isHealthy=false
 if ( accessControls !== failedMessage){
     returnObject.isHealthy=true
 
-    if (item?.properties?.accessControl?.triggers.allowedCallerIpAddresses.length == 0 && item?.properties?.accessControl?.actions.allowedCallerIpAddresses.length == 0 ) {
+    if (item?.properties?.accessControl?.triggers?.allowedCallerIpAddresses?.length == 0 && item?.properties?.accessControl?.actions?.allowedCallerIpAddresses?.length == 0 ) {
         accessControls="Only Other Logic Apps"
     }
 }
