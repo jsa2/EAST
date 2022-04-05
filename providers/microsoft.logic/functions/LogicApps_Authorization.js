@@ -12,7 +12,7 @@ if (!item?.id.match('microsoft.logic/workflows')) {
     return returnObject
 }
 
-returnObject.metadata = JSON.stringify(item.properties?.accessControl)
+returnObject.metadata = {}
 returnObject.isHealthy="notApplicable"
 
 if (item?.properties?.definition?.triggers?.manual?.kind.toLowerCase() == "http" && !item.properties?.accessControl?.triggers?.openAuthenticationPolicies) {
