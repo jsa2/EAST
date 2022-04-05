@@ -1,5 +1,5 @@
 {
 "ControlId": "LogicApps_Authorization",
-"Category": "EXAMPLE: Authentication strength, Attack surface reduction",
-"Description": "EXAMPLE: Ensure The Service calls downstream resources with managed identity"
+"Category": "Access",
+"Description": "Consider authorization of HTTP triggers with AAD instead of passwords (SAS key)"
 }

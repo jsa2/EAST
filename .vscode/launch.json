@@ -16,10 +16,10 @@
             "args":  [
                 "--batch=10",
                 "--nativescope=true",
-                "--roleAssignments=true",
+                "--roleAssignments=false",
                 "--helperTexts=true",
                // "--subInclude=6193053b-408b-44d0-b20f-4e29b9b67394",
-               "--namespace=datafactory",
+               "--namespace=logic",
                 //"--notIncludes=44ee6398gb8abb6d0",
                 "--checkAad=false",
                 //"--asb=true"
