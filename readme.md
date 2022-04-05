@@ -274,13 +274,15 @@ node ./plugins/main.js --batch=10 --nativescope=true --roleAssignments=true --he
 ## Licensing
 
 **Community use**
-- Idea is to share relevant controls across multiple environments as community effort, and see those controls enriched and developed in community use.
+- Share relevant controls across multiple environments as community effort
 
 **Company use**
-- Idea is that companies have possibility to develop company specific controls which apply to company specific work. Companies can then control these implementations by decision to share, or not share them based on the operating principle of that company. 
+- Companies have possibility to develop company specific controls which apply to company specific work. Companies can then control these implementations by decision to share, or not share them based on the operating principle of that company. 
 
 **Non IPR components**
-- Code logic and functions are under MIT license. since code logic and functions are alredy based on open-source components & vendor API's, it does not make sense to restrict existing open-source components.
+- Code logic and functions are under MIT license. since code logic and functions are alredy based on open-source components & vendor API's, it does not make sense to restrict something that is already based on open source
+
+If you use this tool as part of your commercial effort 
 
 [Read license](https://github.com/jsa2/EAST/blob/public/LICENSE)
 
