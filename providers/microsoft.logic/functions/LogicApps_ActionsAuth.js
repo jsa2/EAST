@@ -29,8 +29,8 @@ return returnObject
 
 function enumAuthKey (v,mp) {
 
-if (typeof(v) === "object") {
-   
+if (typeof(v) === "object" && v !== null) {
+    //console.log(v)
     if (v.hasOwnProperty('authentication')) {
         let hasManagedIdentity = JSON.stringify(v).toLowerCase().match('managed')?.input
         mp.push({authOptions:v,hasManagedIdentity})

@@ -14,7 +14,10 @@ var subsNnames =[]
 
 var resa = []
 function schema (subscription) {
-   console.log('got resources for subscription', subscription[0].id.split('/')[2])
+   if (subscription.length > 0) {
+      console.log('got resources for subscription', subscription[0]?.id.split('/')[2])
+   }
+ 
    this.subscription = subscription
    subscription.forEach(element => {
       resa.push(element)
