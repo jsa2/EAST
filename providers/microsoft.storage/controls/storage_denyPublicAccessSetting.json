@@ -1,0 +1,5 @@
+{
+"ControlId": "storage_denyPublicAccessSetting",
+"Category": "Access",
+"Description": "This setting denies public blob access on storage account level"
+}

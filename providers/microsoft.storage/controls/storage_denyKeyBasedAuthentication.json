@@ -1,0 +1,5 @@
+{
+    "ControlId": "storage_denyPublicAccessSetting",
+    "Category": "Access",
+    "Description": "This setting denies key based access on storage account level"
+    }
