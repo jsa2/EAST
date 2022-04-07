@@ -4,10 +4,12 @@ function policyTemplate (policyId, oid) {
 //console.log(policyId)
 var allMfa = new createMFAtemplate(oid)
 var allLegacy = new createLegacyTemplate(oid)
+let allDevops = new createDevopsTempalte(oid)
 
     var policy = [
         allMfa,
-        allLegacy
+        allLegacy,
+        allDevops
     ]
 
 

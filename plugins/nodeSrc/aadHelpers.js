@@ -6,7 +6,7 @@ const { getAADtoken, getAADIamToken } = require("./getToken")
 //
 
 
-module.exports={getBasicAuthStatus,getCaPolicies,getMFAStatus, getAADCAPol}
+module.exports={getBasicAuthStatus,getCaPolicies,getMFAStatus, getAADCAPol, getAzDevopsStatus}
 
 var caPoliciesx 
 
@@ -107,7 +107,62 @@ async function getMFAStatus (oid, passedToken) {
 }
 
 
+async function getAzDevopsStatus (oid, passedToken) {
+  const checkType="devops"
 
+  var preRes = existing.find(item => item.oid == oid && item.checkType == checkType)
+  if (preRes) {
+    //console.log('found existing') 
+      return preRes
+    }
+
+  if (!await getCaPolicies()) {
+      return "not evaluation, as there are no CA policies enabled"
+  }
+
+  if (!passedToken) {
+      var token = await getAADIamToken()
+      
+
+  } else {
+      var token = passedToken
+  }
+
+ // console.log(decode(token))
+
+ var data = policyTemplate(2,oid)
+  
+  var opt = {
+    url:"https://main.iam.ad.ext.azure.com/api/Policies/Evaluate?",
+    "headers": {
+      "accept": "*/*",
+      "accept-language": "en",
+      authorization: `Bearer ${token}`,
+      "content-type": "application/json",
+      "x-ms-client-request-id": require('uuid').v1(),
+      "x-ms-command-name": "PolicyManagement - GetAllEvaluatedPolicies",
+      "x-ms-effective-locale": "en.en-us"
+    },
+      data,
+    }
+
+   // console.log(opt)
+
+    const {data:policies} = await axios(opt).catch((error) => {
+      console.log(error?.response?.statusText)
+      return Promise.reject('eval not available')
+    })
+
+    const appliedPol = await policies.filter((pol) => pol.applied == true && pol.policyState == 2).map((policy) => {
+      const grants= Object.keys(policy.controls).filter((key ) => (policy.controls[key] == true && policy.applied == true))
+      console.log(grants)
+      return {GrantConditions:grants[1] || "policy not applied" ,policy:policy.policyName, oid}
+    })
+
+     existing.push({oid,appliedPol,checkType})
+    return {oid,appliedPol,checkType}
+
+}
 
 async function getBasicAuthStatus (oid, passedToken) {
   const checkType="basicAuth"
