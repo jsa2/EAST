@@ -128,3 +128,7 @@ node diagnosticSettings.js --name $name --provider $provider
 name="eh_diagnosticSettings"
 provider="microsoft.eventhub"
 node diagnosticSettings.js --name $name --provider $provider
+
+name="aad_ca_azureDevops"
+provider="microsoft.azureactivedirectory"
+node manualControl.js --name $name --provider $provider

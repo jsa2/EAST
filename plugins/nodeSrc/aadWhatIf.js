@@ -220,4 +220,103 @@ function createMFAtemplate (oid) {
 }
   return this.template
 }
+
+function createDevopsTempalte (oid) {
+
+  this.template = {
+    "users": {
+        "allUsers": 2,
+        "excluded": {
+            "userIds": [],
+            "groupIds": []
+        },
+        "included": {
+            "userIds": [
+              oid
+            ],
+            "groupIds": []
+        }
+    },
+    "servicePrincipals": {
+        "allServicePrincipals": 2,
+        "included": {
+            "ids": [
+                "499b84ac-1321-427f-aa17-267ca6975798"
+            ]
+        },
+        "includeAllMicrosoftApps": false,
+        "excludeAllMicrosoftApps": false,
+        "userActions": [],
+        "stepUpTags": []
+    },
+    "conditions": {
+        "minUserRisk": {
+            "noRisk": false,
+            "lowRisk": false,
+            "mediumRisk": false,
+            "highRisk": false,
+            "applyCondition": false
+        },
+        "minSigninRisk": {
+            "noRisk": false,
+            "lowRisk": false,
+            "mediumRisk": false,
+            "highRisk": false,
+            "applyCondition": false
+        },
+        "servicePrincipalRiskLevels": {
+            "noRisk": false,
+            "lowRisk": false,
+            "mediumRisk": false,
+            "highRisk": false,
+            "applyCondition": false
+        },
+        "devicePlatforms": {
+            "all": 2,
+            "included": {
+                "android": false,
+                "ios": false,
+                "windowsPhone": false,
+                "windows": false,
+                "macOs": false,
+                "linux": false
+            },
+            "excluded": null,
+            "applyCondition": false
+        },
+        "locations": {
+            "applyCondition": true,
+            "includeLocationType": 2,
+            "excludeAllTrusted": false
+        },
+        "clientApps": {
+            "applyCondition": false,
+            "specificClientApps": false,
+            "webBrowsers": false,
+            "exchangeActiveSync": false,
+            "onlyAllowSupportedPlatforms": false,
+            "mobileDesktop": false
+        },
+        "clientAppsV2": {
+            "applyCondition": false,
+            "webBrowsers": false,
+            "mobileDesktop": false,
+            "modernAuth": false,
+            "exchangeActiveSync": false,
+            "onlyAllowSupportedPlatforms": false,
+            "otherClients": false
+        },
+        "deviceState": {
+            "includeDeviceStateType": 1,
+            "excludeDomainJoionedDevice": false,
+            "excludeCompliantDevice": false,
+            "applyCondition": true
+        }
+    }
+}
+  return this.template
+}
+
+
+
 module.exports={policyTemplate}
