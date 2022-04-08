@@ -35,7 +35,7 @@ var sd =new newObjectCreater(spn)
 sd.isHealthy = true
 let spns = []
 sd.metadata.results.map(s => s.value.filter(s => s.object.match('servicePrincipal')).map(s => spns.push(`${s.role} - ${s.object}`)) )
-sd.controlId = "AAD_Privileged_SPN"
+sd.controlId = "AAD_SPNInAADRole"
 sd.Description = "Ensure Service Principals are not in privilged Azure AD roles unless justified"
 sd.metadata = spns
 
