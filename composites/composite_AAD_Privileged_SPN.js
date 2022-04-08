@@ -28,7 +28,7 @@ module.exports = async function (src) {
 
 let spn = src.find(s => s.controlId == "adminsCa" ) 
 
-if (!spn?.length) {
+if (!spn) {
     return;
 }
 var sd =new newObjectCreater(spn)
