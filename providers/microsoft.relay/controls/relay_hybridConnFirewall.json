@@ -1,0 +1,5 @@
+{
+    "ControlId": "Network restrictions",
+    "Category": "Network",
+    "Description": "It is recommended to limit the callers of the service by IP addresses, when callers of the services are known"
+  }

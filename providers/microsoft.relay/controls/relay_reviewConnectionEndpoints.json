@@ -1,0 +1,5 @@
+{
+"ControlId": "relay_reviewConnectionEndpoints",
+"Category": "Network",
+"Description": "Ensure Relay connection endpoints are cleaned up periodically, and require client authorization at all times. If possible restrict connections from the agent in network level \r\n [about Relays](https://docs.microsoft.com/en-us/azure/azure-relay/relay-what-is-it#hybrid-connections) "
+}
