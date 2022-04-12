@@ -243,7 +243,9 @@ az login
 
 #
 cd EAST
+# replace the subid below with your subscription ID!
 subId=6193053b-408b-44d0-b20f-4e29b9b67394
+# 
 nvm use 14
 node ./plugins/main.js --batch=10 --nativescope=true --roleAssignments=true --helperTexts=true --checkAad=true --scanAuditLogs --composites --subInclude=$subId
 
