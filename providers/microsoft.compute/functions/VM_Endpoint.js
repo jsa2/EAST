@@ -41,6 +41,10 @@ if (status.toLowerCase() == 'notapplicable') {
     status = "manual"
 }
 
+if (status.toLowerCase() == 'unhealthy') {
+    status = false
+}
+
 returnObject.isHealthy= status
 
 returnObject.metadata = {endpointProtection:item1.data[0]?.properties?.status?.description ||  item1.data[0]?.properties}
