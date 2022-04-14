@@ -161,7 +161,31 @@ async function azNodeRestRefDyn (ID, apiversion, debug, customOptions, urlencode
         return data?.data
     
     }
+
+
+async function axiosThrottle (options,throttleCount) {
+
+    
+    let actual = throttleCount * dynAwaitInMS
+
+    if (throttleCount % 2 == 0) {
+    console.log('waiting to avoid throttling for request number', throttleCount)
+    }
+    
+    console.log('throttle is in MS:', actual)
+        console.log('checking pipelines',options.url)
+    try {  let  {data} = await axios(options) 
+        return data
+    }
+    catch (error) {
+        return error
+    }
+  
+
+}
+
+
     
 
 
-module.exports = {azNodeRestRef,azNodeRestRefDyn}
+module.exports = {azNodeRestRef,azNodeRestRefDyn,axiosThrottle}

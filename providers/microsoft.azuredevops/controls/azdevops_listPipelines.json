@@ -1,0 +1,5 @@
+{
+"ControlId": "azdevops_listOrganizations",
+"Category": "Access",
+"Description": "Review list of Azure Devops Pipeline logs"
+}

@@ -95,6 +95,14 @@ if (argv.checkAad == "true") {
    
 }
 
+if (argv.azdevops) {
+
+   res.push({"id":"/tenant/providers/microsoft.azuredevops/projects/Review"})
+
+}
+
+
+
 if (argv.helperTexts) {
    res.push({"id":"/tenant/providers/microsoft.general/topics/Review"})
 }
