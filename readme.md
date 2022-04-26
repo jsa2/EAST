@@ -73,7 +73,7 @@ To reduce amount of code we use the following depedencies for operation and aest
 
 
 **Other depedencies for running the tool:** 
-If you are planning to run this in Azure Cloud Shell [](#reporting), you don't need to install these:
+If you are planning to run this in Azure Cloud Shell you don't need to install Azure CLI:
 
 Azure Cloud Shell (BASH)
  or applicable Linux Distro / WSL
