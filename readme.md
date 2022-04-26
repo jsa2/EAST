@@ -29,7 +29,7 @@ This tool is currently being developed by yours truly @[Nixu](https://www.nixu.c
       - [Detailed Prerequisites](#detailed-prerequisites)
       - [Login Az CLI and run the scan](#login-az-cli-and-run-the-scan)
   - [Licensing](#licensing)
-- [Tool operation](#tool-operation-1)
+- [Tool operation documentation](#tool-operation-documentation)
   - [Principles](#principles)
     - [AZCLI USE](#azcli-use)
     - [Speedup](#speedup)
@@ -290,7 +290,7 @@ If you use this tool as part of your commercial effort
 
 ---
 
-# Tool operation
+# Tool operation documentation
 
 ## Principles
 
