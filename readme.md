@@ -67,7 +67,7 @@ To reduce amount of code we use the following depedencies for operation and aest
   -|-|-
   [axios](https://www.npmjs.com/package/axios)||✅
   [yargs](https://www.npmjs.com/package/yargs)||✅
-  [jsonwebtoken](https://www.npmjs.com/package/yargs) | |✅
+  [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken) | |✅
   [chalk](https://www.npmjs.com/package/chalk)| ✅
    [js-beautify ](https://www.npmjs.com/package/js-beautify) | ✅
 
