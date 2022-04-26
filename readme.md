@@ -80,7 +80,7 @@ Azure Cloud Shell (BASH)
 Requirement | description | Install
 -|-|-
 ✅ AZ CLI |  [AZCLI USE](#azcli-use) |``curl -sL https://aka.ms/InstallAzureCLIDeb \| sudo bash``
-✅ Node.js runtime 14 | Used in Azure Function, and to create local function config |[install with NVM](https://github.com/nvm-sh/nvm#install--update-script)
+✅ Node.js runtime 14 | Node.js runtime for EAST |[install with NVM](https://github.com/nvm-sh/nvm#install--update-script)
 
 
 
