@@ -163,7 +163,7 @@ Azure Data Factory pipeline mapping combines pipelines -> activities -> and data
 
 ### Composite
 
-Composite controls combines two or more control results from pipeline, in order form one, or more new controls. Using composites solves two use cases at least
+Composite controls combines two or more control results from pipeline, in order to form one, or more new controls. Using composites solves two use cases for EAST
 1. You cant guarantee an order of control results being returned in the pipeline 
 2. You need to return more than one control result from single check
 
@@ -270,7 +270,10 @@ node ./plugins/main.js --batch=10 --nativescope=true --roleAssignments=true --he
 
 ![image](https://user-images.githubusercontent.com/58001986/161531433-4254e231-445f-4443-a7e4-22f4a81f1df3.png)
 
+**Azure Devops (Experimental)**
+There is Azure Devops control for dumping pipeline logs. You can specify the control run by following example:
 
+``` node ./plugins/main.js --batch=10 --nativescope=true --roleAssignments=true --helperTexts=true --checkAad=true --scanAuditLogs --composites --subInclude=$subId --azdevops "organizationName" ```
 
 --- 
 ## Licensing
