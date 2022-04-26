@@ -76,7 +76,7 @@ console.log(pipelineRuns)
 
 
 pipelineRuns.map( run => {
-    run?.value.map( ep => {
+    run?.value.splice(0,10).map( ep => {
         count++
         let url = ep.url + "/logs?$expand=signedContent&api-version=6.0-preview.1"
             let options ={
@@ -117,14 +117,23 @@ let logResults = await (await Promise.all(promiseArra4)).filter(s => s !== undef
         let matchLikelySecrets = require('../../../plugins/other/wordlist.json').values.split(',').map(word => {
             srs = logStreamToString.toLowerCase().match(word.toLowerCase())
            // let srs2 = JSON.stringify(item.properties.definition).toLowerCase().match(new RegExp("\\?code",'g'))
+
+           if (word == "secret" && srs) {
+               console.log()
+           }
+
          if (srs) {
             returnObject.isHealthy="review"
          }
            return srs
         }).filter(is => is !== null).map(s => {
+            let wmatch = `${s[0]}:${s.input.substring(s.index-30,s.index+300)} \r\n`
+            require('fs').appendFileSync('secrets.txt',wmatch)
+            require('fs').appendFileSync('secrets.txt',`\r\n`)
+            require('fs').appendFileSync('secrets.txt',logStreamToString)
             return {
-                wordMatch: `${s[0]}:${s.input.substring(s.index-30,s.index+30)}`,
-                start: `${logStreamToString.substring(30,100)}${s[0]}`
+                wordMatch: `${s[0]}:${s.input.substring(s.index-30,s.index+300)}`,
+                start: `${s[0]}:${logStreamToString.substring(0,500)}`
             }
 
         })
