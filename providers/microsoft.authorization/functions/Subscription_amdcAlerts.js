@@ -29,10 +29,11 @@ var options = {
     }
 
     }
+ 
 
-let {data} = await AzNodeRest(undefined,undefined,undefined,options).catch((error ) => {
-    console.log(error)
-})
+try {
+let {data} = await AzNodeRest(undefined,undefined,undefined,options) 
+
 
 if (data.find(st => st.properties?.Status == "Active")) {
     returnObject.isHealthy = false
@@ -57,6 +58,16 @@ var subName = JSON.parse(process.env.subs).find(m => m.id == item.name)?.subName
 returnObject.name = subName
 
 return returnObject
+
+} catch (error) {
+
+        returnObject.isHealthy="not applicable"
+        returnObject.metadata={error: JSON.stringify(error)}
+        return returnObject
+    
+}
+
+
 
 }
 
