@@ -1,0 +1,5 @@
+{
+"ControlId": "sd2",
+"Category": "Access",
+"Description": "Review Azure AD and Azure RBAC baseline for delegations made via lighthouse. Review following blog for more information https://securecloud.blog/2020/11/13/securing-azure-lighthouse-with-azure-policy-and-azure-privileged-identity-management-for-msps-and-customers/"
+}
