@@ -9,16 +9,16 @@ module.exports = async function (item) {
   
  
   let returnObject = new returnObjectInit(item,__filename.split('/').pop())
-  returnObject.isHealthy=true
+  returnObject.isHealthy="manual"
 
   try {
 
-    var {value} = await AzNodeRest(`/subscriptions/${item.name}/providers/Microsoft.ManagedServices/registrationAssignments?$expandRegistrationDefinition=true`,"2020-02-01-preview")
+    var {value} = await AzNodeRest(`/subscriptions/${item.name}/providers/Microsoft.Authorization/locks`,"2016-09-01")
 
   if (value.length > 0) {
     returnObject.isHealthy="review"
   }
-  returnObject.metadata={indirectAccess:JSON.stringify(value)}
+  returnObject.metadata={locks:JSON.stringify(value)}
   return returnObject
   
 
