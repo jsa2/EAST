@@ -20,4 +20,7 @@ git clone https://github.com/jsa2/EAST
 cd EAST;
 npm install
 
-echo "cd EAST to use"
+echo "cd EAST to use";
+echo "doing automatic exit, force refresh of NVM";
+sleep 2;
+exit;
