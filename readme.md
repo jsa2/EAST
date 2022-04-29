@@ -195,7 +195,7 @@ This part has guide how to run this either on BASH@linux, or BASH on Azure Cloud
 
 ```bash
 curl -o- https://raw.githubusercontent.com/jsa2/EAST/public/sh/initForuse.sh | bash;
-echo "exiting to force reload NVM"
+echo "exiting to force reload of NVM"
 exit 0;
 ``` 
 
