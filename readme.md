@@ -195,8 +195,11 @@ This part has guide how to run this either on BASH@linux, or BASH on Azure Cloud
 
 ```bash
 curl -o- https://raw.githubusercontent.com/jsa2/EAST/public/sh/initForuse.sh | bash;
-echo "exiting to force reload of NVM";
-exit 0;
+# Force reload of NVM
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" 
+# This loads nvm
+
 ``` 
 
 [jump to next step](#login-az-cli-and-run-the-scan)
