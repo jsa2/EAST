@@ -21,4 +21,4 @@ cd EAST;
 npm install
 
 echo "exit the CloudShell session by typing 'exit' before continuing"
-sleep -s 3
+sleep 3
