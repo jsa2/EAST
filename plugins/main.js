@@ -123,11 +123,11 @@ if (argv.helperTexts) {
    //makeSingleArray(wa,r)
 
 
-   if (argv.asb == "true") {
+/*    if (argv.asb == "true") {
       var ASB = await resourceGraphGovernanceData(JSON.parse(process.env.subs))
       ASB.forEach((item) => wa.push(item))
    }
-
+ */
 
    console.log('batch size was', res.length, ': - batch is completed')
    
