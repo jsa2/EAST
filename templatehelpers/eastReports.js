@@ -363,17 +363,23 @@ var sb = b.items[0][0].group.toLowerCase()
             rows += `||🔍[${st.items.length}](#${lnk})`
           }
   
-  
           if (st.items[0].controlId.match('ASB_')) {
-            st.items.forEach(it => details+=`\r\n - [${it.id.split('/').pop()}](https://portal.azure.com/#@/resource${it.id}) - [metadata](#metadata_${it.name}_${control.group})\r\n`.toLowerCase())
+            st.items.forEach(it => details+=`\r\n - [${it.id.split('/').pop()}](https://portal.azure.com/#@/resource${it.id})`)
           } 
 
           if (st.items[0].controlId.match('AZSK_')) { 
             st.items.forEach(it => details+=`\r\n - [${it.name}](https://portal.azure.com/#@/resource${it.id}) \r\n`)
           }
 
-          if (st.items[0].controlId.match('EAST')) { 
+          if (st.items[0].controlId.match('EAST_Subscriptions')) {
+            st.items.forEach(it => details+=`\r\n - [${it.name}](https://portal.azure.com/#@/resource${it.id.split('/providers/microsoft.authorization')[0]}) - [metadata](#metadata_${it.name}_${control.group})\r\n`.toLowerCase() )
+            console.log()
+          } else if (st.items[0].controlId.match('EAST') && !st.items[0].name.toLowerCase().match('aaddefaultsettings') ) { 
             st.items.forEach(it => details+=`\r\n - [${it.name}](https://portal.azure.com/#@/resource${it.id}) - [metadata](#metadata_${it.name}_${control.group})\r\n`.toLowerCase() )
+          }  
+          
+          if(st.items[0].name.toLowerCase().match('aaddefaultsettings')) {
+            st.items.forEach(it => details+=`\r\n - [${it.name}](https://aad.portal.azure.com) - [metadata](#metadata_${it.name}_${control.group})\r\n`.toLowerCase() )
           }
       
           details+="\r\n"
