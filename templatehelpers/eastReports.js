@@ -7,7 +7,7 @@ const chalk = require('chalk')
 const {exec} =require('child_process')
 const wexc = require('util').promisify(exec)
 
-//updates
+//updates //
 
 main()
 
