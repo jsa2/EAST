@@ -401,7 +401,7 @@ var sb = b.items[0][0].group.toLowerCase()
             processed =require(`./custom/${controlD}`)(it,control)
             details+=processed
           }  catch (error) {
-           console.log('no custom control for', st.items[0].controlId)
+           //console.log('no custom control for', st.items[0].controlId)
           }
            
           if(it.controlId.match('EAST_') && !processed) {
