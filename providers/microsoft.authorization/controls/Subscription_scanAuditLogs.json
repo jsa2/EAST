@@ -1,0 +1,5 @@
+{
+"ControlId": "scanAuditLogs",
+"Category": "Logs",
+"Description": "\r\n\r\n**Review Azure Resource Manager operations which rely only on password authentication**\r\n\r\nThis item checks the appIdAcr value for Apps, and ``[\"http://schemas.microsoft.com/claims/authnmethodsreferences\"]`` claim for users. \r\n\r\n\r\n\r\n📑 You might see items in this check fail that are using trusted location, but not MFA. For privileged users even in trusted location it's recommended to use MFA \r\n\r\n**Example of failed item**\r\n\r\n![image](https://user-images.githubusercontent.com/58001986/154227400-c373d77b-52c5-4f4c-ab36-a24619c67255.png)\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n"
+}
