@@ -26,7 +26,7 @@ This tool is currently being developed by yours truly @[Nixu](https://www.nixu.c
     - [Composite](#composite)
   - [Reporting](#reporting)
     - [Running EAST scan](#running-east-scan)
-      - [Detailed Prerequisites](#detailed-prerequisites)
+      - [Detailed Prerequisites (This is if you opted no to do the "fire and forget version")](#detailed-prerequisites-this-is-if-you-opted-no-to-do-the-fire-and-forget-version)
       - [Login Az CLI and run the scan](#login-az-cli-and-run-the-scan)
   - [Licensing](#licensing)
 - [Tool operation documentation](#tool-operation-documentation)
@@ -204,7 +204,7 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 
 [jump to next step](#login-az-cli-and-run-the-scan)
 
-#### Detailed Prerequisites
+#### Detailed Prerequisites (This is if you opted no to do the "fire and forget version")
 
 **Prerequisites**
 ```bash
@@ -217,7 +217,7 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 nvm install 14
 
 nvm use 14
-
+git clone https://github.com/jsa2/EAST
 cd EAST;
 npm install
 
