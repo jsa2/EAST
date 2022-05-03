@@ -41,7 +41,7 @@ This tool is currently being developed by yours truly @[Nixu](https://www.nixu.c
     - [Auditing Microsoft.Web provider (Functions and web apps)](#auditing-microsoftweb-provider-functions-and-web-apps)
     - [Azure RBAC baseline authorization](#azure-rbac-baseline-authorization)
   - [End of document](#end-of-document)
-  - [Contribution](#contribution)
+  - [Contributing](#contributing)
 
 ---
 
@@ -496,5 +496,5 @@ return returnObject
 ## End of document
 Please follow the repo if you want to receive updates on progress.
 
-## Contribution
+## Contributing
 Feel free to submit pull request, or issue for possible fixes / updates
