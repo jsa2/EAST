@@ -24,7 +24,7 @@ This tool is currently being developed by yours truly @[Nixu](https://www.nixu.c
     - [Basic](#basic)
     - [Advanced](#advanced)
     - [Composite](#composite)
-  - [reporting](#reporting)
+  - [Reporting](#reporting)
     - [Running EAST scan](#running-east-scan)
       - [Detailed Prerequisites](#detailed-prerequisites)
       - [Login Az CLI and run the scan](#login-az-cli-and-run-the-scan)
@@ -172,9 +172,9 @@ Composite controls combines two or more control results from pipeline, in order 
 1. Get alerts from Microsoft Cloud Defender on subscription check
 2. Form new controls per resourceProvider for alerts
 
-## reporting
+## Reporting
 
-EAST is not focsed to provide automated report generation, as it provides mostly JSON files with control and evaluation status. The idea is to use separate tooling to create reports, which are fairly trivial to automate via MD creation scripts and tools such as [Pandoc](https://github.com/jgm/pandoc#the-universal-markup-converter) 
+EAST is not focused to provide automated report generation, as it provides mostly JSON files with control and evaluation status. The idea is to use separate tooling to create reports, which are fairly trivial to automate via markdown creation scripts and tools such as [Pandoc](https://github.com/jgm/pandoc#the-universal-markup-converter) 
 
 - While focus is not on the reporting, this repo includes example automation for report creation with pandoc to ease reading of the results in single document format.
 
