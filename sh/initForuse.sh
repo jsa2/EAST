@@ -20,5 +20,3 @@ git clone https://github.com/jsa2/EAST
 cd EAST;
 npm install
 
-echo "exit the CloudShell session by typing 'exit' before continuing"
-sleep 3
