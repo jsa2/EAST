@@ -21,10 +21,11 @@ module.exports = async function (item) {
   
   var returnObject = new returnObjectInit(item,__filename.split('/').pop())
   
-  var {apiversion} = getProviderApiVersion(item.id)
+ // var {apiversion} = getProviderApiVersion(item.id)
   let scope =await runner(`az group list --subscription "${subName}"`)
   var {value} = await AzNodeRest(`${scope[0].id}/providers/Microsoft.Authorization/roleAssignments?$filter=atScope()`,"2021-04-01-preview")
   
+
   // Expand users in group to users
   let grps = value.filter(s =>s.properties.principalType.toLowerCase() == "group").map( s => {
     return {

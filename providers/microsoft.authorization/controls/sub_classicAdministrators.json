@@ -1,0 +1,5 @@
+{
+"ControlId": "sub_classicAdministrators",
+"Category": "Access",
+"Description": "Review list of administrators outside of Azure RBAC assignments, review following article for more information [Classic Administrators](https://docs.microsoft.com/en-us/security/benchmark/azure/baselines/cloud-services-security-baseline#31-maintain-an-inventory-of-administrative-accounts)"
+}

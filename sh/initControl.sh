@@ -15,6 +15,11 @@ node diagnosticSettings.js --name $name --provider $provider
 
 
 
+
+name="sub_classicAdministrators"
+provider="microsoft.authorization"
+node controlTemplate.js --name $name --provider $provider
+
 name="sub_alerts"
 provider="microsoft.authorization"
 node controlTemplate.js --name $name --provider $provider
