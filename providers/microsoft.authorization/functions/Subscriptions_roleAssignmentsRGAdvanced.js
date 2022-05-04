@@ -17,7 +17,7 @@ module.exports = async function (item) {
   
   
   var subName = JSON.parse(process.env.subs).find(m => m.id == item.name)?.subName
-  
+  //
   
   var returnObject = new returnObjectInit(item,__filename.split('/').pop())
   
