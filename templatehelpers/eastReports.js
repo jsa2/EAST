@@ -468,7 +468,7 @@ console.log('done')
 var fn = "fullReport2"
 fs.writeFileSync(`${fn}.md`,data)
 console.log('done')
-
+//update
 if (argv.doc) {
   console.log(chalk.green('to export to pandoc run:'))
 
