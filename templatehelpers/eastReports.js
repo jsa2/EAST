@@ -12,11 +12,11 @@ main()
 
 async function main () {
 
-    try {
+   /*  try {
         await wexc(`pandoc -v`)} catch(error) {
         console.log(chalk.red('Missing Pandoc, aborting'))
         return;
-          }
+          } */
   //
 
 var fs = require('fs')
