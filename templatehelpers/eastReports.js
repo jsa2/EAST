@@ -317,7 +317,7 @@ var sb = b.items[0][0].group.toLowerCase()
 
         status.forEach((st) => {
           var previous 
-          console.log(control.group)
+          //console.log(control.group)
          
           
           if (control.group.match('list')) {
