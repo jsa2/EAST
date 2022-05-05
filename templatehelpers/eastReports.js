@@ -7,11 +7,17 @@ const chalk = require('chalk')
 const {exec} =require('child_process')
 const wexc = require('util').promisify(exec)
 
-//updates //
 
 main()
 
 async function main () {
+
+    try {
+        await wexc(`pandoc -v`)} catch(error) {
+        console.log(chalk.red('Missing Pandoc, aborting'))
+        return;
+          }
+  //
 
 var fs = require('fs')
 const { getToken } = require('../plugins/nodeSrc/getToken')
@@ -255,7 +261,7 @@ var sb = b.items[0][0].group.toLowerCase()
         details +=`**Remediation**`
         details += "\r\n"
         details += "\r\n"
-        details += s?.remediationSteps || s?.metadata?.remediationDescription || "dogfood" + JSON.stringify(s.metadata)
+        details += s?.remediationSteps || s?.metadata?.remediationDescription || JSON.stringify(s.metadata)
         details += "\r\n"
         details+="\r\n"
         details += "\r\n"
@@ -363,11 +369,25 @@ var sb = b.items[0][0].group.toLowerCase()
             rows += `||🔍[${st.items.length}](#${lnk})`
           }
   
+  
           if (st.items[0].controlId.match('ASB_')) {
-            st.items.forEach(it => details+=`\r\n - [${it.id.split('/').pop()}](https://portal.azure.com/#@/resource${it.id})`)
+            st.items.forEach(it => {
+              let recommendationLink 
+              try {
+                let mtd = JSON.parse(it.metadata?.asb)?.azurePortalRecommendationLink || JSON.parse(it.metadata?.asb)?.links?.azurePortal
+                if (mtd) {
+                  recommendationLink = `[link to recommendation](https://${mtd})`
+                }
+
+              } catch (error) {
+                //no recommendation link to be parsed
+              }
+              details+=`\r\n - [${it.id.split('/').pop()}](https://portal.azure.com/#@/resource${it.id}) - ${recommendationLink || "no recommendation link"} `
+
+          })
           } 
 
-          if (st.items[0].controlId.match('AZSK_')) { 
+          if (st.items[0].controlId.match('AZSK_')) {  
             st.items.forEach(it => details+=`\r\n - [${it.name}](https://portal.azure.com/#@/resource${it.id}) \r\n`)
           }
 
@@ -401,7 +421,7 @@ var sb = b.items[0][0].group.toLowerCase()
             processed =require(`./custom/${controlD}`)(it,control)
             details+=processed
           }  catch (error) {
-           //console.log('no custom control for', st.items[0].controlId)
+          //  console.log('no custom control for', st.items[0].controlId)
           }
            
           if(it.controlId.match('EAST_') && !processed) {
@@ -456,8 +476,6 @@ if (argv.doc) {
   
 
 }
-
-
 
 
 }
