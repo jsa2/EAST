@@ -384,7 +384,7 @@ var sb = b.items[0][0].group.toLowerCase()
                 //no recommendation link to be parsed
               }
               let ctrlID = JSON.parse(it.metadata?.asb)?.complianceControlId
-              details+=`\r\n - [${it.id.split('/').pop()}](https://portal.azure.com/#@/resource${it.id}) - ${recommendationLink || "no recommendation link"} - ${ctrlID || "no complianceControlId"}`
+              details+=`\r\n - [${it.id.split('/').pop()}](https://portal.azure.com/#@/resource${it.id}) - ${recommendationLink || "no recommendation link"} - complianceControlId: ${ctrlID || "not available in --policy switch"}`
 
           })
           } 
@@ -480,9 +480,16 @@ if (argv.doc) {
 }
 
 if (argv.nx) {
-  console.log(`pandoc -s ${fn}.md -f markdown -t docx --reference-doc=pandoc-template.docx -o /mnt/c/temp/${fn}.docx`)
-  await wexc(`pandoc -s ${fn}.md -f markdown -t docx --reference-doc=pandoc-template.docx -o /mnt/c/temp/${fn}.docx`)
-  await wexc(`cp Azure-Assessment-Template.docx /mnt/c/temp/Azure-Assessment-Template.docx`)
+
+  try {
+
+    console.log(`pandoc -s ${fn}.md -f markdown -t docx --reference-doc=pandoc-template.docx -o /mnt/c/temp/${fn}.docx`)
+    await wexc(`pandoc -s ${fn}.md -f markdown -t docx --reference-doc=pandoc-template.docx -o /mnt/c/temp/${fn}.docx`)
+    await wexc(`cp Azure-Assessment-Template.docx /mnt/c/temp/Azure-Assessment-Template.docx`)
+  } catch (error) {
+    console.log('no standard template defined')
+  }
+ 
 
 }
 
