@@ -479,8 +479,11 @@ if (argv.doc) {
 
 if (argv.nx) {
   console.log(`pandoc -s ${fn}.md -f markdown -t docx --reference-doc=pandoc-template.docx -o /mnt/c/temp/${fn}.docx`)
+  try {  await wexc(`cp Azure-Assessment-Template.docx /mnt/c/temp/Azure-Assessment-Template.docx`)} catch (error) {
+    console.log('proceeding with standard template')
+  }
   await wexc(`pandoc -s ${fn}.md -f markdown -t docx --reference-doc=pandoc-template.docx -o /mnt/c/temp/${fn}.docx`)
-  await wexc(`cp Azure-Assessment-Template.docx /mnt/c/temp/Azure-Assessment-Template.docx`)
+
 
 }
 
