@@ -253,6 +253,10 @@ var sb = b.items[0][0].group.toLowerCase()
       details += "\r\n"
       details += "\r\n"
   
+
+      if(control.items[0][0].items[0].controlId.match('DNS')) {
+        console.log()
+      }
   
       if(control.items[0][0].items[0].controlId.match('ASB')) {
         var s=JSON.parse(control.items[0][0].items[0].metadata.asb)
@@ -374,7 +378,8 @@ var sb = b.items[0][0].group.toLowerCase()
             st.items.forEach(it => {
               let recommendationLink 
               try {
-                let mtd = JSON.parse(it.metadata?.asb)?.azurePortalRecommendationLink || JSON.parse(it.metadata?.asb)?.links?.azurePortal
+                let prsd = JSON.parse(it.metadata?.asb)
+                let mtd = prds?.azurePortalRecommendationLink || ppr?.links?.azurePortal
                 if (mtd) {
                   recommendationLink = `[link to recommendation](https://${mtd})`
                 }
