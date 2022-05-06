@@ -369,7 +369,7 @@ var sb = b.items[0][0].group.toLowerCase()
             rows += `||🔍[${st.items.length}](#${lnk})`
           }
   
-  
+          
           if (st.items[0].controlId.match('ASB_')) {
             st.items.forEach(it => {
               let recommendationLink 
