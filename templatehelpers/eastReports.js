@@ -253,10 +253,6 @@ var sb = b.items[0][0].group.toLowerCase()
       details += "\r\n"
       details += "\r\n"
   
-
-      if(control.items[0][0].items[0].controlId.match('DNS')) {
-        console.log()
-      }
   
       if(control.items[0][0].items[0].controlId.match('ASB')) {
         var s=JSON.parse(control.items[0][0].items[0].metadata.asb)
@@ -373,13 +369,13 @@ var sb = b.items[0][0].group.toLowerCase()
             rows += `||🔍[${st.items.length}](#${lnk})`
           }
   
-          
+  
           if (st.items[0].controlId.match('ASB_')) {
             st.items.forEach(it => {
+              
               let recommendationLink 
               try {
-                let prsd = JSON.parse(it.metadata?.asb)
-                let mtd = prds?.azurePortalRecommendationLink || ppr?.links?.azurePortal
+                let mtd = JSON.parse(it.metadata?.asb)?.azurePortalRecommendationLink || JSON.parse(it.metadata?.asb)?.links?.azurePortal
                 if (mtd) {
                   recommendationLink = `[link to recommendation](https://${mtd})`
                 }
@@ -387,7 +383,8 @@ var sb = b.items[0][0].group.toLowerCase()
               } catch (error) {
                 //no recommendation link to be parsed
               }
-              details+=`\r\n - [${it.id.split('/').pop()}](https://portal.azure.com/#@/resource${it.id}) - ${recommendationLink || "no recommendation link"} `
+              let ctrlID = JSON.parse(it.metadata?.asb)?.complianceControlId
+              details+=`\r\n - [${it.id.split('/').pop()}](https://portal.azure.com/#@/resource${it.id}) - ${recommendationLink || "no recommendation link"} - ${ctrlID || "no complianceControlId"}`
 
           })
           } 
@@ -484,11 +481,8 @@ if (argv.doc) {
 
 if (argv.nx) {
   console.log(`pandoc -s ${fn}.md -f markdown -t docx --reference-doc=pandoc-template.docx -o /mnt/c/temp/${fn}.docx`)
-  try {  await wexc(`cp Azure-Assessment-Template.docx /mnt/c/temp/Azure-Assessment-Template.docx`)} catch (error) {
-    console.log('proceeding with standard template')
-  }
   await wexc(`pandoc -s ${fn}.md -f markdown -t docx --reference-doc=pandoc-template.docx -o /mnt/c/temp/${fn}.docx`)
-
+  await wexc(`cp Azure-Assessment-Template.docx /mnt/c/temp/Azure-Assessment-Template.docx`)
 
 }
 
