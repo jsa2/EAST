@@ -11,23 +11,23 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
- // "program": "${workspaceFolder}/plugins/main.js",
-   "program": "${file}",
+ //"program": "${workspaceFolder}/plugins/main.js",
+  "program": "${file}",
             "args":  [
                 "--batch=10",
                 "--nativescope=true",
-                "--roleAssignments=true",
+                "--roleAssignments=false",
                 "--helperTexts=true",
-                "--subInclude=6c052e74-e3b3-401b-8734-fafc98c8cf83", 
-               "--namespace=null",
-               "--nx",
+               // "--subInclude=3539c2a2-cd25-48c6-b295-14e59334ef1c",
+                "--namespace=fn.dewi.red-fn-honeypot-13641",
                 //"--notIncludes=44ee6398gb8abb6d0",
                 "--checkAad=false",
+                //"--policy",
+                "--nx",
                 "--asb",
-                "--scanAuditLogs=48",
+                "--scanAuditLogs",
                 "--composites",
-                "--doc"
-
+    //            "--azdevops=thx138"
             ]
         }
     ]

@@ -14,6 +14,19 @@ function checkDoesItApply (item,returnObject) {
 
 function checkDoesItApplyWorkflowApp (item,returnObject) {
 
+
+    if (!item?.kind) {
+
+        if (!returnObject) {
+            returnObject={}
+        }
+        returnObject.metadata = item?.properties
+        returnObject.isHealthy="notApplicable"
+        return returnObject
+
+    }
+
+
     if (!item?.kind.match('workflowapp') || item?.id.match('certificates') ) {
         if (!returnObject) {
             returnObject={}

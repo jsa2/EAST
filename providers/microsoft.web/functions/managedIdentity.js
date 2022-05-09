@@ -22,8 +22,13 @@ module.exports = async function (item) {
     if (keyToCheck) {
         returnObject.isHealthy=true
     
+    let userAssigned
     var rls = []
 
+    if (item?.identity?.userAssignedIdentities) {
+        userAssigned = Object.keys(item?.identity?.userAssignedIdentities).map(s => item?.identity?.userAssignedIdentities[s])
+    }
+   
 
     var g =await graph(graphToken,`servicePrincipals/${item?.identity.principalId}/appRoleAssignments`)
     
