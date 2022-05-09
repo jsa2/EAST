@@ -12,4 +12,19 @@ function checkDoesItApply (item,returnObject) {
 
 }
 
-module.exports={checkDoesItApply}
+function checkDoesItApplyWorkflowApp (item,returnObject) {
+
+    if (!item?.kind.match('workflowapp') || item?.id.match('certificates') ) {
+        if (!returnObject) {
+            returnObject={}
+        }
+        returnObject.metadata = item?.properties
+        returnObject.isHealthy="notApplicable"
+        return returnObject
+    } else {
+        return undefined}
+
+}
+
+
+module.exports={checkDoesItApply,checkDoesItApplyWorkflowApp}

@@ -1,6 +1,4 @@
 var {query} = require('./query');
-
-const { argv } = require('yargs')
 const { default: axios } = require("axios");
 const { getToken } = require('./getToken');
 const { responseSchema } = require('./functionResponseSchema');
@@ -18,10 +16,6 @@ var sub = [
 var unitSize = 1000
 
 async function resourceGraphGovernanceData2 (subscriptions) {
-
-    if (argv?.subInclude) {
-        subscriptions = argv.subInclude.split(',')
-    }
 
 
     var token = await getToken()
