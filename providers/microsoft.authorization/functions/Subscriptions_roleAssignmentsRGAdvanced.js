@@ -78,7 +78,7 @@ if (s.refInfo.roleInfo.id) {
 
 
   // take all values that are assigned permissions subscription level
-  var value = value.filter(s => s.properties.scope !== "/" && s.properties.principalType.toLowerCase() !== "group")
+  var value = value.filter(s =>  s.properties.principalType.toLowerCase() !== "group")
   
   const {roles} = await checkRoles(returnObject.name)
   const rls = []

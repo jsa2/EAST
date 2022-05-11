@@ -23,7 +23,7 @@ if ((item.properties?.networkRuleSet?.ipRules?.length > 0 || item.properties?.ne
 metadata.adminUserEnabled = item.properties?.adminUserEnabled 
 
 
-returnObject.metadata = {anonymousPullEnabled:item.properties?.adminUserEnabled }
+returnObject.metadata = {adminUserEnabled:item.properties?.adminUserEnabled }
 //console.log(stashOrig)
 
 return returnObject
