@@ -4,6 +4,8 @@
 const { AzNodeRest } = require("../../../plugins/nodeSrc/east")
 const { getProviderApiVersion } = require("../../../plugins/nodeSrc/getProvider")
 const { returnObjectInit } = require("../../../plugins/nodeSrc/returnObjectInit")
+
+const { azNodeRestRef, azNodeRestRefDyn, azNodeRestRefDyn2 } = require("../../../plugins/nodeSrc/nodeRestRef")
 //AzNodeRest
 module.exports = async function (item) {
 
@@ -33,7 +35,13 @@ var options = {
 
     }
 
-let item1 = await AzNodeRest(undefined,undefined,undefined,options)
+    
+    
+/* let item1 = await AzNodeRest(undefined,undefined,undefined,options).catch(error => {
+    console.log('check for throttling')
+}) */
+
+let item1 = await azNodeRestRefDyn2(undefined,undefined,undefined,options,undefined,undefined,1).catch(error => console.log(error))
 
 returnObject.isHealthy= "review"
 

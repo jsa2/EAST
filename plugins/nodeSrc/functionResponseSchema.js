@@ -49,7 +49,7 @@ function erroResponseSchema(item,error) {
     this.id = item || "check error trace"
     this.fileName = "not applicable, provider not supported"
     this.isHealthy = "not applicable, provider not supported"
-    this.error = JSON.stringify(error.stack)
+    this.error = JSON.stringify(error)
 
     return this
 }

@@ -2,13 +2,21 @@
 
 const { AzNodeRest } = require("../../../plugins/nodeSrc/east")
 const { getProviderApiVersion } = require("../../../plugins/nodeSrc/getProvider")
+const { azNodeRestRefDyn, azNodeRestRefDyn2 } = require("../../../plugins/nodeSrc/nodeRestRef")
 const { returnObjectInit } = require("../../../plugins/nodeSrc/returnObjectInit")
+//azNodeRestRefDyn2
 //AzNodeRest
 module.exports = async function (item) {
 
 let returnObject = new returnObjectInit(item,__filename.split('/').pop())
 
 if (!item?.id.match('/microsoft.compute/virtualmachines') ||item?.id.match('/extensions') ) {
+    returnObject.metadata = item?.properties
+    returnObject.isHealthy="notApplicable"
+    return returnObject
+}
+
+if (!item?.properties?.osProfile?.linuxConfiguration) {
     returnObject.metadata = item?.properties
     returnObject.isHealthy="notApplicable"
     return returnObject
@@ -34,7 +42,9 @@ var options = {
 
     console.log(options.data.query)
 
-let item1 = await AzNodeRest(undefined,undefined,undefined,options)
+    //azNodeRestRefDyn
+let item1 = await azNodeRestRefDyn2(undefined,undefined,undefined,options,undefined,undefined,1).catch(error => console.log(error))
+
 
 returnObject.isHealthy= item1.data[0]?.properties?.status?.code || "manual"
 

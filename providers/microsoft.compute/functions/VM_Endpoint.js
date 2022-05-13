@@ -2,7 +2,10 @@
 
 const { AzNodeRest } = require("../../../plugins/nodeSrc/east")
 const { getProviderApiVersion } = require("../../../plugins/nodeSrc/getProvider")
+const { azNodeRestRefDyn, azNodeRestRefDyn2 } = require("../../../plugins/nodeSrc/nodeRestRef")
+
 const { returnObjectInit } = require("../../../plugins/nodeSrc/returnObjectInit")
+//azNodeRestRefDyn
 //AzNodeRest
 module.exports = async function (item) {
 
@@ -34,7 +37,10 @@ var options = {
 
     console.log(options.data.query)
 
-let item1 = await AzNodeRest(undefined,undefined,undefined,options)
+    let item1 = await azNodeRestRefDyn2(undefined,undefined,undefined,options,undefined,undefined,1).catch(error => console.log(error))
+
+
+
 let status = item1.data[0]?.properties?.status?.code || "manual"
 
 if (status.toLowerCase() == 'notapplicable') {
