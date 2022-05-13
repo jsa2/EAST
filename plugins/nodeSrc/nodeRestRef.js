@@ -84,7 +84,7 @@ function getRandomInt(min, max) {
 async function azNodeRestRefDyn2 (ID, apiversion, debug, customOptions, urlencoded,reference,throttleCount, dynAwaitInMS) {
 
  
-    let waitTime = getRandomInt(2000,10000)
+    let waitTime = getRandomInt(500,2500)
 
     let actual = throttleCount * (dynAwaitInMS || waitTime)
 

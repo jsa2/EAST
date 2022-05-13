@@ -107,6 +107,11 @@ if (argv.helperTexts) {
    res.push({"id":"/tenant/providers/microsoft.general/topics/Review"})
 }
 
+
+if (argv.shuffle) {
+   var res = res.sort(() => Math.random() - 0.5)
+}
+
    res.map((item) => {
       item.runContext= {
          fn: runner,

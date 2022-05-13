@@ -1,11 +1,6 @@
 const fs = require('fs')
 const path = require('path')
 
-
-function skipItemCheck () {
-    
-}
-
 function filterProviders (res) {
 
 var providersPath = path.resolve(`providers`)

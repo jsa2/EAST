@@ -20,16 +20,17 @@ console.log('waiting before enumeration of containers, to avoid throttling')
 
 let storage
 let errorProp
-await waitT(getRandomInt(1000,10000))
+await waitT(getRandomInt(6000,10000))
 
 storage = await AzNodeRest(`${item.id}/blobServices/default/containers?`,apiversion).catch(error => errorProp = error)
 
-if (errorProp?.errorBody?.error?.code == "TooManyRequests") {
+/* if (errorProp?.errorBody?.error?.code == "TooManyRequests") {
     console.log('applying throttle')
     await waitT(getRandomInt(1000,10000))
     console.log()
     storage = await AzNodeRest(`${item.id}/blobServices/default/containers?`,apiversion)
 }
+ */
 
 returnObject.isHealthy=true
 if (storage?.value.length > 0) {

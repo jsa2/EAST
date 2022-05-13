@@ -4,6 +4,7 @@ const wexc = require('util').promisify(exec)
 var path = require('path')
 const { erroResponseSchema } = require('./nodeSrc/functionResponseSchema')
 const bfr = {maxBuffer: 1024 * 1024}
+const {argv} = require('yargs')
 
 const { checkSubProvider } = require('./nodeSrc/subProviderCheck')
 
@@ -15,7 +16,22 @@ const { checkSubProvider } = require('./nodeSrc/subProviderCheck')
             if (native) {
                 let provider = native.split('providers')[1].split('/')[1]
                 let apiversion = checkSubProvider(native)
-                console.log(apiversion)
+                console.log(apiversion, 'API-version for', native)
+
+                // Check if there is explicit skip for sub-provider
+                try {
+                   // console.log()
+                    if ( require(`../providers/${provider}/.skip.json`).find(toSkip => native.match(toSkip))) {
+                        console.log('subprovider skip for', native)
+                        if (argv.addSkippedSubProviders) { return new erroResponseSchema(native,'skipped due to no checks available in subprovider')} else {
+                            return;
+                        }
+                       
+                    }
+                } catch (error) {
+                  //  console.log('no subprovider skip')
+                }
+
                 //If provider is AAD there is no need to get ITEMID, proceed straight to functions and controls
                 if (require('../providers/ignore.json').includes(provider)) {
                     const schemaPayload ={
