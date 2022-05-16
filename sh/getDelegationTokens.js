@@ -14,10 +14,12 @@ async function main() {
         },
         {
             name:"microsoft.graph",
+            extensionName:"microsoft_AAD_IAM",
             cacheName:"graphToken.json"
         },
         {
             name:"microsoft.graph",
+            extensionName:"microsoft_AAD_IAM",
             cacheName:"graphToken2.json"
         },
         {
