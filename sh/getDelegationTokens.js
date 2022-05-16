@@ -22,11 +22,13 @@ async function main() {
         },
         {
             name:"self",
-            cacheName:"iamToken.json"
+            cacheName:"iamToken.json",
+            extensionName:"microsoft_AAD_IAM"
         },
         {
             name:"graph",
-            cacheName:"aadToken.json"
+            cacheName:"aadToken.json",
+            extensionName:"microsoft_AAD_IAM"
         },
     ]
     
