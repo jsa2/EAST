@@ -340,9 +340,18 @@ var token = await require('../pluginRunner').runner('az account get-access-token
 
 ## Parameters reference
 
+
+**Example:**
+```shell
+
+node ./plugins/main.js --batch=10 --nativescope=true --roleAssignments --helperTexts=true --checkAad --scanAuditLogs --composites --shuffle
+
+``` 
+
 Param| Description | Default if undefined
 -|-|-
 `` --nativescope `` | Currently mandatory parameter | no values
+`` --shuffle `` | Can help with throttling. Shuffles the resource list to reduce the possibility of resource provider throttling threshold being met  | no values 
 `` --roleAssignments `` | Checks controls as per [microsoft.authorization](/providers/microsoft.authorization/controls/) | no values
 `` --checkAad `` | Checks controls as per [microsoft.azureactivedirectory](/providers/microsoft.azureactivedirectory/controls/) | no values
 `` --subInclude `` | Defines subscription scope | no default, requires subscriptionID/s, if not defined will enumerate all subscriptions the user have access to
