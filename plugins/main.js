@@ -12,6 +12,7 @@ const { decode } = require('jsonwebtoken')
 
 const chalk = require('chalk')
 const { getAADIamToken } = require('./nodeSrc/getToken')
+const { clearEASTTokenCache } = require('./nodeSrc/deletetokens')
 process.env.checkMFA = true
 
 
@@ -27,6 +28,20 @@ async function main () {
      console.log(chalk.yellow(msg))
      return {msg}
   }
+
+if (argv.clearTokens)  {
+
+   try {
+
+      clearEASTTokenCache()
+
+   } catch(error) {
+      var msg = `no tokens to clear: ${error.message}`
+      console.log(chalk.yellow(msg))
+   }
+
+
+}
 
 
 console.log(chalk.yellow('pre-requisites ok'))

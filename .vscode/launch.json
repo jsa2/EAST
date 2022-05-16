@@ -27,6 +27,7 @@
                 "--asb",
                 "--scanAuditLogs",
                 "--composites",
+                "--clearTokens"
     //            "--azdevops=thx138"
             ]
         }
