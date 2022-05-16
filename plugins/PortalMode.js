@@ -13,6 +13,7 @@ const { decode } = require('jsonwebtoken')
 const chalk = require('chalk')
 const { getAADIamToken } = require('./nodeSrc/getToken')
 const { clearEASTTokenCache } = require('./nodeSrc/deletetokens')
+const { listWithoutAzCLI } = require('./nodeSrc/listWithoutAzCLI')
 process.env.checkMFA = true
 
 
@@ -23,44 +24,24 @@ main()
 
 async function main () {
 
-if (argv.clearTokens)  {
 
-   try {
-
-      clearEASTTokenCache()
-
-   } catch(error) {
-      var msg = `no tokens to clear: ${error.message}`
-      console.log(chalk.yellow(msg))
-   }
-
-
-}
-
-
-console.log(chalk.yellow('pre-requisites ok'))
-
- var tkn =decode(await getAADIamToken())
+   let st =await getAADIamToken()
+ var tkn =decode(st)
 
  if (!tkn) {
    console.log(chalk.yellow('failed to get token'))
    return;
  }
 
-  await getMFAStatus(tkn.oid).catch((error) => {
+
    process.env.checkMFA = false
-    console.log( 'Setting MFA evaluation to false, this requires that user has any AAD role, when AAD portal access is restricted \r\n You can grant low privileged role to user, such as "directory reader" which does not effectively raise the privs of the user')
-  })
+    console.log( 'Setting MFA evaluation to false, running in restricted mode')
+
 
   console.log(process.env.checkMFA)
 
-if (argv.scope && !argv.nativescope) {
-   console.log(argv.scope)
-   var res= await runner(argv.scope)
-}
 
-if (argv.nativescope) {
-   var res = await listAllResources()
+   var res = await listWithoutAzCLI()
    res.map(item => item.id = item.id.toLowerCase())
    res = filterProviders(res)
    
@@ -78,17 +59,6 @@ if (argv.nativescope) {
    }
      //Push authorizations 
      //res = []
-     if (argv.roleAssignments) {
- /*      JSON.parse(process.env.subs).forEach((sub => {
-         console.log(sub)})) */
-      JSON.parse(process.env.subs).forEach((sub) => res.push({id:`/providers/microsoft.authorization/${sub.id}`}))
-     }
-   
-   
-}
-
-
-  
 
   //Splice for smaller sample
   if (argv.splice) {

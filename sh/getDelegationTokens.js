@@ -5,6 +5,11 @@ async function main() {
 
     let arr = [
         {
+            name:"loganalyticsapi",
+            cacheName:"sessionToken.json",
+            extensionName:"Microsoft_Azure_MonitoringA"
+        },
+        {
             name:"microsoft.graph",
             cacheName:"graphToken.json"
         },
@@ -27,8 +32,7 @@ async function main() {
 
         let data = require('./portalauth.json')
         let cookie = require('./delegationGuids.json').cookies
-
-        data.extensionName = "Microsoft_Azure_AD"
+        data.extensionName = res?.extensionName || "Microsoft_Azure_AD"
         data.resourceName = res.name
         console.log(res)
     let {data:val} =await axios("https://portal.azure.com/api/DelegationToken?feature.cacheextensionapp=false&feature.internalgraphapiversion=true&feature.tokencaching=true", {
