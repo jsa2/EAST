@@ -84,7 +84,7 @@ if (argv.nativescope) {
    }
      //Push authorizations 
      //res = []
-     if (argv.roleAssignments == "true") {
+     if (argv.roleAssignments) {
  /*      JSON.parse(process.env.subs).forEach((sub => {
          console.log(sub)})) */
       JSON.parse(process.env.subs).forEach((sub) => res.push({id:`/providers/microsoft.authorization/${sub.id}`}))
@@ -137,7 +137,7 @@ if (argv.shuffle) {
    })
 
  
-   var wa = await batchThrottled(argv.batch,res)
+   var wa = await batchThrottled(argv.batch || 5,res)
    
    wa = wa.flat()
    //makeSingleArray(wa,r)

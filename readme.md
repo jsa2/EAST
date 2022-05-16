@@ -34,6 +34,7 @@ This tool is currently being developed by yours truly @[Nixu](https://www.nixu.c
     - [AZCLI USE](#azcli-use)
     - [Speedup](#speedup)
     - [Build session from Azure Cloud Shell (BASH)](#build-session-from-azure-cloud-shell-bash)
+  - [Parameters reference](#parameters-reference)
   - [Developing controls (snippets)](#developing-controls-snippets)
     - [Control files](#control-files)
     - [Workflow for native Functions](#workflow-for-native-functions)
@@ -336,6 +337,24 @@ var token = await require('../pluginRunner').runner('az account get-access-token
         fs.writeFileSync(path.join('plugins','sessionToken.json'),JSON.stringify(token))
         return token || error
 ```
+
+## Parameters reference
+
+Param| Description | Default if undefined
+-|-|-
+`` --nativescope `` | Currently mandatory parameter | no values
+`` --roleAssignments `` | Checks controls as per [microsoft.authorization](/providers/microsoft.authorization/controls/) | no values
+`` --checkAad `` | Checks controls as per [microsoft.azureactivedirectory](/providers/microsoft.azureactivedirectory/controls/) | no values
+`` --subInclude `` | Defines subscription scope | no default, requires subscriptionID/s, if not defined will enumerate all subscriptions the user have access to
+`` --namespace `` | text filter which matches full, or part of the resource ID <br> **example** `` /microsoft.storage/storageaccounts`` all storage accounts in the scope| optional parameter
+`` --notIncludes `` | text filter which matches full, or part of the resource ID <br> **example** `` /microsoft.storage/storageaccounts`` all storage accounts in the scope are **excluded**| optional parameter
+`` --batch `` | size of batch interval between throttles |5
+`` --wait `` | size of batch interval between throttles | 1500
+`` --scanAuditLogs `` | optional parameter. When defined in hours will toggle Azure Activity Log scanning for weak authentication events <br> **defined in:** [scanAuditLogs](./providers/microsoft.authorization/functions/scanAuditLogs.js) | 24h
+`` --composites `` | read [composite](#composite)| no values
+`` --clearTokens `` | clears tokens in session folder, use this if you get authorization errors, or have just changed to other `` az login `` account <br> use `` az account clear`` if you want to clear AZ CLI cache too | no values
+
+
 
 ## Developing controls (snippets)
 I am planning to introduce full developer guide, but for the time being there are only these snippets available:
