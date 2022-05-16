@@ -14,7 +14,7 @@
  //"program": "${workspaceFolder}/plugins/main.js",
   "program": "${file}",
             "args":  [
-                "--batch=10",
+                "--batch=10",   
                 "--nativescope=true",
                 "--roleAssignments=false",
                 "--helperTexts=true",

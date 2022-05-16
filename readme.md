@@ -35,7 +35,7 @@ This tool is currently being developed by yours truly @[Nixu](https://www.nixu.c
     - [Speedup](#speedup)
     - [Build session from Azure Cloud Shell (BASH)](#build-session-from-azure-cloud-shell-bash)
   - [Parameters reference](#parameters-reference)
-  - [Running in restricted environments where Azure CLI can only request tokens management.azure.com](#running-in-restricted-environments-where-azure-cli-can-only-request-tokens-managementazurecom)
+  - [(Highly experimental) Running in restricted environments where only browser use is available](#highly-experimental-running-in-restricted-environments-where-only-browser-use-is-available)
   - [Developing controls (snippets)](#developing-controls-snippets)
     - [Control files](#control-files)
     - [Workflow for native Functions](#workflow-for-native-functions)
@@ -364,11 +364,15 @@ Param| Description | Default if undefined
 `` --composites `` | read [composite](#composite)| no values
 `` --clearTokens `` | clears tokens in session folder, use this if you get authorization errors, or have just changed to other `` az login `` account <br> use `` az account clear`` if you want to clear AZ CLI cache too | no values
 
-## Running in restricted environments where Azure CLI can only request tokens management.azure.com
+## (Highly experimental) Running in restricted environments where only browser use is available
 
+Some environments require trusted device to access API's on mobile and desktop clients (which AZ CLI is categorized as) - In such situations you can try to work around restrictions, if browser clients can access management portals without needing trusted device.
 
-Some environments require trusted device to access API's on mobile and desktop clients (which AZ CLI is categorized as) - In this situations you can try to work around this restrictions if browser session is enabled for Azure Management
+--- 
 
+⚠️ This is not the preferred mode, as our tooling uses Azure CLI too handle token cache and resource listing, and might use invoke AZ CLI in some nested calls, but I've enabled limited scope for running this tool in restricted environments. 
+
+--- 
 
 1. Filter for "DelegationToken" in developer mode in URL's
 2. Copy object for "Request Payload"
@@ -380,10 +384,20 @@ Some environments require trusted device to access API's on mobile and desktop c
 
 ![image](https://user-images.githubusercontent.com/58001986/168546182-de3255c5-5910-4f4f-92fa-e92fb001d0b4.png)
 
-4. Run ``node sh/getDelegationTokens.js``  [getDelegationTokens](sh/getDelegationTokens.js)
+4. Paste session guids into this workspace as "delegationGuids.json" 
+```json
+{"cookies":"cookiesGoHere"}
+```
+
+![image](https://user-images.githubusercontent.com/58001986/168551426-c31c93c3-b417-4d0a-a799-2af18c877f78.png)
+![image](https://user-images.githubusercontent.com/58001986/168551153-995b91f7-0e73-4aaf-ae5a-2d5c7f8ccb69.png)
+
+1. Run ``node sh/getDelegationTokens.js``  [getDelegationTokens](sh/getDelegationTokens.js)
+   
 
 ## Developing controls (snippets)
 I am planning to introduce full developer guide, but for the time being there are only these snippets available:
+
 
 ### Control files
 Control files are JSON definitions that are supplemented to the automation running the control.
