@@ -35,6 +35,7 @@ This tool is currently being developed by yours truly @[Nixu](https://www.nixu.c
     - [Speedup](#speedup)
     - [Build session from Azure Cloud Shell (BASH)](#build-session-from-azure-cloud-shell-bash)
   - [Parameters reference](#parameters-reference)
+  - [Running in restricted environments where Azure CLI can only request tokens management.azure.com](#running-in-restricted-environments-where-azure-cli-can-only-request-tokens-managementazurecom)
   - [Developing controls (snippets)](#developing-controls-snippets)
     - [Control files](#control-files)
     - [Workflow for native Functions](#workflow-for-native-functions)
@@ -363,7 +364,23 @@ Param| Description | Default if undefined
 `` --composites `` | read [composite](#composite)| no values
 `` --clearTokens `` | clears tokens in session folder, use this if you get authorization errors, or have just changed to other `` az login `` account <br> use `` az account clear`` if you want to clear AZ CLI cache too | no values
 
+## Running in restricted environments where Azure CLI can only request tokens management.azure.com
 
+
+Some environments require trusted device to access API's on mobile and desktop clients (which AZ CLI is categorized as) - In this situations you can try to work around this restrictions if browser session is enabled for Azure Management
+
+
+1. Filter for "DelegationToken" in developer mode in URL's
+2. Copy object for "Request Payload"
+
+![image](https://user-images.githubusercontent.com/58001986/168545894-46a9d386-6cb2-48a4-a47b-8a96dee63635.png)
+
+3. Paste object into this workspace as "portalauth.json"
+
+
+![image](https://user-images.githubusercontent.com/58001986/168546182-de3255c5-5910-4f4f-92fa-e92fb001d0b4.png)
+
+4. Run ``node sh/getDelegationTokens.js``  [getDelegationTokens](sh/getDelegationTokens.js)
 
 ## Developing controls (snippets)
 I am planning to introduce full developer guide, but for the time being there are only these snippets available:
