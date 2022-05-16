@@ -344,7 +344,7 @@ var token = await require('../pluginRunner').runner('az account get-access-token
 **Example:**
 ```shell
 
-node ./plugins/main.js --batch=10 --nativescope=true --roleAssignments --helperTexts=true --checkAad --scanAuditLogs --composites --shuffle
+node ./plugins/main.js --batch=10 --nativescope --roleAssignments --helperTexts=true --checkAad --scanAuditLogs --composites --shuffle
 
 ``` 
 

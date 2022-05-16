@@ -104,7 +104,7 @@ if (argv.nativescope) {
 
 
    
-if (argv.checkAad == "true") {
+if (argv.checkAad) {
    //
    res.push({"id":"/tenant/providers/microsoft.azureactivedirectory/AADDefaultSettings/Review"})
    
