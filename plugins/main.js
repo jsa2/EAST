@@ -23,11 +23,15 @@ main()
 
 async function main () {
 
-  try {await wexc('az account get-access-token --resource=74658136-14ec-4630-ad9b-26e160ff0fc6 --query accessToken --output json')} catch(error) {
-     var msg = `run 'account clear' and then 'az login' - application is unable to read token cache.\r\nthis is typical error in first run of cloudShell as no cache is created, stack: ${error.message}`
-     console.log(chalk.yellow(msg))
-     return {msg}
-  }
+
+   if (!argv.ignorePreCheck) {
+      try {await wexc('az account get-access-token --resource=74658136-14ec-4630-ad9b-26e160ff0fc6 --query accessToken --output json')} catch(error) {
+         var msg = `run 'account clear' and then 'az login' - application is unable to read token cache.\r\nthis is typical error in first run of cloudShell as no cache is created, stack: ${error.message}`
+         console.log(chalk.yellow(msg))
+         return {msg}
+      }
+   }
+ 
 
 if (argv.clearTokens)  {
 
