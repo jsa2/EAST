@@ -83,3 +83,4 @@ touch sh/delegationgGuids.json
 2. In Azure CLI run ``az resource list `` to verify that the access works
    
 ![image](https://user-images.githubusercontent.com/58001986/168773162-c91de18a-6441-4b1b-b5bc-7dce884d71e6.png)
+
