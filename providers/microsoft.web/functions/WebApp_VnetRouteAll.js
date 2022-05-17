@@ -16,7 +16,7 @@ let config = await AzNodeRest(`${item.id}/config/web`,"2020-06-01")
 
 if ( config.properties?.vnetName ) {
  
-    if (config.properties?.vnetRouteAllEnabled == false) {
+    if (config.properties?.vnetRouteAllEnabled == "review") {
         returnObject.isHealthy=false
     }
 
@@ -30,7 +30,7 @@ else {
     returnObject.isHealthy="not applicable"
 }
 
-returnObject.metadata = config.properties.ipSecurityRestrictions
+returnObject.metadata = {vnetRouteAllEnabled:config.properties?.vnetRouteAllEnabled, vnetName:  config.properties?.vnetRouteAllEnabled}
 
 return returnObject
 
