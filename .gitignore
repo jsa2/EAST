@@ -1,0 +1,27 @@
+node_modules
+md/conversions/**
+test.js
+#Exclude all log files
+*.LOG
+*.txt
+*.json
+*.JSON
+# exclude from JSON and MD flag
+!launch.json
+!/providers/**
+!/azskver/demodata/**
+*.md
+!east.md
+!gitCheat.md
+!demo.md
+!readme.md
+!package*
+!plugins/session/dontremove.json
+!wordlist.json
+!defaultPolicydef.json
+# Exlcude all docx files
+*.docx
+!pandoc-template-horizontal.docx
+!pandoc-template.docx
+!prepend.docx
+!Azure-Assessment-Template.docx
