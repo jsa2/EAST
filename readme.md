@@ -10,11 +10,17 @@ Used for Azure Security scanning by https://github.com/jsa2/EAST#extensible-azur
 
 Uses API `` https://portal.azure.com/api/DelegationToken `` to replace the tokens in ``msal_token_cache.json`` Azure CLI for Azure security scans in restricted environments.
 
+CA Policy|Requires trusted device | MFA
+-|-|-
+mobile apps and desktop clients| ✅ | -
+Browser| - |✅
+
 
 **Disclaimer**
 --- 
 
-⚠️ This tool is only meant for Security research and pre agreed scanning of Azure environments where heavy restrictions prohibit Azure CLI use in mobile apps and desktop clients.
+⚠️ This tool is only meant for Security research and pre agreed scanning of Azure environments where heavy restrictions prohibit Azure CLI use in mobile apps and desktop clients. 
+- This tool does not work, if there is no browser use available without trusted device.
 
 ⚠️ This is not a hack, it bypassess Conditional Access Device requirements only when API's has intentional, or non-intentional gaps which allow accessing Azure management Portal via MFA.
 
