@@ -12,7 +12,7 @@ Uses API `` https://portal.azure.com/api/DelegationToken `` to replace the token
 **Disclaimer**
 --- 
 
-⚠️ This tool is only meant for Security research and pre agreed scanning of Azure environments where heavy restrictions prohibit Azure CLI use in mobile clients
+⚠️ This tool is only meant for Security research and pre agreed scanning of Azure environments where heavy restrictions prohibit Azure CLI use in mobile apps and desktop clients.
 
 ⚠️ This is not a hack, it bypassess Conditional Access Device requirements only when API's has intentional, or non-intentional gaps which allow accessing Azure management Portal via MFA.
 
