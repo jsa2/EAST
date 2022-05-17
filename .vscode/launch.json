@@ -11,16 +11,16 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
- //"program": "${workspaceFolder}/plugins/main.js",
-  "program": "${file}",
+ "program": "${workspaceFolder}/plugins/main.js",
+ // "program": "${file}",
             "args":  [
                 "--batch=10",   
                 "--nativescope=true",
-                "--roleAssignments",
-                "--checkAad",
+              //  "--roleAssignments",
+                //"--checkAad",
                 "--helperTexts=true",
           //      "--subInclude=3539c2a2-cd25-48c6-b295-14e59334ef1c,6c052e74-e3b3-401b-8734-fafc98c8cf83",
-                "--namespace=microsoft.web",
+                //"--namespace=pirva",
                 //"--notIncludes=44ee6398gb8abb6d0",
                 //"--policy",
                 "--nx",
