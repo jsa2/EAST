@@ -1,0 +1,5 @@
+{
+"ControlId": "WebApp_VnetRouteAll",
+"Category": "Network",
+"Description": "It is important to enable VNET_ROUTE_ALL setting In environments where apps are configured to use dedicated applicance for egress connectivity. Otherwise egress will use Azure App Services own egress IP "
+}
