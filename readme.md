@@ -6,6 +6,8 @@ Some environments require trusted device  to access API's on mobile and desktop 
 
 ## Operation principle of the tool
 
+Used for Azure Security scanning by https://github.com/jsa2/EAST#extensible-azure-security-tool 
+
 Uses API `` https://portal.azure.com/api/DelegationToken `` to replace the tokens in ``msal_token_cache.json`` Azure CLI for Azure security scans in restricted environments.
 
 
