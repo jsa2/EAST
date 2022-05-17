@@ -1,0 +1,5 @@
+{
+"ControlId": "Storage_ClosePublicIfPE",
+"Category": "Network",
+"Description": "If  storage account is configured to use private endpoints, it is in most cases recommended to disable public access, to ensure that only private connectivity is available"
+}
