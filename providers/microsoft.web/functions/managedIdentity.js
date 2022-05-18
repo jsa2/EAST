@@ -30,7 +30,7 @@ module.exports = async function (item) {
     }
    
 
-    var g =await graph(graphToken,`servicePrincipals/${item?.identity.principalId}/appRoleAssignments`)
+    var g =await graph(graphToken,`servicePrincipals/${item?.identity.principalId || userAssigned[0].principalId}/appRoleAssignments`)
     
     if (g.length > 0) {
         for await (graphRole of g) {
@@ -57,7 +57,7 @@ module.exports = async function (item) {
             //if (roles) {require('fs').writeFileSync('roles.json',JSON.stringify(roles))}
             //console.log(r)
             var opt = {
-                url:`https://management.azure.com/subscriptions/${sb.id}/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=assignedTo('${item?.identity.principalId}')`
+                url:`https://management.azure.com/subscriptions/${sb.id}/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=assignedTo('${item?.identity.principalId || userAssigned[0].principalId}')`
             }
           //  console.log(opt.url)
             var {value} = await AzNodeRest(undefined,undefined,undefined,opt)

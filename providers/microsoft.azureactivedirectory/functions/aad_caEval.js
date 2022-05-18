@@ -36,12 +36,12 @@ let controlKeyWord2 = new RegExp('Mfa|RequireCompliantDevice|RequireDomainJoined
 
 let session=  o.find(f => f?.details?.SessionControls)
 
-let blockLegacy= o.filter(f => f?.details?.Conditions)
+let blockLegacy= o.filter(f => f?.details?.Conditions && !f?.details?.SessionControls)
 .filter(f => JSON.stringify(f.details?.Conditions?.Users.Include).match('Users') )
 .find(f => JSON.stringify(f.details?.Conditions?.Users?.Include).match('All') && JSON.stringify(f.details.Controls).match(controlKeyWord) && JSON.stringify(f.details?.Conditions?.Applications?.Include).match('All') && f.details?.EnforceAllPoliciesForEas == true && 
 f?.details?.IncludeOtherLegacyClientTypeForEvaluation == true )
 
-let mfa=  o.filter(f => f?.details?.Conditions)
+let mfa=  o.filter(f => f?.details?.Conditions && !f?.details?.SessionControls)
 .filter(f => JSON.stringify(f.details?.Conditions?.Users.Include).match('Users') )
 .find(f => JSON.stringify(f.details?.Conditions?.Users?.Include).match('All') && JSON.stringify(f.details.Controls).match(controlKeyWord2) && JSON.stringify(f.details?.Conditions?.Applications?.Include).match('All') )
 

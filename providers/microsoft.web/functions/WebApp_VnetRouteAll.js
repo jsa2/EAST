@@ -30,7 +30,7 @@ else {
     returnObject.isHealthy="not applicable"
 }
 
-returnObject.metadata = {vnetRouteAllEnabled:config.properties?.vnetRouteAllEnabled, vnetName:  config.properties?.vnetRouteAllEnabled}
+returnObject.metadata = {vnetRouteAllEnabled:config.properties?.vnetRouteAllEnabled, vnetName:   config.properties?.vnetName}
 
 return returnObject
 
