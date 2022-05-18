@@ -4,6 +4,8 @@ const { decode } = require("jsonwebtoken");
 const {resolve} = require('path')
 const os =require('os')
 
+// Create cache object
+
 const msalCache = {
     AccessToken:{},
     Account:{},
