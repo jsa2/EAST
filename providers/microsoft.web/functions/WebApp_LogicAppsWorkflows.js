@@ -8,7 +8,7 @@ const { returnObjectInit } = require("../../../plugins/nodeSrc/returnObjectInit"
 //const { checkDoesItApplyWorkflowApp } = require("../../../plugins/nodeSrc/microsoftwebhelper")
 
 
-//AzNodeRests
+//AzNodeRests s
 module.exports = async function (item) {
        
 let returnObject = new returnObjectInit (item,__filename.split('/').pop())
