@@ -1,6 +1,8 @@
 const { default: axios } = require("axios");
 const fs = require('fs');
 const { decode } = require("jsonwebtoken");
+const {resolve} = require('path')
+const os =require('os')
 
 const msalCache = {
     AccessToken:{},
@@ -20,12 +22,14 @@ main()
 async function main() {
     var subscriptions
 
+    let loc = resolve(os.homedir(),'.azure')
+
     const cached_at = Math.floor(Date.now() / 1000) + (60 * 60)
 
     try {
         console.log('ensuring current cache exists')
         console.log('trying to remove any previous cache')
-      fs.readdirSync(`../../.azure/`).map(f => console.log(f))
+      fs.readdirSync(`${loc}/`).map(f => console.log(f))
 
     } catch (error) {
         console.log('unable to find MSAL cache at ~/.azure/')
@@ -34,8 +38,8 @@ async function main() {
 
     try {
         console.log('trying to remove any previous cache')
-      fs.unlinkSync(`../../.azure/msal_token_cache.json`)
-      fs.unlinkSync(`../../.azure/azureProfile.json`)
+      fs.unlinkSync(`${loc}/msal_token_cache.json`)
+      fs.unlinkSync(`${loc}/azureProfile.json`)
     } catch (error) {
         
     }
@@ -168,7 +172,7 @@ try {
     console.log(msalCache)
     let dec = decode(tkn, {complete:true})
     fs.writeFileSync(`./plugins/session/msalCache.json`,JSON.stringify(msalCache))
-    fs.writeFileSync(  '../../.azure/msal_token_cache.json' ,JSON.stringify(msalCache))
+    fs.writeFileSync(  `${loc}/msal_token_cache.json` ,JSON.stringify(msalCache))
 
 
     let azureProfile = {
@@ -177,7 +181,7 @@ try {
     }
     
     //fs.writeFileSync(  'azureProfile2.json' ,JSON.stringify(azureProfile))
-    fs.writeFileSync(  '../../.azure/azureProfile.json' ,JSON.stringify(azureProfile))
+    fs.writeFileSync(  `${loc}/azureProfile.json` ,JSON.stringify(azureProfile))
   
 
 }
