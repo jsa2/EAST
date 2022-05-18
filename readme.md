@@ -363,6 +363,7 @@ Param| Description | Default if undefined
 `` --scanAuditLogs `` | optional parameter. When defined in hours will toggle Azure Activity Log scanning for weak authentication events <br> **defined in:** [scanAuditLogs](./providers/microsoft.authorization/functions/scanAuditLogs.js) | 24h
 `` --composites `` | read [composite](#composite)| no values
 `` --clearTokens `` | clears tokens in session folder, use this if you get authorization errors, or have just changed to other `` az login `` account <br> use `` az account clear`` if you want to clear AZ CLI cache too | no values
+`` --tags `` | Filter all results in the end based on tags ``--tag=svc=aksdev``  | no values
 
 ## (Highly experimental) Running in restricted environments where only browser use is available
 
