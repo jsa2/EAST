@@ -49,7 +49,7 @@ if (argv.subInclude) {
    res.map((item) => {
       let mode
       if (argv.tag) {
-         mode = `az resource list --subscription ${item.id} --output json --query "[].{id:id}" --tag "svc=aksdev"`
+         mode = `az resource list --subscription ${item.id} --output json --query "[].{id:id}" --tag "${argv.tag}"`
       } else {
          mode = `az resource list --subscription ${item.id} --output json --query "[].{id:id}"`
       }
