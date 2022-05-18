@@ -18,15 +18,22 @@ module.exports = async function (item) {
         return returnObject
     }
 
- var subs = JSON.parse(process.env.subs)
+    var subs = JSON.parse(process.env.subs)
 
     var keyToCheck = item?.identity
     item.properties
     if (keyToCheck) {
         returnObject.isHealthy=true
     
+    let userAssigned
     var rls = []
 
+    if (item?.identity?.userAssignedIdentities) {
+        userAssigned = Object.keys(item?.identity?.userAssignedIdentities)[0]
+        let sd = await AzNodeRest(userAssigned,'2018-11-30')
+        item.identity.principalId = sd?.properties?.principalId
+    }
+   
 
     var g =await graph(graphToken,`servicePrincipals/${item?.identity.principalId}/appRoleAssignments`)
     
