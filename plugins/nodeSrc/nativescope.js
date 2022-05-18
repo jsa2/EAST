@@ -44,14 +44,23 @@ if (argv.subInclude) {
    //res = res.filter(s => !s.id.match(argv.subExclude))
 }
 
+
+
    res.map((item) => {
+      let mode
+      if (argv.tag) {
+         mode = `az resource list --subscription ${item.id} --output json --query "[].{id:id}" --tag "svc=aksdev"`
+      } else {
+         mode = `az resource list --subscription ${item.id} --output json --query "[].{id:id}"`
+      }
+      
       subs.push(item.id)
       subsNnames.push({id:item.id,subName:item.name})
 
       item.runContext= {
          fn: runner,
          schema,
-         mode:`az resource list --subscription ${item.id} --output json --query "[].{id:id}"`,
+         mode
       }
    })
 
