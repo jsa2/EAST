@@ -27,15 +27,23 @@ workflows.map(s =>  promR.push(azNodeRestRef(s?.id,'2018-11-01')))
 
 let contents = await Promise.all(promR)
 
-let matchLikelySecrets = require('../../../plugins/other/wordlist.json').values.split(',').map(word => {
-    srs = JSON.stringify(contents).toLowerCase().match(word.toLowerCase())
-   // let srs2 = JSON.stringify(item.properties.definition).toLowerCase().match(new RegExp("\\?code",'g'))
- if (srs) {
-     console.log()
-     returnObject.isHealthy="review"
- }
-   return srs
-}).filter(is => is !== null).map(s => `${s[0]}:${s.input.substring(s.index-30,s.index+30)}`)
+let matchLikelySecrets = contents.map(c => {
+
+    let r = require('../../../plugins/other/wordlist.json').values.split(',').map(word => {
+       let srs = JSON.stringify(c).toLowerCase().match(word.toLowerCase())
+       // let srs2 = JSON.stringify(item.properties.definition).toLowerCase().match(new RegExp("\\?code",'g'))
+     if (srs) {
+         console.log()
+         returnObject.isHealthy="review"
+     }
+     return srs
+    }).filter(is => is !== null).map(s => `${c.name}:${s.input.substring(s.index-30,s.index+30)}`)
+
+    return r
+    
+
+}).filter(s => s.length > 0)
+
 
 returnObject.metadata = {contents: matchLikelySecrets}
 
