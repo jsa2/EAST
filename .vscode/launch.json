@@ -11,8 +11,8 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
- "program": "${workspaceFolder}/plugins/main.js",
- // "program": "${file}",
+// "program": "${workspaceFolder}/plugins/main.js",
+  "program": "${file}",
             "args":  [
                 "--batch=10",   
                 //"--tag=svc=aksdev",
@@ -25,7 +25,7 @@
                 //"--notIncludes=44ee6398gb8abb6d0",
                 //"--policy",
                 "--nx",
-                "--asb",
+                //"--asb",
                 "--scanAuditLogs",
                 "--composites",
                "--clearTokens",

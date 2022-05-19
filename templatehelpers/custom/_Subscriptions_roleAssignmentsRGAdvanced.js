@@ -29,71 +29,85 @@ module.exports =  function (it,control) {
       details+="\r\n"
       
       var c = 0
-      s.items.forEach(ite => {
+
+      d =  newSetA(s.items,['principalType'])
+
+      d.forEach(s => {
+
+        details+="\r\n"
+        details+="\r\n"
+        details += `######## ${s.group}s`
+        details+="\r\n"
+        details+="\r\n"
+
+        s.items.forEach(ite => {
       
       
-        if (ite.mfaResults?.basicAuth?.appliedPol.length == 0 ||ite.mfaResults?.MFAstatus?.appliedPol.length == 0 ) {
-          let sd2 = beautify(JSON.stringify(ite.mfaResults),{ indent_size: 2, space_in_empty_paren: true })
-          if (c == 0) {
-            details += `######## ❌ Security Failures`
+          if (ite.mfaResults?.basicAuth?.appliedPol.length == 0 ||ite.mfaResults?.MFAstatus?.appliedPol.length == 0 ) {
+            let sd2 = beautify(JSON.stringify(ite.mfaResults),{ indent_size: 2, space_in_empty_paren: true })
+            if (c == 0) {
+              details += `######### ❌ Security Failures`
+              details+="\r\n"
+              details+="\r\n"
+              details+=" **Object can bypass MFA or basic Auth policy**"
+            }
+            c++
             details+="\r\n"
             details+="\r\n"
-            details+=" **Object can bypass MFA or basic Auth policy**"
+            details+=`\`\` ${ite?.friendlyName} - ${ite?.subName} -${ite?.RoleName} \`\`  `
+            details+="\r\n"
+            details+="\r\n"
+            details+=`\`\`\`json \r\n ${sd2} \r\n \`\`\`\r\n`
+            details+="\r\n"
+            details+="\r\n"
+          }  else if (ite?.principalType !== "ServicePrincipal") {
+            details+="\r\n"
+            details+="**Object is healthy**"
+            details+="\r\n"
+            details+=`\`\` ${ite?.friendlyName} - ${ite?.subName} -${ite?.RoleName} \`\`  `
+            details+="\r\n"
+            details+="\r\n"
+   //         details+=`\`\`\`json \r\n ${sd2} \r\n \`\`\`\r\n`
+            details+="\r\n"
+            details+="\r\n"
           }
-          c++
-          details+="\r\n"
-          details+="\r\n"
-          details+=`\`\` ${ite?.friendlyName} - ${ite?.subName} -${ite?.RoleName} \`\`  `
-          details+="\r\n"
-          details+="\r\n"
-          details+=`\`\`\`json \r\n ${sd2} \r\n \`\`\`\r\n`
-          details+="\r\n"
-          details+="\r\n"
-        }  else if (ite?.principalType !== "ServicePrincipal") {
-          details+="\r\n"
-          details+="**Object is healthy**"
-          details+="\r\n"
-          details+=`\`\` ${ite?.friendlyName} - ${ite?.subName} -${ite?.RoleName} \`\`  `
-          details+="\r\n"
-          details+="\r\n"
- //         details+=`\`\`\`json \r\n ${sd2} \r\n \`\`\`\r\n`
-          details+="\r\n"
-          details+="\r\n"
-        }
-
-        if (ite?.creds?.AppRegPasswordCred?.length > 0 && typeof(ite?.creds?.AppRegPasswordCred) === "object" ) {
-          let sd3 = beautify(JSON.stringify(ite.creds.AppRegPasswordCred),{ indent_size: 2, space_in_empty_paren: true })
-       
-          if (c == 0) {
-            details += `######## ❌ Security Failures`
+  
+          if (ite?.creds?.AppRegPasswordCred?.length > 0 && typeof(ite?.creds?.AppRegPasswordCred) === "object" ) {
+            let sd3 = beautify(JSON.stringify(ite.creds.AppRegPasswordCred),{ indent_size: 2, space_in_empty_paren: true })
+         
+            if (c == 0) {
+              details += `######### ❌ Security Failures`
+              details+="\r\n"
+              details+="\r\n"
+              details+="**Object  has weak single-factor credentials  (password/client_secret)**"
+  
+            }
+            c++
             details+="\r\n"
             details+="\r\n"
-            details+="**Object  has weak single-factor credentials  (password/client_secret)**"
-
+            details+=`\`\` ${ite?.principalId} - ${ite?.subName} -${ite?.RoleName} \`\`  `
+            details+="\r\n"
+            details+="\r\n"
+            details+=`\`\`\`json \r\n ${sd3} \r\n \`\`\`\r\n`
+            details+="\r\n"
+            details+="\r\n"
+          } else if (ite?.principalType == "ServicePrincipal") {
+            details+="\r\n"
+            details+="**Object is healthy**"
+            details+="\r\n"
+            details+=`\`\` ${ite?.principalId} - ${ite?.subName} -${ite?.RoleName} \`\`  `
+            details+="\r\n"
+            details+="\r\n"
+   //         details+=`\`\`\`json \r\n ${sd2} \r\n \`\`\`\r\n`
+            details+="\r\n"
+            details+="\r\n"
           }
-          c++
-          details+="\r\n"
-          details+="\r\n"
-          details+=`\`\` ${ite?.principalId} - ${ite?.subName} -${ite?.RoleName} \`\`  `
-          details+="\r\n"
-          details+="\r\n"
-          details+=`\`\`\`json \r\n ${sd3} \r\n \`\`\`\r\n`
-          details+="\r\n"
-          details+="\r\n"
-        } else if (ite?.principalType == "ServicePrincipal") {
-          details+="\r\n"
-          details+="**Object is healthy**"
-          details+="\r\n"
-          details+=`\`\` ${ite?.principalId} - ${ite?.subName} -${ite?.RoleName} \`\`  `
-          details+="\r\n"
-          details+="\r\n"
- //         details+=`\`\`\`json \r\n ${sd2} \r\n \`\`\`\r\n`
-          details+="\r\n"
-          details+="\r\n"
-        }
-        
-        
+          
+          
+        })
       })
+
+     
 
       details+="\r\n"
       details+="\r\n"
