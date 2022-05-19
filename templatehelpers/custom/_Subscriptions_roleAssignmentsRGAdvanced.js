@@ -24,7 +24,7 @@ module.exports =  function (it,control) {
       details+="\r\n"
       var sd = beautify(JSON.stringify(s.items),{ indent_size: 2, space_in_empty_paren: true })
       details+="\r\n"
-      details+=`\`\`\`json \r\n ${sd} \r\n \`\`\`\r\n`
+      //details+=`\`\`\`json \r\n ${sd} \r\n \`\`\`\r\n`
       details+="\r\n"
       details+="\r\n"
       
@@ -38,15 +38,25 @@ module.exports =  function (it,control) {
             details += `######## ❌ Security Failures`
             details+="\r\n"
             details+="\r\n"
-            details+="Object can bypass MFA or basic Auth policy"
+            details+=" **Object can bypass MFA or basic Auth policy**"
           }
           c++
           details+="\r\n"
           details+="\r\n"
-          details+=ite?.friendlyName
+          details+=`\`\` ${ite?.friendlyName} - ${ite?.subName} -${ite?.RoleName} \`\`  `
           details+="\r\n"
           details+="\r\n"
           details+=`\`\`\`json \r\n ${sd2} \r\n \`\`\`\r\n`
+          details+="\r\n"
+          details+="\r\n"
+        }  else if (ite?.principalType !== "ServicePrincipal") {
+          details+="\r\n"
+          details+="**Object is healthy**"
+          details+="\r\n"
+          details+=`\`\` ${ite?.friendlyName} - ${ite?.subName} -${ite?.RoleName} \`\`  `
+          details+="\r\n"
+          details+="\r\n"
+ //         details+=`\`\`\`json \r\n ${sd2} \r\n \`\`\`\r\n`
           details+="\r\n"
           details+="\r\n"
         }
@@ -58,16 +68,26 @@ module.exports =  function (it,control) {
             details += `######## ❌ Security Failures`
             details+="\r\n"
             details+="\r\n"
-            details+="Object has weak single-factor credentials  (password/client_secret)"
+            details+="**Object  has weak single-factor credentials  (password/client_secret)**"
 
           }
           c++
           details+="\r\n"
           details+="\r\n"
-          details+=ite?.friendlyName
+          details+=`\`\` ${ite?.principalId} - ${ite?.subName} -${ite?.RoleName} \`\`  `
           details+="\r\n"
           details+="\r\n"
           details+=`\`\`\`json \r\n ${sd3} \r\n \`\`\`\r\n`
+          details+="\r\n"
+          details+="\r\n"
+        } else if (ite?.principalType == "ServicePrincipal") {
+          details+="\r\n"
+          details+="**Object is healthy**"
+          details+="\r\n"
+          details+=`\`\` ${ite?.principalId} - ${ite?.subName} -${ite?.RoleName} \`\`  `
+          details+="\r\n"
+          details+="\r\n"
+ //         details+=`\`\`\`json \r\n ${sd2} \r\n \`\`\`\r\n`
           details+="\r\n"
           details+="\r\n"
         }
