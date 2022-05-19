@@ -16,15 +16,23 @@ var {apiversion} = getProviderApiVersion(item.id)
 
 var {value:pipelines} = await AzNodeRest(`${item.id}/pipelines?`,apiversion)
 
-let matchLikelySecrets = require('../../../plugins/other/wordlist.json').values.split(',').map(word => {
-    srs = JSON.stringify(pipelines).toLowerCase().match(word.toLowerCase())
+let matchLikelySecrets = pipelines.map(c => {
+
+    let r = require('../../../plugins/other/wordlist.json').values.split(',').map(word => {
+       let srs = JSON.stringify(c).toLowerCase().match(word.toLowerCase())
+       // let srs2 = JSON.stringify(item.properties.definition).toLowerCase().match(new RegExp("\\?code",'g'))
+     if (srs) {
+         console.log()
+         returnObject.isHealthy="review"
+     }
+     return srs
+    }).filter(is => is !== null).map(s => `${c.name}:${s.input.substring(s.index-30,s.index+30)}`)
+
+    return r
     
 
-    if (word.toLowerCase() == "accountkey") {
-    console.log()
-    }
-    return srs
-}).filter(is => is !== null).map(s => `${s.input.substring(s.index,s.index+300)}`)
+}).filter(s => s.length > 0)
+
 
 
 
