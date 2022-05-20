@@ -33,9 +33,10 @@ if (!data) {
 
 let {data:pipelines}  = data
 //
+
 let promiseArra = []
 let count = 0
-pipelines?.value.map( ep => {
+pipelines?.value.filter(s => s.name.match(`${argv.azdevopsProject || ' '}`)).map( ep => {
     count++
         let options ={
             url:`https://dev.azure.com/${argv.azdevops}/${ep?.name}/_apis/pipelines?api-version=6.0-preview.1`,
@@ -76,7 +77,7 @@ console.log(pipelineRuns)
 
 
 pipelineRuns.map( run => {
-    run?.value.splice(0,10).map( ep => {
+    run?.value.splice(0,2).map( ep => {
         count++
         let url = ep.url + "/logs?$expand=signedContent&api-version=6.0-preview.1"
             let options ={
@@ -94,7 +95,7 @@ let logs = await (await Promise.all(promiseArra3)).filter(s => s !== undefined)
 
 let promiseArra4 = []
 logs.map( run => {
-    run?.logs.map( ep => {
+    run?.logs.splice(0,5).map( ep => {
         count++
         let url = ep?.signedContent?.url
             let options ={
@@ -118,7 +119,7 @@ let logResults = await (await Promise.all(promiseArra4)).filter(s => s !== undef
             srs = logStreamToString.toLowerCase().match(word.toLowerCase())
            // let srs2 = JSON.stringify(item.properties.definition).toLowerCase().match(new RegExp("\\?code",'g'))
 
-           if (word == "secret" && srs) {
+           if (word == "bearer" && srs) {
                console.log()
            }
 
@@ -128,9 +129,9 @@ let logResults = await (await Promise.all(promiseArra4)).filter(s => s !== undef
            return srs
         }).filter(is => is !== null).map(s => {
             let wmatch = `${s[0]}:${s.input.substring(s.index-30,s.index+300)} \r\n`
-            require('fs').appendFileSync('secrets.txt',wmatch)
+        /*     require('fs').appendFileSync('secrets.txt',wmatch)
             require('fs').appendFileSync('secrets.txt',`\r\n`)
-            require('fs').appendFileSync('secrets.txt',logStreamToString)
+            require('fs').appendFileSync('secrets.txt',logStreamToString) */
             return {
                 wordMatch: `${s[0]}:${s.input.substring(s.index-30,s.index+300)}`,
                 start: `${s[0]}:${logStreamToString.substring(0,500)}`
