@@ -7,7 +7,7 @@ test.js
 *.json
 *.JSON
 # exclude from JSON and MD flag
-!launch.json
+!_launch.json
 !/providers/**
 !/azskver/demodata/**
 *.md
