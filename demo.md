@@ -3,7 +3,7 @@
 ### Full check
 ```shell
 
-node ./plugins/main.js --batch=10 --nativescope=true --roleAssignments=true --helperTexts=true --checkAad=true --scanAuditLogs --composites --shuffle --clearTokens
+node ./plugins/main.js --batch=10 --nativescope=true --roleAssignments=true --helperTexts=true --checkAad=true --scanAuditLogs --composites --shuffle --clearTokens --azdevops=thx138
 
 
 ``` 

@@ -1,3 +1,3 @@
 {
-    "values":"Bearer,sig,signature,secret,password,\\?code,auth,authentication,eyj,SELECT,dbo,AccountKey="
+    "values":"bearer(?!\\s+\\*),sig,signature,secret,password,\\?code,\\?auth,authentication,eyj,SELECT,dbo,AccountKey=,token,pat:,\\?pat,\\&pat"
 }

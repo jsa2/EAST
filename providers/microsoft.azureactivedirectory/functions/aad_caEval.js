@@ -1,6 +1,7 @@
 
 
 const { getAADCAPol } = require("../../../plugins/nodeSrc/aadHelpers")
+const { erroResponseSchema } = require("../../../plugins/nodeSrc/functionResponseSchema")
 const { returnObjectInit } = require("../../../plugins/nodeSrc/returnObjectInit")
 
 
@@ -9,7 +10,14 @@ module.exports = async function (item) {
 var returnObject = new returnObjectInit(item,__filename.split('/').pop())
 returnObject.isHealthy=true
 
-let baseline = await enhance(returnObject)
+let baseline
+try {
+baseline = await enhance(returnObject)
+} catch(error) {
+    returnObject.metadata={error}
+    returnObject.isHealthy="not applicable"
+    return returnObject
+}
 
 Object.keys(baseline).map(key => {
     if( baseline[key]?.details ) {

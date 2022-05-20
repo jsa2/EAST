@@ -11,17 +11,17 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-// "program": "${workspaceFolder}/plugins/main.js",
-  "program": "${file}",
+"program": "${workspaceFolder}/plugins/main.js",
+//  "program": "${file}",
             "args":  [
                 "--batch=10",   
                 //"--tag=svc=aksdev",
                 "--nativescope=true",
-              //  "--roleAssignments",
-                //"--checkAad",
-                "--helperTexts=true",
-          //      "--subInclude=3539c2a2-cd25-48c6-b295-14e59334ef1c,6c052e74-e3b3-401b-8734-fafc98c8cf83",
-                "--namespace=datafactory",
+               // "--roleAssignments",
+                "--checkAad",
+               // "--helperTexts=true",
+                "--subInclude=78020cde-0dd8-4ac6-a6d4-21bac00fb343",
+                "--namespace=null",
                 //"--notIncludes=44ee6398gb8abb6d0",
                 //"--policy",
                 "--nx",
@@ -29,7 +29,7 @@
                 "--scanAuditLogs",
                 "--composites",
                "--clearTokens",
-    //            "--azdevops=thx138",
+               //"--azdevops=thx138",
                // "--ignorePreCheck"
             ]
         }
