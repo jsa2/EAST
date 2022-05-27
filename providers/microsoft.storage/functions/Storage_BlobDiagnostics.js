@@ -8,9 +8,7 @@ module.exports = async function (item) {
 
 var returnObject = new returnObjectInit(item,__filename.split('/').pop())
 
-var {apiversion} = getProviderApiVersion(item.id)
-
-diagnostics = await AzNodeRest(`${item.id}/blobServices/default/providers/microsoft.insights/diagnosticSettings?`,'2021-05-01-preview')
+let diagnostics = await AzNodeRest(`${item.id}/blobServices/default/providers/microsoft.insights/diagnosticSettings?`,'2021-05-01-preview')
 
 
 if ( diagnostics.value.length > 0){

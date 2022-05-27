@@ -1,0 +1,5 @@
+{
+"ControlId": "storage_cloudShell",
+"Category": "Data",
+"Description": "Identify Cloud Shells that can possibly persist credentials, and are not monitored (logging is not enabled) for unauthorized access "
+}

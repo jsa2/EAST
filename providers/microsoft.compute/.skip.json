@@ -1,1 +1,1 @@
-["microsoft.compute/disks","microsoft.compute/virtualmachinescalesets/"]
+["microsoft.compute/disks","microsoft.compute/virtualmachinescalesets/","extensions/databricksbootstrap"]

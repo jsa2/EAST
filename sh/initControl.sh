@@ -137,3 +137,8 @@ node diagnosticSettings.js --name $name --provider $provider
 name="aad_ca_azureDevops"
 provider="microsoft.azureactivedirectory"
 node manualControl.js --name $name --provider $provider
+
+
+name="storage_cloudShell"
+provider="microsoft.storage"
+node manualControl.js --name $name --provider $provider

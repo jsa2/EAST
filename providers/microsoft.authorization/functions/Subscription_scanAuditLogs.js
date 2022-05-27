@@ -61,8 +61,8 @@ let token = await getGraphTokenReducedScope()
  var weakAuthenticationEvents = []
 
  for await (caller  of new Set(weakSPNAuth)) {
-    let oidName = await graph(token,`/directoryObjects/${caller}?$select=id,displayName`)
-    weakAuthenticationEvents.push(`SPN:${oidName.displayName} : pwd with claim appIdAcr=1`)
+    let oidName = await graph(token,`/directoryObjects/${caller}?$select=id,displayName`).catch(error  => console.log('no graph caller identified, object can be deleted, but the log still remains'))
+    weakAuthenticationEvents.push(`SPN:${oidName?.displayName || caller} : pwd with claim appIdAcr=1`)
     
 }
 

@@ -2,6 +2,7 @@
 const { AzNodeRest } = require("../../../plugins/nodeSrc/east")
 const { getProviderApiVersion } = require("../../../plugins/nodeSrc/getProvider")
 var waitT = require('util').promisify(setTimeout)
+const {argv} = require('yargs')
 //AzNodeRest
 module.exports = async function (item) {
 
@@ -17,7 +18,10 @@ returnObject.id = item.id
 
 console.log('waiting before enumeration of containers, to avoid throttling')
 
-await waitT(3000)
+if (!argv.SkipStorageThrottling) {
+    await waitT(3000)
+}
+
 item = await AzNodeRest(`${item.id}/blobServices/default/containers?`,apiversion)
 
 returnObject.isHealthy=true

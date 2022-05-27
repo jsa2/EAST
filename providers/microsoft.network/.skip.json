@@ -1,1 +1,1 @@
-["microsoft.network/frontdoorwebapplicationfirewallpolicies","microsoft.network/privatednszones","microsoft.network/dnszones","microsoft.network/localnetworkgateways","microsoft.network/virtualnetworkgateways","microsoft.network/networkwatchers"]
+["microsoft.network/frontdoorwebapplicationfirewallpolicies","microsoft.network/privatednszones","microsoft.network/dnszones","microsoft.network/localnetworkgateways","microsoft.network/virtualnetworkgateways","microsoft.network/networkwatchers","microsoft.network/networkinterfaces"]

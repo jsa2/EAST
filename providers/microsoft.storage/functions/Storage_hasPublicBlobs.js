@@ -3,6 +3,7 @@ const { AzNodeRest } = require("../../../plugins/nodeSrc/east")
 const { getProviderApiVersion } = require("../../../plugins/nodeSrc/getProvider")
 const { getRandomInt } = require("../../../plugins/nodeSrc/nodeRestRef")
 var waitT = require('util').promisify(setTimeout)
+const {argv} = require('yargs')
 //AzNodeRest
 module.exports = async function (item) {
 
@@ -20,7 +21,11 @@ console.log('waiting before enumeration of containers, to avoid throttling')
 
 let storage
 let errorProp
-await waitT(getRandomInt(6000,10000))
+
+if (!argv.SkipStorageThrottling) {
+    await waitT(getRandomInt(6000,10000))
+}
+
 
 storage = await AzNodeRest(`${item.id}/blobServices/default/containers?`,apiversion).catch(error => errorProp = error)
 
