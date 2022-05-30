@@ -1,27 +1,33 @@
 
 // Creates a new map, no need to push the results
 
-/* test(require('../content.json')) */
+/* test(require('../content.json'))
+ */
 
 
 
+module.exports = async function (src)  { 
 
-module.exports = async function (src) { 
 
-
-    let processed = src.filter(s => s.controlId.toLowerCase().match("managedidentity") ).filter( s=>s?.metadata?.principalId) 
-    let composite = src.filter(s => s.controlId == "KeyVault_accessPolicies" ) 
+    let processed = src.filter(s => s.controlId.toLowerCase().match("managedidentity") ).filter( s=>s?.metadata?.principalId?.principalId !== undefined) 
+    let composite = src.filter(s => s.controlId == "KeyVault_accessPolicies" ).filter( k=>k.metadata?.accessPolicy.length > 0) 
     
     processed.map( sd => {
+       
+        sd.metadata.linkedKeyVaults = []
 
-        sd.metadata.roles.keyVaultLinks = composite.filter( c => {
+        composite.forEach(a => {
+           let accessPolicy =  a.metadata.accessPolicy.filter(b => b.id == sd.metadata.principalId.principalId )
 
-            let innerM = c.metadata.accessPolicy.filter(principal => principal.id == sd.metadata.principalId?.principalId)
-            return innerM || "no matches in keyVaults"
-        } )
-        
-    
-        
+           if (accessPolicy.length > 0) {
+            sd.metadata.linkedKeyVaults.push({
+                keyVault: a?.name,
+                accessPolicy
+            })
+           }
+
+        })
+  
     } )
 
    
@@ -31,22 +37,29 @@ module.exports = async function (src) {
 
 
 
+
 async function test (src) { 
 
 
-    let processed = src.filter(s => s.controlId.toLowerCase().match("managedidentity") ).filter( s=>s?.metadata?.principalId) 
-    let composite = src.filter(s => s.controlId == "KeyVault_accessPolicies" ) 
+    let processed = src.filter(s => s.controlId.toLowerCase().match("managedidentity") ).filter( s=>s?.metadata?.principalId?.principalId !== undefined) 
+    let composite = src.filter(s => s.controlId == "KeyVault_accessPolicies" ).filter( k=>k.metadata?.accessPolicy.length > 0) 
     
     processed.map( sd => {
+       
+        sd.kvLinks = []
 
-        sd.metadata.roles.keyVaultLinks = composite.filter( c => {
+        composite.forEach(a => {
+           let accessPolicy =  a.metadata.accessPolicy.filter(b => b.id == sd.metadata.principalId.principalId )
 
-            let innerM = c.metadata.accessPolicy.filter(principal => principal.id == sd.metadata.principalId?.principalId)
-            return innerM || "no matches in keyVaults"
-        } )
-        
-    
-        
+           if (accessPolicy.length > 0) {
+            sd.kvLinks.push({
+                keyVault: a?.name,
+                accessPolicy
+            })
+           }
+
+        })
+  
     } )
 
    
