@@ -22,7 +22,12 @@ else {
     returnObject.isHealthy=true
 }
 
-returnObject.metadata = item.properties.ipSecurityRestrictions
+returnObject.metadata = {
+    ipSecurityRestrictions: item.properties?.ipSecurityRestrictions,
+    scmIpSecurityRestrictions:item.properties?.scmIpSecurityRestrictions,
+
+}
+
 
 return returnObject
 
