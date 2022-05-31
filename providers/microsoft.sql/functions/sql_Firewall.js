@@ -17,16 +17,16 @@ if (item?.id.match('databases')) {
 
 var {apiversion} = getProviderApiVersion(item.id)
 
-item = await AzNodeRest(`${item.id}/firewallRules/`,apiversion)
+ let fw  = await AzNodeRest(`${item.id}/firewallRules/`,apiversion)
 
-var is = item?.value.filter((rules) => rules.name == "AllowAllWindowsAzureIps")
+var is = fw?.value.filter((rules) => rules.name == "AllowAllWindowsAzureIps")
 
-if ( is.length > 0 || item?.value.length == 0){
+if ( is.length > 0 || fw?.value.length == 0){
     returnObject.isHealthy=false
 } 
 
 
-returnObject.metadata = {item}
+returnObject.metadata = {fw}
 //console.log(stashOrig)
 
 return returnObject
