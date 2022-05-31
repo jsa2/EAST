@@ -43,7 +43,7 @@ provider="microsoft.general"
 node manualControl.js --name $name --provider $provider
 
 
-name="sql_pe"
+name="sql_minTLS"
 provider="microsoft.sql"
 node controlTemplate.js --name $name --provider $provider
 

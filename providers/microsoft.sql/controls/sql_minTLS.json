@@ -1,0 +1,5 @@
+{
+"ControlId": "sql_minTLS",
+"Category": "Network",
+"Description": "Ensure TLS version is enforced to be 1.2"
+}
