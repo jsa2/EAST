@@ -1,0 +1,5 @@
+{
+"ControlId": "sql_pe",
+"Category": "Network",
+"Description": "Disable SQL public network connectivity if private endpoints are used"
+}
