@@ -1,0 +1,5 @@
+{
+"ControlId": "cdn_securityHeaders",
+"Category": "access",
+"Description": "Ensure securityHeaders are set in CDN \r\n read more [here](https://docs.microsoft.com/en-us/azure/frontdoor/front-door-security-headers#add-a-content-security-policy-header-in-azure-portal)"
+}

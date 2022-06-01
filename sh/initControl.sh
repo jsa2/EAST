@@ -142,3 +142,8 @@ node manualControl.js --name $name --provider $provider
 name="storage_cloudShell"
 provider="microsoft.storage"
 node manualControl.js --name $name --provider $provider
+
+
+name="cdn_securityHeaders"
+provider="microsoft.cdn"
+node diagnosticSettings.js --name $name --provider $provider
