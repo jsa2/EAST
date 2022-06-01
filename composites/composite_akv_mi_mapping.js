@@ -8,10 +8,12 @@
 
 module.exports = async function (src)  { 
 
-
-    let processed = src.filter(s => s.controlId.toLowerCase().match("managedidentity") ).filter( s=>s?.metadata?.principalId?.principalId !== undefined) 
-    let composite = src.filter(s => s.controlId == "KeyVault_accessPolicies" ).filter( k=>k.metadata?.accessPolicy.length > 0) 
+        
+    let processed = src.filter(s => s?.controlId !== undefined).filter(s => s.controlId.toLowerCase().match("managedidentity") ).filter( s=>s?.metadata?.principalId?.principalId !== undefined) 
+    let composite = src.filter(s => s?.controlId == "KeyVault_accessPolicies" ).filter( k=>k.metadata?.accessPolicy.length > 0) 
     
+    console.log(processed,composite)
+
     processed.map( sd => {
        
         sd.metadata.linkedKeyVaults = []
@@ -31,7 +33,7 @@ module.exports = async function (src)  {
     } )
 
    
-    return;
+
 }
 
 
