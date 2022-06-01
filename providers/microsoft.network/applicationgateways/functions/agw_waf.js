@@ -10,7 +10,11 @@ module.exports = async function (item) {
 var returnObject = new returnObjectInit (item,__filename.split('/').pop())
 
 
-returnObject.metadata = {item}
+if (item?.properties.sku.match('WAF')) {
+    returnObject.isHealthy=true
+}
+
+returnObject.metadata = {waf:item?.properties.sku}
 //console.log(stashOrig)
 
 return returnObject
