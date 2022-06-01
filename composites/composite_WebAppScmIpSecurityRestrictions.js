@@ -12,7 +12,7 @@ module.exports = async function (src) {
     processed.forEach( sds => {
         var sd =new newObjectCreater(sds)
 
-        if (sd?.metadata?.scmIpSecurityRestrictions.length > 1) {
+        if (JSON.stringify(sd?.metadata?.scmIpSecurityRestrictions).match('Allow all access')) {
             sd.isHealthy = false
         }
 
