@@ -6,7 +6,6 @@ test.js
 *.txt
 *.json
 *.JSON
-.vscode
 # exclude from JSON and MD flag
 !_launch.json
 !/providers/**
