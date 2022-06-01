@@ -1,5 +1,5 @@
 {
-"ControlId": "scanAuditLogs",
+"ControlId": "cdn_waf",
 "Category": "Network",
 "Description": "Checks for existence of Web Application Firewall"
 }
