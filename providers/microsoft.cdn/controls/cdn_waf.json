@@ -1,0 +1,5 @@
+{
+"ControlId": "scanAuditLogs",
+"Category": "Network",
+"Description": "Checks for existence of Web Application Firewall"
+}
