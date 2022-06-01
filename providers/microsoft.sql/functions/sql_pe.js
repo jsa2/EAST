@@ -10,6 +10,8 @@ module.exports = async function (item) {
 
 var returnObject = new returnObjectInit(item,__filename.split('/').pop())
 
+returnObject.isHealthy = true
+
 if (item?.id.match('databases')) {
     returnObject.metadata = item?.properties
     returnObject.isHealthy="notApplicable"

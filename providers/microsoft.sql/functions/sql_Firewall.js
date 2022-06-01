@@ -21,10 +21,13 @@ var {apiversion} = getProviderApiVersion(item.id)
 
 var is = fw?.value.filter((rules) => rules.name == "AllowAllWindowsAzureIps")
 
-if ( is.length > 0 || fw?.value.length == 0){
+if ( is.length > 0 || fw?.value.length == 0 ){
     returnObject.isHealthy=false
 } 
 
+if (item?.properties?.publicNetworkAccess !== "Enabled" && item.properties?.privateEndpointConnections.length > 0) {
+    returnObject.isHealthy = true
+}
 
 returnObject.metadata = {fw}
 //console.log(stashOrig)
