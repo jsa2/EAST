@@ -1,0 +1,5 @@
+{
+"ControlId": "databricks_skuCheck",
+"Category": "Data",
+"Description": "Since standard SKU is not supporting ACL we check the use of Premium SKU"
+}
