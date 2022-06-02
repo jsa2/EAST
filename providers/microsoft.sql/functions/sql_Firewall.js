@@ -15,6 +15,8 @@ if (item?.id.match('databases')) {
     return returnObject
 }
 
+returnObject.isHealthy=true
+
 var {apiversion} = getProviderApiVersion(item.id)
 
  let fw  = await AzNodeRest(`${item.id}/firewallRules/`,apiversion)
