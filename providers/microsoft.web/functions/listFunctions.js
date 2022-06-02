@@ -3,7 +3,7 @@
 const { AzNodeRest } = require("../../../plugins/nodeSrc/east")
 const { erroResponseSchema } = require("../../../plugins/nodeSrc/functionResponseSchema")
 const { getProviderApiVersion } = require("../../../plugins/nodeSrc/getProvider")
-const { checkDoesItApply } = require("../../../plugins/nodeSrc/microsoftwebhelper")
+const { checkDoesItApply, checkDoesItApplyFn } = require("../../../plugins/nodeSrc/microsoftwebhelper")
 const { returnObjectInit } = require("../../../plugins/nodeSrc/returnObjectInit")
 const aadAuth = require("./aadAuth")
 
@@ -18,7 +18,7 @@ var {apiversion} = getProviderApiVersion(item.id)
 if (item.id.match('honeypot')) {
     console.log()
 }
-var skip = checkDoesItApply(item,returnObject)
+var skip = checkDoesItApplyFn(item,returnObject)
 if (skip) {
     return skip
 }

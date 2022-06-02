@@ -12,6 +12,20 @@ function checkDoesItApply (item,returnObject) {
 
 }
 
+function checkDoesItApplyFn (item,returnObject) {
+
+    if (!item?.kind.match('functionapp') ) {
+        if (!returnObject) {
+            returnObject={}
+        }
+        returnObject.metadata = item?.properties
+        returnObject.isHealthy="notApplicable"
+        return returnObject
+    } else {
+        return undefined}
+
+}
+
 function checkDoesItApplyWorkflowApp (item,returnObject) {
 
 
@@ -40,4 +54,4 @@ function checkDoesItApplyWorkflowApp (item,returnObject) {
 }
 
 
-module.exports={checkDoesItApply,checkDoesItApplyWorkflowApp}
+module.exports={checkDoesItApply,checkDoesItApplyWorkflowApp,checkDoesItApplyFn}
