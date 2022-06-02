@@ -1,3 +1,8 @@
+name="databricks_skuCheck"
+provider="microsoft.databricks"
+node controlTemplate.js --name $name --provider $provider
+
+
 name="KeyVault_Firewall"
 provider="Microsoft.KeyVault"
 node controlTemplate.js --name $name --provider $provider
