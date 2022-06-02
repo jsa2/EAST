@@ -49,10 +49,11 @@ module.exports =  function (it,control) {
               details += `######### ❌ Security Failures`
               details+="\r\n"
               details+="\r\n"
-              details+=" **Object can bypass MFA or basic Auth policy**"
+          
             }
             c++
             details+="\r\n"
+            details+=" **Object can bypass MFA or basic Auth policy**"
             details+="\r\n"
             details+=`\`\` ${ite?.friendlyName} - ${ite?.subName} -${ite?.RoleName} \`\`  `
             details+="\r\n"
@@ -60,7 +61,7 @@ module.exports =  function (it,control) {
             details+=`\`\`\`json \r\n ${sd2} \r\n \`\`\`\r\n`
             details+="\r\n"
             details+="\r\n"
-          }  else if (ite?.principalType !== "ServicePrincipal") {
+          }  else if (ite?.principalType == "User") {
             details+="\r\n"
             details+="**Object is healthy**"
             details+="\r\n"
@@ -79,10 +80,10 @@ module.exports =  function (it,control) {
               details += `######### ❌ Security Failures`
               details+="\r\n"
               details+="\r\n"
-              details+="**Object  has weak single-factor credentials  (password/client_secret)**"
-  
             }
             c++
+            details+="\r\n"
+            details+="**Object has weak single-factor credentials  (password/client_secret)**"
             details+="\r\n"
             details+="\r\n"
             details+=`\`\` ${ite?.principalId} - ${ite?.subName} -${ite?.RoleName} \`\`  `
@@ -93,7 +94,7 @@ module.exports =  function (it,control) {
             details+="\r\n"
           } else if (ite?.principalType == "ServicePrincipal") {
             details+="\r\n"
-            details+="**Object is healthy**"
+            details+="**Object is healthy dog**"
             details+="\r\n"
             details+=`\`\` ${ite?.principalId} - ${ite?.subName} -${ite?.RoleName} \`\`  `
             details+="\r\n"
