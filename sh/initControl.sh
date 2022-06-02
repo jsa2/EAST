@@ -1,3 +1,15 @@
+
+name="databricks_diagnosticSettings"
+provider="microsoft.databricks"
+node diagnosticSettings.js --name $name --provider $provider
+
+#Diagversion
+
+name="APIM_diagnosticSettings"
+provider="microsoft.apimanagement"
+node diagnosticSettings.js --name $name --provider $provider
+
+
 name="databricks_skuCheck"
 provider="microsoft.databricks"
 node controlTemplate.js --name $name --provider $provider
