@@ -9,7 +9,7 @@ EAST follows Azure Resource Manager API, by mapping resourceId's to path's in EA
 - Mapping follows the container (folders) structure based on resolved entities.
   
 
-
+- 
 
 - In order for control to map, at least the [provider folder](#provider-folder) needs to exist
 
