@@ -36,7 +36,7 @@ This tool is currently being developed by yours truly @[Nixu](https://www.nixu.c
     - [Build session from Azure Cloud Shell (BASH)](#build-session-from-azure-cloud-shell-bash)
   - [Parameters reference](#parameters-reference)
   - [(Highly experimental) Running in restricted environments where only browser use is available](#highly-experimental-running-in-restricted-environments-where-only-browser-use-is-available)
-  - [Developing controls (snippets)](#developing-controls-snippets)
+  - [Developing controls](#developing-controls)
     - [Control files](#control-files)
     - [Workflow for native Functions](#workflow-for-native-functions)
   - [Updates and examples](#updates-and-examples)
@@ -371,9 +371,8 @@ Param| Description | Default if undefined
 
 Read here [Running in restricted environments](https://github.com/jsa2/EAST/tree/DelegationToken#highly-experimental---bypassing-trusted-device-requirements-for-azure-cli-in-highly-restricted-environments-where-apis-are-available-for-browser-sessions)
 
-## Developing controls (snippets)
-I am planning to introduce full developer guide, but for the time being there are only these snippets available:
-
+## Developing controls 
+Developer guide is in separate file 
 
 ### Control files
 Control files are JSON definitions that are supplemented to the automation running the control.
