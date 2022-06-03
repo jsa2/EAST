@@ -17,7 +17,7 @@ function reprocess(data) {
       console.log(current.length)
       return current
     } catch (error) {
-        console.log(error)
+        console.log('no previous file, or unable to parse content.json')
     }
 
 }

@@ -10,10 +10,14 @@ module.exports = async function (item) {
 
 var returnObject = new returnObjectInit(item,__filename.split('/').pop())
 
-var failedMessage = "no access controls for actions or triggers"
-var accessControls = (item?.properties?.ipRules || item?.properties?.isVirtualNetworkFilterEnabled ) || failedMessage
 
-returnObject.metadata = {accessControls}
+var accessControls = (item?.properties?.ipRules || item?.properties?.isVirtualNetworkFilterEnabled ) 
+
+if (accessControls.length > 0) {
+    returnObject.isHealthy=true
+}
+
+returnObject.metadata = {accessControls: accessControls || "no access controls"}
 //console.log(stashOrig)
 
 return returnObject
