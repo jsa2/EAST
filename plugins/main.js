@@ -185,6 +185,10 @@ if (argv.shuffle) {
    
    //fs.writeFileSync('content.json',beautify(r,{ indent_size: 2, space_in_empty_paren: true }))
 
+   if (argv.reprocess) {
+      // allows rerunning failed scans, overwrites existing JSON
+   }
+
    fs.writeFileSync('content.json', beautify(JSON.stringify(wa),{ indent_size: 2, space_in_empty_paren: true }))
   
 }
