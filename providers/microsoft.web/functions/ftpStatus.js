@@ -12,8 +12,10 @@ module.exports = async function (item) {
     }
     var keyToCheck = item?.properties?.siteConfig?.ftpsState
     returnObject.isHealthy=false
-    if (keyToCheck) {
-        returnObject.isHealthy=true }
+    if (keyToCheck == null) {
+        returnObject.isHealthy=true 
+        keyToCheck="FTP is not allowed"
+    }
   
     returnObject.metadata = {ftpsState:keyToCheck || ["FTP is allowed"]}
 

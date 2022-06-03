@@ -129,6 +129,10 @@ provider="microsoft.azureactivedirectory"
 node manualControl.js --name $name --provider $provider
 
 
+name="WebApp_minTLS"
+provider="microsoft.web"
+node manualControl.js --name $name --provider $provider
+
 ## Init SubProvider
 name="LogicApps_Connections"
 provider="microsoft.web/connections"

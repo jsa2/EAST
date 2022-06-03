@@ -1,0 +1,5 @@
+{
+"ControlId": "WebApp_minTLS",
+"Category": "Network",
+"Description": "Ensure TLS level is set above 1.0"
+}

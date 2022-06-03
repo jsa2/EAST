@@ -13,6 +13,7 @@ const { decode } = require('jsonwebtoken')
 const chalk = require('chalk')
 const { getAADIamToken } = require('./nodeSrc/getToken')
 const { clearEASTTokenCache } = require('./nodeSrc/deletetokens')
+const { reprocess } = require('./nodeSrc/reprocess')
 process.env.checkMFA = true
 
 
@@ -186,6 +187,7 @@ if (argv.shuffle) {
    //fs.writeFileSync('content.json',beautify(r,{ indent_size: 2, space_in_empty_paren: true }))
 
    if (argv.reprocess) {
+       wa = reprocess(wa)
       // allows rerunning failed scans, overwrites existing JSON
    }
 
