@@ -366,6 +366,7 @@ Param| Description | Default if undefined
 `` --tag `` | Filter all results in the end based on single tag``--tag=svc=aksdev``  | no values
 ``--ignorePreCheck``  | use this option when used with browser delegated tokens| no values
 ``--helperTexts``  | Will append text descriptions from [general](providers/microsoft.general/controls/) to manual controls| no values
+``--reprocess``  | Will update results to existing content.json. Useful for incremental runs| no values
 
 ## (Highly experimental) Running in restricted environments where only browser use is available
 
