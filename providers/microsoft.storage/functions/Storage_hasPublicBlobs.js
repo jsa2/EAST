@@ -23,7 +23,7 @@ let storage
 let errorProp
 
 if (!argv.SkipStorageThrottling) {
-    await waitT(getRandomInt(6000,10000))
+    await waitT(getRandomInt(500,10000))
 }
 
 
