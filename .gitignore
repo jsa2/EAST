@@ -6,6 +6,7 @@ test.js
 *.txt
 *.json
 *.JSON
+*.pdf
 # exclude from JSON and MD flag
 !_launch.json
 !/providers/**
@@ -25,4 +26,4 @@ test.js
 !pandoc-template-horizontal.docx
 !pandoc-template.docx
 !prepend.docx
-!Azure-Assessment-Template.docx
+
