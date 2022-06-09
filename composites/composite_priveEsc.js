@@ -124,7 +124,7 @@ module.exports = async function (src){
  }
 // console.log(indirects)
 
- return new responseSchema(item, {Category:"Access",Description:"Review objects with indicrect access to subscriptions"})
+ return new responseSchema(item, {Category:"Access",Description:"Review objects with indicrect access to subscriptions via SPN"})
 
 
 
