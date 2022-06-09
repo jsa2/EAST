@@ -10,6 +10,7 @@ const { checkRoles } = require("../../../plugins/nodeSrc/listRoles")
 const { returnObjectInit } = require("../../../plugins/nodeSrc/returnObjectInit")
 const { runner } = require("../../../plugins/pluginRunner")
 const basicAuth = require("../../microsoft.azureactivedirectory/functions/basicAuth")
+const {argv} = require('yargs')
 
 module.exports = async function (item) {
     
@@ -23,7 +24,35 @@ module.exports = async function (item) {
   
  // var {apiversion} = getProviderApiVersion(item.id)
   let scope =await runner(`az group list --subscription "${subName}"`)
-  var {value} = await AzNodeRest(`${scope[0].id}/providers/Microsoft.Authorization/roleAssignments?$filter=atScope()`,"2021-04-01-preview")
+  
+  
+  var value = []
+  if (argv.includeRG) {
+
+    for await (gr of scope) {
+      let {value:vals} = await AzNodeRest(`${gr.id}/providers/Microsoft.Authorization/roleAssignments?$filter=atScope()`,"2021-04-01-preview")
+      console.log('enum of RG ',gr.id)
+      vals.forEach(v => value.push(v))
+    }
+
+    let nq = []
+    let chk = []
+    value.forEach(v => {
+      let sd = `${v.properties?.principalId}:${v.properties.scope}:${v.properties.roleDefinitionId}`
+      if (chk.includes(sd)) {
+        //console.log('assignment already present')
+      } else {
+        chk.push(sd)
+        nq.push(v)
+      }
+    })
+    value = nq
+  
+  } else {
+    var {value} = await AzNodeRest(`${scope[0].id}/providers/Microsoft.Authorization/roleAssignments?$filter=atScope()`,"2021-04-01-preview")
+    value = value.filter( s => s.properties?.scope !== '/')
+  }
+
   
 
   // Expand users in group to users

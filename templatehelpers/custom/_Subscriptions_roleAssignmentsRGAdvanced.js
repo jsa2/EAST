@@ -54,6 +54,18 @@ module.exports =  function (it,control) {
             c++
             details+="\r\n"
             details+=" **Object can bypass MFA or basic Auth policy**"
+
+            if (ite.id.toLowerCase().match('resourcegroups')) {
+
+              let g = ite.id.toLowerCase().split('resourcegroups/')[1].split('/')[0]
+              details+="\r\n"
+              details+="\r\n"
+              details+=`SCOPE of the assignment: Resource-Group ${g}`
+              details+="\r\n"
+              details+="\r\n"
+              details+="\r\n"
+              }
+
             details+="\r\n"
             details+=`\`\` ${ite?.friendlyName} - ${ite?.subName} -${ite?.RoleName} \`\`  `
             details+="\r\n"
@@ -68,6 +80,18 @@ module.exports =  function (it,control) {
             details+=`\`\` ${ite?.friendlyName} - ${ite?.subName} -${ite?.RoleName} \`\`  `
             details+="\r\n"
             details+="\r\n"
+            if (ite.id.toLowerCase().match('resourcegroups')) {
+
+              let g = ite.id.toLowerCase().split('resourcegroups/')[1].split('/')[0]
+              details+="\r\n"
+              details+="\r\n"
+              details+=`SCOPE of the assignment: Resource-Group ${g}:`
+              details+="\r\n"
+              details+="\r\n"
+              
+              details+="\r\n"
+              details+="\r\n"
+              }
    //         details+=`\`\`\`json \r\n ${sd2} \r\n \`\`\`\r\n`
             details+="\r\n"
             details+="\r\n"
@@ -85,6 +109,18 @@ module.exports =  function (it,control) {
             details+="\r\n"
             details+="**Object has weak single-factor credentials  (password/client_secret)**"
             details+="\r\n"
+            if (ite.id.toLowerCase().match('resourcegroups')) {
+
+              let g = ite.id.toLowerCase().split('resourcegroups/')[1].split('/')[0]
+              details+="\r\n"
+              details+="\r\n"
+              details+=`SCOPE of the assignment: Resource-Group ${g}:`
+              details+="\r\n"
+              details+="\r\n"
+              
+              details+="\r\n"
+              details+="\r\n"
+              }
             details+="\r\n"
             details+=`\`\` ${ite?.principalId} -> ${ite?.friendlyName} - ${ite?.subName} -${ite?.RoleName} \`\`  `
             details+="\r\n"
@@ -94,11 +130,22 @@ module.exports =  function (it,control) {
             details+="\r\n"
           } else if (ite?.principalType == "ServicePrincipal") {
             details+="\r\n"
-            details+="**Object is healthy dog**"
+            details+="**Object is healthy **"
             details+="\r\n"
             details+=`\`\` ${ite?.principalId} - ${ite?.subName} -${ite?.RoleName} \`\`  `
             details+="\r\n"
             details+="\r\n"
+            if (ite.id.toLowerCase().match('resourcegroups')) {
+
+              let g = ite.id.toLowerCase().split('resourcegroups/')[1].split('/')[0]
+              details+="\r\n"
+              details+="\r\n"
+              details+=`SCOPE of the assignment: Resource-Group ${g}:`
+              details+="\r\n"
+              details+="\r\n"
+              details+="\r\n"
+              details+="\r\n"
+              }
    //         details+=`\`\`\`json \r\n ${sd2} \r\n \`\`\`\r\n`
             details+="\r\n"
             details+="\r\n"
