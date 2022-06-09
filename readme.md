@@ -354,6 +354,7 @@ Param| Description | Default if undefined
 `` --nativescope `` | Currently mandatory parameter | no values
 `` --shuffle `` | Can help with throttling. Shuffles the resource list to reduce the possibility of resource provider throttling threshold being met  | no values 
 `` --roleAssignments `` | Checks controls as per [microsoft.authorization](/providers/microsoft.authorization/controls/) | no values
+`` --includeRG `` | Checks controls with ResourceGroups as per [microsoft.authorization](/providers/microsoft.authorization/controls/) | no values
 `` --checkAad `` | Checks controls as per [microsoft.azureactivedirectory](/providers/microsoft.azureactivedirectory/controls/) | no values
 `` --subInclude `` | Defines subscription scope | no default, requires subscriptionID/s, if not defined will enumerate all subscriptions the user have access to
 `` --namespace `` | text filter which matches full, or part of the resource ID <br> **example** `` /microsoft.storage/storageaccounts`` all storage accounts in the scope| optional parameter
