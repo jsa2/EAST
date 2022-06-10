@@ -543,8 +543,8 @@ Two ways to contribute:
 2. Submit a issue 
    - issue can be a:
    - ⚠️ Problem (issue)
-     - 📝 Feature request
-     - ❔Question
+   - 📝 Feature request
+   - ❔Question
 
 ### Other
 1. By default EAST tries to work with the current depedencies - Introducing new (direct) depedencies is not directly encouraged with EAST. If such vital depedency is introduced, then review licensing of such depedency, and update [readme.md - depedencies](#depedencies) 
