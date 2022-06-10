@@ -16,7 +16,7 @@ var returnObject = new returnObjectInit(item,__filename.split('/').pop())
 const diagnostics = await AzNodeRest(`${item.id}/providers/microsoft.insights/diagnosticSettings?`,'2021-05-01-preview')
 
 try {
-    var logs =JSON.stringify(diagnostics).match('AuditEvent","categoryGroup":null,"enabled":true')[0] 
+    var logs =JSON.stringify(diagnostics).match('"categoryGroup\":\"audit\",\"enabled\":true')[0] 
     returnObject.isHealthy=true
 } catch (error) {
     console.log()
@@ -24,6 +24,7 @@ try {
 
 
 
+//returnObject.metadata = {logs:{diagnostics:JSON.stringify(diagnostics)}}
 
 returnObject.metadata = {logs:logs || {diagnostics:JSON.stringify(diagnostics)} || "no logs"}
 //console.log(stashOrig)
