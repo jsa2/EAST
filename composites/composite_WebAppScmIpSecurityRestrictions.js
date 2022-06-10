@@ -14,6 +14,8 @@ module.exports = async function (src) {
 
         if (JSON.stringify(sd?.metadata?.scmIpSecurityRestrictions).match('Allow all access')) {
             sd.isHealthy = false
+        } else {
+            sd.isHealthy = true
         }
 
       
