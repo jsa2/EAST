@@ -535,7 +535,7 @@ return returnObject
 
 ## Contributing
 
-Two ways to contribute:
+Following methods work for contributing for the time being:
 
 1. Submit a pull request with code / documentation change
 2. Submit a issue 
@@ -547,4 +547,5 @@ Two ways to contribute:
 ### Other
 1. By default EAST tries to work with the current depedencies - Introducing new (direct) depedencies is not directly encouraged with EAST. If such vital depedency is introduced, then review licensing of such depedency, and update [readme.md - depedencies](#depedencies) 
    - There is nothing to prevent you from creating your own fork of EAST with your own depedencies
+
 
