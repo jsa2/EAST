@@ -371,6 +371,19 @@ Param| Description | Default if undefined
 ``--helperTexts``  | Will append text descriptions from [general](providers/microsoft.general/controls/) to manual controls| no values
 ``--reprocess``  | Will update results to existing content.json. Useful for incremental runs| no values
 
+
+**Parameters reference for example report:**
+```shell
+
+node templatehelpers/eastReports.js --asb 
+
+``` 
+
+Param| Description | Default if undefined
+-|-|-
+`` --asb `` | Will get all ASB results available to users | no values
+`` --policy `` |Will get all Policy results available to users | no values
+
 ## (Highly experimental) Running in restricted environments where only browser use is available
 
 Read here [Running in restricted environments](https://github.com/jsa2/EAST/tree/DelegationToken#highly-experimental---bypassing-trusted-device-requirements-for-azure-cli-in-highly-restricted-environments-where-apis-are-available-for-browser-sessions)
