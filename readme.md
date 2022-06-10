@@ -297,7 +297,7 @@ There is Azure Devops control for dumping pipeline logs. You can specify the con
 **Non IPR components**
 - Code logic and functions are under MIT license. since code logic and functions are alredy based on open-source components & vendor API's, it does not make sense to restrict something that is already based on open source
 
-If you use this tool as part of your commercial effort 
+If you use this tool as part of your commercial effort we only require, that you follow the very relaxed terms of [MIT license](LICENSE)
 
 [Read license](https://github.com/jsa2/EAST/blob/public/LICENSE)
 
