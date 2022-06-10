@@ -1,12 +1,14 @@
 
 // Creates a new map, no need to push the results
 
-test(require('../content.json'))
+//test(require('../content.json'))
 
 async function test (src)  { 
 
         
-    let processed = src.filter(s => s?.controlId !== undefined && s?.metadata?.bindings !== undefined).filter(s => s.controlId.toLowerCase().match("listf") ) 
+    let processed = src.filter(s => s?.controlId !== undefined && s?.metadata?.bindings)
+    .filter(s => s.controlId.toLowerCase().match("listf") )
+    .filter(s => !JSON.stringify(s?.metadata?.bindings).match('http')) 
     let composite = src.filter(s => s?.controlId !== undefined).filter(s => s.controlId.toLowerCase().match("networkrest"))
     
     console.log(processed,composite)
@@ -14,7 +16,10 @@ async function test (src)  {
     processed.map( sd => {
        
         let hasNoHTTP =composite.find(s => s.resource == sd.resource && s.metadata)
-        console.log(hasNoHTTP)
+        
+        if (hasNoHTTP) {
+            sd.isHealthy = true
+        }
 
     } )
 
@@ -22,25 +27,27 @@ async function test (src)  {
 
 }
 
-module.exports = async function (src)  { 
+module.exports = async function (src) { 
 
         
-    let processed = src.filter(s => s?.controlId !== undefined).filter(s => s.controlId.toLowerCase().match("list") ) 
-    let composite = src.filter(s => s?.controlId !== undefined).filter(s => s.controlId.toLowerCase().match("networkrest"))
+    let composite = src.filter(s => s?.controlId !== undefined && s?.metadata?.bindings)
+    .filter(s => s.controlId.toLowerCase().match("listf") )
+    .filter(s => !JSON.stringify(s?.metadata?.bindings).match('http')) 
+    let processed = src.filter(s => s?.controlId !== undefined).filter(s => s.controlId.toLowerCase().match("networkrest"))
     
     console.log(processed,composite)
 
     processed.map( sd => {
        
-        composite.forEach(a => {
-           let hasNoHTTPTriggers =  a.metadata.accessPolicy.filter(b => b.id == sd.metadata.principalId.principalId )
-
-        })
-  
+        let hasNoHTTP =composite.find(s => s.resource == sd.resource && s.metadata)
+        
+        if (hasNoHTTP) {
+            sd.isHealthy = true
+        }
+        
     } )
 
+    return;
    
 
 }
-
-
