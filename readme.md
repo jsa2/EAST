@@ -44,6 +44,7 @@ This tool is currently being developed by yours truly @[Nixu](https://www.nixu.c
     - [Azure RBAC baseline authorization](#azure-rbac-baseline-authorization)
   - [End of document](#end-of-document)
   - [Contributing](#contributing)
+    - [Other](#other)
 
 ---
 
@@ -66,17 +67,19 @@ This tool is currently being developed by yours truly @[Nixu](https://www.nixu.c
 ## Depedencies
 To reduce amount of code we use the following depedencies for operation and aesthetics are used (Kudos to the maintainers of these fantastic packages)
   
- package | aesthetics|operation
-  -|-|-
-  [axios](https://www.npmjs.com/package/axios)||✅
-  [yargs](https://www.npmjs.com/package/yargs)||✅
-  [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken) | |✅
-  [chalk](https://www.npmjs.com/package/chalk)| ✅
-   [js-beautify ](https://www.npmjs.com/package/js-beautify) | ✅
+ package | aesthetics|operation|license
+  -|-|-|-
+  [axios](https://www.npmjs.com/package/axios)||✅ | [MIT](https://github.com/axios/axios/blob/v1.x/LICENSE)
+  [yargs](https://www.npmjs.com/package/yargs)||✅ | [MIT](https://github.com/yargs/yargs/blob/main/LICENSE)
+  [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken) | |✅|[MIT](https://github.com/auth0/node-jsonwebtoken/blob/master/LICENSE)
+  [chalk](https://www.npmjs.com/package/chalk)| ✅ | |[MIT](https://github.com/chalk/chalk/blob/main/license)
+   [js-beautify ](https://www.npmjs.com/package/js-beautify) | ✅ | |[MIT](https://github.com/beautify-web/js-beautify/blob/main/LICENSE)
 
 
 **Other depedencies for running the tool:** 
 If you are planning to run this in Azure Cloud Shell you don't need to install Azure CLI:
+
+ - This tool does not include or distribute Microsoft Azure CLI, but rather uses it when it has been installed on the source system (Such as Azure Cloud Shell, which is primary platform for running EAST)
 
 Azure Cloud Shell (BASH)
  or applicable Linux Distro / WSL
@@ -533,4 +536,17 @@ return returnObject
 Please follow the repo if you want to receive updates on progress.
 
 ## Contributing
-Feel free to submit pull request, or issue for possible fixes / updates
+
+Two ways to contribute:
+
+1. Submit a pull request with code / documentation change
+2. Submit a issue 
+   - issue can be a:
+   - ⚠️ Problem (issue)
+     - 📝 Feature request
+     - ❔Question
+
+### Other
+1. By default EAST tries to work with the current depedencies - Introducing new (direct) depedencies is not directly encouraged with EAST. If such vital depedency is introduced, then review licensing of such depedency, and update [readme.md - depedencies](#depedencies) 
+   - There is nothing to prevent you from creating your own fork of EAST with your own depedencies
+
