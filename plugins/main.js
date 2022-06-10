@@ -158,6 +158,7 @@ if (argv.shuffle) {
    
    wa = wa.filter((item) => item.isHealthy !== "notApplicable")
 
+   
    if (argv.composites) {
       console.log(chalk.yellow('checking for composites'))
          try {
