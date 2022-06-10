@@ -2,6 +2,7 @@
 
 ## Mapping 
 
+
 EAST follows Azure Resource Manager API, by mapping resourceId's to path's in EAST control structure. This structure (folder mapping) will provide functions and control files to be run in the pipeline.
 
 - Mapping follows the container (folders) structure based on resolved entities.
