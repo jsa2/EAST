@@ -3,7 +3,7 @@
 
 //test(require('../content.json'))
 
-async function test (src)  { 
+/* async function test (src)  { 
 
         
     let processed = src.filter(s => s?.controlId !== undefined && s?.metadata?.bindings)
@@ -26,7 +26,7 @@ async function test (src)  {
    
 
 }
-
+ */
 module.exports = async function (src) { 
 
         
