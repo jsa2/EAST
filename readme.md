@@ -42,7 +42,6 @@ This tool is currently being developed by yours truly @[Nixu](https://www.nixu.c
   - [Updates and examples](#updates-and-examples)
     - [Auditing Microsoft.Web provider (Functions and web apps)](#auditing-microsoftweb-provider-functions-and-web-apps)
     - [Azure RBAC baseline authorization](#azure-rbac-baseline-authorization)
-  - [End of document](#end-of-document)
   - [Contributing](#contributing)
     - [Other](#other)
 
@@ -532,8 +531,7 @@ return returnObject
 }
 
 ```
-## End of document
-Please follow the repo if you want to receive updates on progress.
+
 
 ## Contributing
 
