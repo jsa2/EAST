@@ -30,10 +30,11 @@ if (errorPropagation) {
     returnObject.isHealthy="review"
 }
 
+
 if (!errorPropagation) {
     returnObject.isHealthy=true
     var results = logsToInspect.map(cat => {
-        return JSON.stringify(diagnostics).match(`"${cat}","categoryGroup":null,"enabled":true`)[0] 
+        return JSON.stringify(diagnostics).match(`"${cat}","categoryGroup":null,"enabled":true`) 
     })
 
     if (JSON.stringify(results).match('enabled":false')) {
