@@ -5,18 +5,13 @@ const { returnObjectInit } = require("../../../plugins/nodeSrc/returnObjectInit"
 //AzNodeRest
 module.exports = async function (item) {
 
- var data = await main()
+ let data = await main()
 
- var returnObject = new returnObjectInit(item,__filename.split('/').pop())
+ let returnObject = new returnObjectInit(item,__filename.split('/').pop())
 returnObject.name = item.name
 returnObject.id = item.name
+returnObject.isHealthy="review"
 
-if (item?.properties) {
-    returnObject.isHealthy=false
-}
-else {
-    returnObject.isHealthy=true
-}
 
 returnObject.metadata = data
 
