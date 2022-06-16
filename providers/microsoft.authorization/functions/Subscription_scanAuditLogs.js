@@ -34,7 +34,13 @@ if ( typeof(argv.scanAuditLogs) == "number" ) {
 // query is reduced to started (Need to investigate if this can cause gaps)
 //var q = `eventTimestamp ge '${d2.toISOString()}'  and eventTimestamp le '${d1.toISOString()}'  and eventChannels eq 'Admin, Operation'`
 var q = `eventTimestamp ge '${d2.toISOString()}'  and eventTimestamp le '${d1.toISOString()}'  and eventChannels eq 'Admin, Operation' and status eq 'Started'`
-const data = await AzNodeRest(`${item.id.split('/providers/')[0]}/providers/Microsoft.Insights/eventtypes/management/values?$filter=${q}`,'2015-04-01')
+let data 
+try {data = await AzNodeRest(`${item.id.split('/providers/')[0]}/providers/Microsoft.Insights/eventtypes/management/values?$filter=${q}`,'2015-04-01')} catch(error) {
+
+    returnObject.metadata = {message:"Unable to perform automatic scan log checks", error}
+    return returnObject
+}
+
 let results = []
 item.isHealthy=true
 data.value.map(d => results.push(d))

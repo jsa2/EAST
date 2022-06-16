@@ -25,6 +25,11 @@ module.exports = async function (item) {
  // var {apiversion} = getProviderApiVersion(item.id)
   let scope =await runner(`az group list --subscription "${subName}"`)
   
+  if (scope?.length == 0) {
+    returnObject.isHealthy="review"
+    returnObject.metadata={assigments:[],error:"empty sub"}
+    return returnObject
+  }
   
   var value = []
   if (argv.includeRG) {

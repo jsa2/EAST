@@ -16,19 +16,32 @@ var s = item.id.split('/')[1] + "/" +item.id.split('/')[2]
 /* var s = "subscriptions/3539c2a2-cd25-48c6-b295-14e59334ef1c/providers/microsoft.insights/diagnosticSettings"
 item = await AzNodeRest(`/${s}`,'2021-05-01-preview')
  */
-var data = await AzNodeRest(`/${s}/providers/Microsoft.Security/securityContacts`,'2020-01-01-preview')
 
-var matchK = JSON.stringify(data)
-console.log(matchK)
-returnObject.isHealthy=false
-if ( matchK.match('"alertNotifications":{"state":"On"') && matchK.match('"notificationsByRole":{"state":"On"')  ){
-    returnObject.isHealthy=true
-} 
+try {
 
-returnObject.metadata = {SecurityContactDetails:JSON.stringify(matchK)}
-//console.log(stashOrig)
-returnObject.name = subName
-return returnObject
+    var data = await AzNodeRest(`/${s}/providers/Microsoft.Security/securityContacts`,'2020-01-01-preview')
+
+    var matchK = JSON.stringify(data)
+    console.log(matchK)
+    returnObject.isHealthy=false
+    if ( matchK.match('"alertNotifications":{"state":"On"') && matchK.match('"notificationsByRole":{"state":"On"')  ){
+        returnObject.isHealthy=true
+    } 
+
+    returnObject.metadata = {SecurityContactDetails:JSON.stringify(matchK)}
+    //console.log(stashOrig)
+    returnObject.name = subName
+    return returnObject
+
+} catch (error) {
+    returnObject.isHealthy="review"
+    returnObject.metadata = {message:"Unable to process this type of sub", error}
+    return returnObject
+}
+   
+
+
+
 
 }
 

@@ -16,7 +16,7 @@ if (item?.id.match('databases')) {
     return returnObject
 }
 
-var {apiversion} = getProviderApiVersion(item.id)
+try {var {apiversion} = getProviderApiVersion(item.id)
 var s = item.id.split('/')[1] + "/" +item.id.split('/')[2]
 var {value} = await AzNodeRest(`/${s}/providers/Microsoft.Security/pricings`,'2018-06-01')
    const settings= value.map(item => {
@@ -34,7 +34,14 @@ var {value} = await AzNodeRest(`/${s}/providers/Microsoft.Security/pricings`,'20
 returnObject.metadata = {settings,subName }
 //console.log(stashOrig)
 
-return returnObject
+return returnObject} catch(error) {
+
+    returnObject.isHealthy="Review"
+    returnObject.metadata = {message:"Unable to process this type of sub", error}
+    return returnObject
+
+}
+
 
 }
 

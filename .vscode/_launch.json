@@ -17,11 +17,11 @@
                 "--batch=10",   
                 //"--tag=svc=aksdev",
                 "--nativescope=true",
-           /*      "--roleAssignments", */
-            //    "--checkAad",
+               /*  "--roleAssignments", */
+                "--checkAad",
                // "--helperTexts",
                 "--subInclude=3539c2a2-cd25-48c6-b295-14e59334ef1c",
-                "--namespace=azmdb,msalredirector1",
+                "--namespace=deletethisvault2",
                 //"--notIncludes=44ee6398gb8abb6d0",
                 //"--policy",
                 "--nx",
@@ -31,8 +31,9 @@
                "--clearTokens",
                //"--azdevops=thx138",
                // "--ignorePreCheck",
-               "--reprocess",
-           "--SkipStorageThrottling"
+              /*  "--reprocess", */
+           "--SkipStorageThrottling",
+           "--includeRG"
             ]
         }
     ]
