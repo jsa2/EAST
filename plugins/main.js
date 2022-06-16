@@ -84,11 +84,12 @@ if (argv.nativescope) {
       console.log(res)
    }
 
-   if (argv.notIncludes) {
-      var res = res.filter((item) => !item.id.match(argv.notIncludes.toLowerCase()))
+  
+     if (argv.notIncludes) {
+      let noList = argv.notIncludes.split(',')
+      res = res.filter( s => !noList.find( l => s.id.toLowerCase().match(l.toLowerCase())) ) 
    }
-     //Push authorizations 
-     //res = []
+     
      if (argv.roleAssignments) {
  /*      JSON.parse(process.env.subs).forEach((sub => {
          console.log(sub)})) */

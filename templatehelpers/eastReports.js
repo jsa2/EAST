@@ -34,22 +34,46 @@ sd.map(item => item.controlId = `EAST_${item.controlId}`)
 var gvId = gvs.map((sub) =>sub.id)
 
 // Uses securityAssessments instead of ASB controls
-if (argv.policy) {
+var asb
 
-  var asb = await resourceGraphGovernanceData2(gvId)
 
-  asb.map((item) => {
-    item.subscriptionName = gvs.find((sub) => sub.id == item.subscriptionId)?.name
-  })
+if (argv.asb || argv.policy) {
+
+  if (argv.policy) {
+
+    asb = await resourceGraphGovernanceData2(gvId)
+  
+    asb.map((item) => {
+      item.subscriptionName = gvs.find((sub) => sub.id == item.subscriptionId)?.name
+    })
+    
+  } 
+  if (argv.asb) {
+    asb = await resourceGraphGovernanceData(gvId)
+    asb.map((item) => {
+      item.subscriptionName = gvs.find((sub) => sub.id == item.subscriptionId)?.name
+    })
+    
+  }
+
+  if (argv.namespace) {
+    //var res = res.filter((item) => item.id.match(argv.namespace.toLowerCase()))
+   // fs.writeFileSync('res.json', JSON.stringify(res))
+    asb = argv.namespace.split(',').map(e => {
+       return asb.filter(s => s.id.toLowerCase().match(e.toLowerCase()))
+    }).flat()
+    console.log(res)
+  }
+  
+  if (argv.notIncludes) {
+    let noList = argv.notIncludes.split(',')
+    asb = asb.filter( s => !noList.find( l => s.id.toLowerCase().match(l.toLowerCase())) ) 
+  }
+
   asb.map(s => sd.push(s))
-} 
-if (argv.asb) {
-  var asb = await resourceGraphGovernanceData(gvId)
-  asb.map((item) => {
-    item.subscriptionName = gvs.find((sub) => sub.id == item.subscriptionId)?.name
-  })
-  asb.map(s => sd.push(s))
+
 }
+
 
 
 //ASB handled
