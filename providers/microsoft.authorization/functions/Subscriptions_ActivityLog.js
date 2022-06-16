@@ -18,7 +18,8 @@ var s = item.id.split('/')[1] + "/" +item.id.split('/')[2]
 /* var s = "subscriptions/3539c2a2-cd25-48c6-b295-14e59334ef1c/providers/microsoft.insights/diagnosticSettings"
 item = await AzNodeRest(`/${s}`,'2021-05-01-preview')
  */
-var {value} = await AzNodeRest(`/${s}/providers/microsoft.insights/diagnosticSettings`,'2021-05-01-preview')
+
+try {var {value} = await AzNodeRest(`/${s}/providers/microsoft.insights/diagnosticSettings`,'2021-05-01-preview')
 
 
 var AdministrativeLogs = value.find((m) => m.properties.logs.find(settings => settings.category =="Administrative" && settings.enabled == true )) || "Not enabled"
@@ -36,6 +37,13 @@ returnObject.metadata = {subName,AdministrativeLogs:JSON.stringify(Administrativ
 //console.log(stashOrig)
 
 return returnObject
+} catch(error) {
+
+    returnObject.isHealthy="review"
+    returnObject.metadata = {message:"Unable to process this type of sub", error}
+    return returnObject
+}
+
 
 }
 

@@ -12,9 +12,9 @@ var token = await getAADIamToken()
 
 
 var {oid} = decode(token)
-
+var data 
 if (   process.env.checkMFA == 'true') {
-    var data = await getBasicAuthStatus(oid)
+    data = await getBasicAuthStatus(oid)
 }
 
 
@@ -22,7 +22,7 @@ var returnObject = new returnObjectInit(item,__filename.split('/').pop())
 returnObject.name = item.name
 returnObject.id = item.name
 
-if (item?.properties) {
+if (data?.appliedPol.length == 0) {
     returnObject.isHealthy=false
 }
 else {

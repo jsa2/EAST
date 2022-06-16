@@ -62,7 +62,7 @@ return returnObject
 } catch (error) {
 
         returnObject.isHealthy="not applicable"
-        returnObject.metadata={error: JSON.stringify(error)}
+        returnObject.metadata={error: JSON.stringify(error),results:[]}
         return returnObject
     
 }

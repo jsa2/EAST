@@ -10,8 +10,10 @@ module.exports = async function (item) {
 
 var returnObject = new returnObjectInit(item,__filename.split('/').pop())
 returnObject.isHealthy=true
+try {
 
-item.id = `/subscriptions/${item.name}/providers/microsoft.authorization`
+
+  item.id = `/subscriptions/${item.name}/providers/microsoft.authorization`
 
 let classicAdmins = await AzNodeRest(`${item.id}/classicadministrators`,'2015-06-01')
 
@@ -23,6 +25,13 @@ returnObject.metadata = {classicAdmins:classicAdmins?.value}
 //console.log(stashOrig)
 
 return returnObject
+
+
+} catch (error) {
+  returnObject.isHealthy="review"
+        returnObject.metadata={error: JSON.stringify(error)}
+        return returnObject
+}
 
 }
 

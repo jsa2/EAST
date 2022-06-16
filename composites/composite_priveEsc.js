@@ -67,8 +67,8 @@ module.exports = async function (src){
     let prm = []
     let item=  new returnObjectInit({id:"general",name:"composite_Privilege_Escalation"},__filename.split('/').pop())
     item.isHealthy= true
-    let apps = src.filter(s => s.controlId == "Subscriptions_roleAssignmentsRGAdvanced")
-    .map(s => s.metadata.assigments.filter(s => s.principalType == 'Application'))
+    let apps = src.filter(s => s?.controlId == "Subscriptions_roleAssignmentsRGAdvanced" && s?.metadata?.assigments)
+    .map(s => s?.metadata?.assigments.filter(s => s.principalType == 'Application'))
 
     if (!apps?.length) {
         return;
@@ -92,7 +92,7 @@ module.exports = async function (src){
 
     }
 
-    let directs = src.filter(s => s.controlId == "Subscriptions_roleAssignmentsRGAdvanced")
+    let directs = src.filter(s => s?.controlId == "Subscriptions_roleAssignmentsRGAdvanced" && s?.metadata?.assigments)
     .map(s => s.metadata.assigments.filter(s => s.principalType == 'User')).flat()
 
     let owners = await (await Promise.all(prm)).filter(s => s?.owner !== undefined)
