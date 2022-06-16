@@ -60,7 +60,7 @@ This tool is currently being developed by yours truly @[Nixu](https://www.nixu.c
 - As the name implies, we use it as tool to evaluate environments. It is not meant to be run as unmonitored for the time being, and should not be run in any internet exposed service that accepts incoming connections.
 - Documentation could be described as incomplete for the time being
 - EAST is mostly focused on PaaS resource, as most of our Azure assessments focus on this resource type
-- ⚠️ No input sanition is performed on launch params, as it is always assumed, that the input of these parameters are controlled. That being said, the tool uses extensively `exec()` - While I have not reviewed all paths, I believe that achieving shellcode execution is trivial. This tool does not assume hostile input, thus the recommendation is that you don't paste launch arguments without reviewing them first into the cmd-line.
+- ⚠️ No input sanition is performed on launch params, as it is always assumed, that the input of these parameters are controlled. That being said, the tool uses extensively `exec()` - While I have not reviewed all paths, I believe that achieving shellcode execution is trivial. This tool does not assume hostile input, thus the recommendation is that you don't paste launch arguments into command line without reviewing them first.
 
 # Tool operation 
 ## Depedencies
