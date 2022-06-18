@@ -4,13 +4,16 @@
   - [Mapping](#mapping)
     - [mapping logic](#mapping-logic)
     - [.apiVersion files](#apiversion-files)
+      - [Debugging API version](#debugging-api-version)
     - [.skip files](#skip-files)
     - [Provider folder](#provider-folder)
   - [Controls and control functions](#controls-and-control-functions)
     - [Control description files](#control-description-files)
     - [Control Function files](#control-function-files)
     - [Flow order](#flow-order)
-  - [To be continued...](#to-be-continued)
+  - [Running in VScode](#running-in-vscode)
+  - [Tips](#tips)
+- [To be continued.](#to-be-continued)
 
 
 ## Mapping 
@@ -40,6 +43,8 @@ order | id | map | explanation
 ###  .apiVersion files
 Each Azure Resource Manager (ARM) provider folder has in it's root folder (or subprovider root) a file that specifies the API version to be used with ARM. There is no default API version, so when you create new version you need to catch the inevitable error (if you did not guess, or lookup the api version somewhere beforehand)
 
+
+#### Debugging API version
 **✅ Tip** - to debug failing control functions set breakpoint in VSCode to [``pluginRunner.js``](plugins/pluginRunner.js) (row 52)
 ```js 
 catch (error) {
@@ -125,8 +130,9 @@ return returnObject
 
 
 ### Flow order
-0. Resources to be inspected are gathered as per defined in arguments [see parameters in readme.md](readme.md)
-1. [``` Main.js ```  ](plugins/main.js)
+1. Resources to be inspected are gathered as per defined in arguments 
+  [parameters-reference](/readme.md#parameters-reference)
+2. [``` Main.js ```  ](plugins/main.js)
 batch is created at `` batchThrottled`` 
 
 batch object compromises of:
@@ -142,7 +148,54 @@ batch object compromises of:
 4. then [``pluginRunner.js`` ](plugins/pluginRunner.js)  calls the [`` schemaBuilder.js`` ](plugins/nodeSrc/schemaBuilder.js) constructor to excecute all .js files for the resourceId mapped to provider
 
 5. [``pluginRunner.js`` ](plugins/pluginRunner.js) returns the result to [`` batch.js ``](plugins/nodeSrc/batch.js) which returns the whole batch to [``` Main.js ```  ](plugins/main.js)
+6. content.json is created including all control results (this file and many other are ignored from ``.git`` as per defined in [``.gitignore``](.gitignore)  )
 
-## To be continued...
+## Running in VScode
+1. Rename [``_launch.js``](.vscode/_launch.json) to ``launch.js``
+2. Define arguments under args 
+- Description for arguments is available here [parameters-reference](/readme.md#parameters-reference)
+```json
+[
+"--batch=10",   
+//"--tag=svc=aksdev",
+"--nativescope=true",
+ "--roleAssignments",
+ "--checkAad",
+// "--helperTexts",
+// "--subInclude=3539c2a2-cd25-48c6-b295-14e59334ef1c",
+//"--namespace=sites/dns",
+//"--notIncludes=44ee6398gb8abb6d0",
+//"--policy",
+//"--nx",
+//"--asb",
+"--scanAuditLogs",
+"--composites",
+//"--clearTokens",
+//"--azdevops=thx138",
+// "--ignorePreCheck",
+/*  "--reprocess", */
+//"--SkipStorageThrottling",
+//"--includeRG"
+            ]
+```
+
+## Tips 
+1. examples for helper to init new controls
+
+lookup examples in [``initControl.sh``](sh/initControl.sh)
+
+the run following to create new control for ``Azure Key Vault``
+- after this run main.js. If you dont know the correct API version, you can look it up based on [debugging api version](#debugging-api-version)
+
+```sh
+name="KeyVault_Firewall"
+provider="Microsoft.KeyVault"
+node controlTemplate.js --name $name --provider $provider
+```
+
+# To be continued.
+
+
+
 
 
