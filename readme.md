@@ -37,8 +37,6 @@ This tool is currently being developed by yours truly @[Nixu](https://www.nixu.c
   - [Parameters reference](#parameters-reference)
   - [(Highly experimental) Running in restricted environments where only browser use is available](#highly-experimental-running-in-restricted-environments-where-only-browser-use-is-available)
   - [Developing controls](#developing-controls)
-    - [Control files](#control-files)
-    - [Workflow for native Functions](#workflow-for-native-functions)
   - [Updates and examples](#updates-and-examples)
     - [Auditing Microsoft.Web provider (Functions and web apps)](#auditing-microsoftweb-provider-functions-and-web-apps)
     - [Azure RBAC baseline authorization](#azure-rbac-baseline-authorization)
@@ -389,80 +387,8 @@ Param| Description | Default if undefined
 Read here [Running in restricted environments](https://github.com/jsa2/EAST/tree/DelegationToken#highly-experimental---bypassing-trusted-device-requirements-for-azure-cli-in-highly-restricted-environments-where-apis-are-available-for-browser-sessions)
 
 ## Developing controls 
-Developer guide is in separate file 
+Developer guide including control flow description is here [``dev-guide.md``](dev-guide.md)
 
-### Control files
-Control files are JSON definitions that are supplemented to the automation running the control.
-
-![image](https://user-images.githubusercontent.com/58001986/161532221-f9024b2e-bfa7-4c11-ba7c-3819fed8bd8a.png)
-
-- Control files are authored as .MD files, and then converted to JSON with, so they are machine readable 
-
-```
-        |--providers
-            ... 
-            <individual control files>
-```
-  
-**Conversion to machine readable**
-```js 
-   if (file.match('.md') ) {
-       console.log(`converted file ${file}`)
-       createJSONObj(file)       
-```
-
-**Control file**
-```json
-{
-  "ControlId": "managedIdentity",
-  "Category": "Authentication strength, Attack surface reduction",
-  "Description": "Ensure that function calls downstream resources with managed identity"
-}
-```
-
-### Workflow for native Functions
-Control files are supplied with corresponding function. Below is basic example for the execution structure.
-
-- [providers](../east/providers/)  'Microsoft.Sql'
-  - [controls](../east/providers/Microsoft.Sql/controls/) 
-  - [functions](../east/providers/Microsoft.Sql/functions/) 
-
-
-```
-|-- plugins
-    |--main.js <This one executes the main program and processes the arguments>
-        |--pluginRunner.js -> schemaBuilder.js 
-        | <Individual functions that match controlFile Name> under providers folder:
-          |--function (example below) that is matched under schemaBuilder
-```
-
-```javascript
-module.exports = async function (item) {
-
-var returnObject = new returnObjectInit(item,__filename.split('/').pop())
-
-if (item?.id.match('databases')) {
-    returnObject.metadata = item?.properties
-    returnObject.isHealthy="notApplicable"
-    return returnObject
-}
-
-var {apiversion} = getProviderApiVersion(item.id)
-
-// checks SQL Firewall settings
-
-item = await AzNodeRest(`${item.id}/firewallRules/`,apiversion)
-
-var is = item?.value.filter((rules) => rules.name == "AllowAllWindowsAzureIps")
-
-if ( is.length > 0){
-    returnObject.isHealthy=false
-} 
-
-returnObject.metadata = {item}
-return returnObject  
-
-```
         
 ## Updates and examples
 ### Auditing Microsoft.Web provider (Functions and web apps)
