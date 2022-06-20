@@ -168,3 +168,9 @@ node manualControl.js --name $name --provider $provider
 name="cdn_securityHeaders"
 provider="microsoft.cdn"
 node diagnosticSettings.js --name $name --provider $provider
+
+
+## Init SubProvider
+name="pip_conf"
+provider="microsoft.network/publicipaddresses"
+node controlTemplateSubProvider.js --name $name --provider $provider
