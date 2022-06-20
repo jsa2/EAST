@@ -16,7 +16,7 @@ module.exports = async function (item) {
     }
     else {
         returnObject.isHealthy = "review"
-        returnObject.metadata = { peering:item?.properties?.virtualNetworkPeerings }
+        returnObject.metadata = { peering:JSON.stringify(item?.properties?.virtualNetworkPeerings) }
     }
     
     //console.log(stashOrig)
