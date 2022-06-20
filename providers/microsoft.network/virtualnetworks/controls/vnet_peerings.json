@@ -1,0 +1,5 @@
+{
+"ControlId": "vnet_peerings",
+"Category": "Network",
+"Description": "Review virtual network peerings"
+}
