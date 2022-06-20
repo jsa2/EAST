@@ -12,6 +12,8 @@
     - [Control Function files](#control-function-files)
     - [Flow order](#flow-order)
   - [Running in VScode](#running-in-vscode)
+  - [Error handling flow](#error-handling-flow)
+    - [Finding errors in content.json](#finding-errors-in-contentjson)
   - [Tips](#tips)
 - [To be continued.](#to-be-continued)
 
@@ -41,8 +43,12 @@ order | id | map | explanation
 
 
 ###  .apiVersion files
-Each Azure Resource Manager (ARM) provider folder has in it's root folder (or subprovider root) a file that specifies the API version to be used with ARM. There is no default API version, so when you create new version you need to catch the inevitable error (if you did not guess, or lookup the api version somewhere beforehand)
+Each Azure Resource Manager (ARM) provider folder has in it's root folder (or subprovider root) a file that specifies the API version to be used with ARM. 
 
+📝 - There is no default API version, so when you create new version you need to catch the inevitable error (if you did not guess, or lookup the api version somewhere beforehand)
+
+
+![image](https://user-images.githubusercontent.com/58001986/174536706-47eb02cd-9c83-4ddc-802e-50924f018430.png)
 
 #### Debugging API version
 **✅ Tip** - to debug failing control functions set breakpoint in VSCode to [``pluginRunner.js``](plugins/pluginRunner.js) (row 52)
@@ -54,13 +60,20 @@ catch (error) {
 
 ![image](https://user-images.githubusercontent.com/58001986/172815865-208c7b21-d558-4999-9e01-6655224abbf4.png)
 
-**Select correct resource provider from the**
+**Select correct resource provider based on error response**
 ``
-"No registered resource provider found for location 'westeurope' and API version '2099-06-01' for type 'storageAccounts'. The supported api-versions are '2021-09-01, 2021-08-01, 2021-06-01, 2021-05-01, 2021-04-01, 2021-02-01, 2021-01-01, 2020-08-01-preview, 2019-06-01, 2019-04-01, 2018-11-01, 2018-07-01, 2018-03-01-preview, 2018-02-01, 2017-10-01, 2017-06-01, 2016-12-01, 2016-05-01, 2016-01-01, 2015-06-15, 2015-05-01-preview'. The supported locations are ...'."
+"No registered resource provider found for location 'westeurope' and API version '2099-06-01' for type 'storageAccounts'. The supported api-versions are '2021-09-01, ...'. The supported locations are ...'."
 ``
 
 ### .skip files
 
+``.skip`` files as described in [flow order](#flow-order) can be used to prevent redundant requests to providers not supporting ¹any checks
+
+![image](https://user-images.githubusercontent.com/58001986/174537134-bb47bf4e-da60-4c07-a88c-290dbff5d5b9.png)
+
+
+
+¹ Not supporting = no controls have been created for the particular provider or sub-provider
 
 
 ### Provider folder
@@ -178,6 +191,30 @@ batch object compromises of:
 //"--includeRG"
             ]
 ```
+
+## Error handling flow
+
+Excluding ``main.js`` error handling flow is as follows:
+
+order | explanation
+-|-
+0| **First error stage** - debug failing control functions set breakpoint in VSCode to [``pluginRunner.js``](plugins/pluginRunner.js) (row 52) <br> ⚠️ This somewhat uncontrolled failure, as it will stop the rest of the batch for the particular resourceId. You should move these occurences to be handled in the particular function
+1 | **Second error stage** - this is controlled handling of the error, as it will continue with the requests for the particular resourceId. <br> See example here for handling error like this [``VM_ManagedIdentity.js``](providers/microsoft.compute/functions/VM_ManagedIdentity.js)
+
+### Finding errors in content.json
+
+Look for string 'provider not supported' with the following error pattern:
+
+```json
+{
+  "name": "vm-approx",
+  "id": "/subscriptions/3539c2a2-cd25-48c6-b295-14e59334ef1c/resourcegroups/rg-appproxy/providers/microsoft.compute/virtualmachines/vm-approx",
+  "fileName": "not applicable, provider not supported",
+  "isHealthy": "not applicable, provider not supported",
+  "error": "{\"error\":\"Not Found\",\"request\":\"/Microsoft.ManagedIdentity/userAssignedIdentities/azurekeyvaultsecretsprovider-aksf-eu3234\",\"url\":\"https://management.azure.com/subscriptions/3539c2a2-cd25-48c6-b295-14e59334ef1c/resourceGroups/MC_RG-aks-aksf-eu3234_aksf-eu3234_swedencentral/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azurekeyvaultsecretsprovider-aksf-eu3234?api-version=2018-11-30\",\"errorBody\":{\"error\":{\"code\":\"ResourceGroupNotFound\",\"message\":\"Resource group 'MC_RG-aks-aksf-eu3234_aksf-eu3234_swedencentral' could not be found.\"}}}"
+}
+```
+
 
 ## Tips 
 1. examples for helper to init new controls

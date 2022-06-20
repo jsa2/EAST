@@ -28,15 +28,23 @@ module.exports = async function (item) {
     let userAssigned
     var rls = []
 
-    if (item?.identity?.userAssignedIdentities) {
-        userAssigned = Object.keys(item?.identity?.userAssignedIdentities)[0]
-        let sd = await AzNodeRest(userAssigned,'2018-11-30')
-        item.identity.principalId = sd?.properties?.principalId
+    var g
+    // Handle situation where user assigned identity is removed or not found in graph
+    try {
+        if (item?.identity?.userAssignedIdentities) {
+            userAssigned = Object.keys(item?.identity?.userAssignedIdentities)[0]
+            let sd = await AzNodeRest(userAssigned,'2018-11-30')
+            item.identity.principalId = sd?.properties?.principalId
+            g =await graph(graphToken,`servicePrincipals/${item?.identity.principalId}/appRoleAssignments`)
+    
+        }
+       
+    } catch(error) {
+        returnObject.isHealthy = "not applicable",
+        returnObject.metadata={error}
+        return returnObject
     }
    
-
-    var g =await graph(graphToken,`servicePrincipals/${item?.identity.principalId}/appRoleAssignments`)
-    
     if (g.length > 0) {
         for await (graphRole of g) {
            
