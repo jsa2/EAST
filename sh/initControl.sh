@@ -174,3 +174,7 @@ node diagnosticSettings.js --name $name --provider $provider
 name="pip_conf"
 provider="microsoft.network/publicipaddresses"
 node controlTemplateSubProvider.js --name $name --provider $provider
+
+name="vnet_peerings"
+provider="microsoft.network/virtualnetworks"
+node controlTemplateSubProvider.js --name $name --provider $provider
