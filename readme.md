@@ -33,7 +33,6 @@ This tool is currently being developed by yours truly @[Nixu](https://www.nixu.c
   - [Principles](#principles)
     - [AZCLI USE](#azcli-use)
     - [Speedup](#speedup)
-    - [Build session from Azure Cloud Shell (BASH)](#build-session-from-azure-cloud-shell-bash)
   - [Parameters reference](#parameters-reference)
   - [(Highly experimental) Running in restricted environments where only browser use is available](#highly-experimental-running-in-restricted-environments-where-only-browser-use-is-available)
   - [Developing controls](#developing-controls)
@@ -320,25 +319,6 @@ View more [details](speedup.md)
 
 ✅ Compared to running requests one-by-one, the speedup can be up to 10x, when Node executes the batch of requests instead of single request at time
 
-### Build session from Azure Cloud Shell (BASH)
-
-1. Session from GitHub actions and Azure cloud shell is used in our tooling seamlessly
-   
-   ✅ This reduces the need of install tooling on the desktop, especially as Azure Cloud Shell has GIT and NodeJS runtime preinstalled. (Altough never node version is required, than what cloud shell provides OOTB)
-  
-    ✅ ``Node``, ``Git`` and ``Code``  is available from Azure Cloud Shell without installing of depedencies 
-
-
-**Node snippet (example, not full code)**
-
-Node uses ``runner()`` , essentially an promisified ``exec()`` to get access tokens from AZ CLI and places it under session context 
-
-```js
-var token = await require('../pluginRunner').runner('az account get-access-token --resource=https://management.azure.com --query accessToken --output json')
-        fs.writeFileSync(path.join('plugins','sessionToken.json'),JSON.stringify(token))
-        return token || error
-```
-
 ## Parameters reference
 
 
@@ -379,8 +359,9 @@ node templatehelpers/eastReports.js --asb
 
 Param| Description | Default if undefined
 -|-|-
-`` --asb `` | Will get all ASB results available to users | no values
-`` --policy `` |Will get all Policy results available to users | no values
+`` --asb `` | gets all ASB results available to users | no values
+`` --policy `` | gets all Policy results available to users | no values
+``  --doc`` | prints pandoc string for export to console | no values
 
 ## (Highly experimental) Running in restricted environments where only browser use is available
 
