@@ -16,7 +16,7 @@ node controlTemplate.js --name $name --provider $provider
 
 
 name="KeyVault_AdvancedCheck"
-provider="Microsoft.KeyVault"
+provider="microsoft.keyvault"
 node controlTemplate.js --name $name --provider $provider
 
 name="sf_ClusterProtectionLevel"
