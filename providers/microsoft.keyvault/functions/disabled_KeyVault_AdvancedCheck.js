@@ -14,7 +14,7 @@ module.exports = async function (item) {
         //third argument "requireAll" means that all of the categories need to be enabled, default is that single category is required
         let diag = await diagReview(item, ['audit', 'allLogs'])
         returnObject.metadata = {
-            diagnostics:JSON.stringify(diag)
+            diag
         }
         returnObject.isHealthy=diag.isHealthy
         return returnObject

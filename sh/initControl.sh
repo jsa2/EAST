@@ -15,8 +15,8 @@ provider="microsoft.databricks"
 node controlTemplate.js --name $name --provider $provider
 
 
-name="KeyVault_Firewall"
-provider="Microsoft.KeyVault"
+name="KeyVault_AdvancedCheck"
+provider="microsoft.keyvault"
 node controlTemplate.js --name $name --provider $provider
 
 name="sf_ClusterProtectionLevel"
