@@ -26,7 +26,7 @@ module.exports = async function (item) {
                 Authorization: `Bearer ${token}`
             },
             data:{
-                "query": "AzureDiagnostics \n| distinct OperationName, CallerIPAddress, identity_claim_appid_g, identity_claim_unique_name_s, SourceSystem, httpStatusCode_d  | take 1000",
+                "query": "AzureDiagnostics \n| distinct OperationName, CallerIPAddress, identity_claim_appid_g, httpStatusCode_d  \n | take 1000",
             }
         }
 
@@ -37,7 +37,7 @@ module.exports = async function (item) {
         return returnObject
     } catch (error) {
 
-        returnObject.metadata = "unable to get diagnostic results"
+        returnObject.metadata = {errors:"unable to get diagnostic results", error}
         returnObject.isHealthy="Manual"
         return returnObject
 
