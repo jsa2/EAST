@@ -20,8 +20,8 @@
                /*  "--roleAssignments", */
                // "--checkAad",
                // "--helperTexts",
-               // "--subInclude=3539c2a2-cd25-48c6-b295-14e59334ef1c",
-                "--namespace=sites/dns",
+            //    "--subInclude=6193053b-408b-44d0-b20f-4e29b9b67394",
+                "--namespace=microsoft.network",
                 //"--notIncludes=44ee6398gb8abb6d0",
                 //"--policy",
                 "--nx",

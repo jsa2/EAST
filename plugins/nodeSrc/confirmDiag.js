@@ -9,7 +9,7 @@ const { AzNodeRest } = require("./east");
     let results = categories.map(key => {
         let subR = {
             key,
-            isEnabled:diagnostics?.value.find(v => v?.properties?.logs.find(log => log?.categoryGroup == key && log?.enabled == true)) || "failCheck"
+            isEnabled:diagnostics?.value.find(v => v?.properties?.logs.find(log => (log?.category == key || log.categoryGroup == key) && log?.enabled == true)) || "failCheck"
         }
 
         if (subR.isEnabled.toString().length > 10 && isOK ==false ) {

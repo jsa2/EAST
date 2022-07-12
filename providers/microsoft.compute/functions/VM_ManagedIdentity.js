@@ -45,7 +45,7 @@ module.exports = async function (item) {
         return returnObject
     }
    
-    if (g.length > 0) {
+    if (g?.length > 0) {
         for await (graphRole of g) {
            
             

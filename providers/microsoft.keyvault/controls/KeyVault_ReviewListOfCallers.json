@@ -1,0 +1,5 @@
+{
+"ControlId": "KeyVault_AdvancedCheck",
+"Category": "Access",
+"Description": "Review list of distinct consumers of the Key Vault. This function produces results when the Key Vault has export settings enabled for Log Analytics workspace"
+}

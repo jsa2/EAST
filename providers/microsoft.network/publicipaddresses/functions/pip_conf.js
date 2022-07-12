@@ -45,13 +45,15 @@ if (subnetNSG) {
 
 
 
+
+
+}
+
 returnObject.isHealthy = true
 returnObject.metadata = {identifier,publicIp:item?.properties?.ipAddress, nicNsgResults:nicNSGapplied || "no NSG results", subnetNSGResults: subNSGapplied || 'no NSG results'}
 //console.log(stashOrig)
 
 return returnObject
-
-}
 
 }
 
