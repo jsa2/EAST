@@ -340,7 +340,7 @@ var sb = b.items[0][0].group.toLowerCase()
 
 
         status.forEach((st) => {
-          var previous 
+         // var previous 
           //console.log(control.group)
          
           
@@ -348,6 +348,10 @@ var sb = b.items[0][0].group.toLowerCase()
             var link = (control.group)
           }
           
+          
+
+          
+
           details+="\r\n"
           details+="\r\n"
           var lnk=`healthy_${st.group}_${control.group}`.toLowerCase()
@@ -372,28 +376,37 @@ var sb = b.items[0][0].group.toLowerCase()
           details+="\r\n"
           details+="\r\n"
           //
+
+         /* This is only for inline debugging
+          if (control.group.match('LogicApps_Connections') && st.group == "review") {
+            console.log()
+          } */
        
           if (st.group == 'false') {
             rows += `❌[${st.items.length}](#${lnk})`
           }
+
           if (st.group == "true") {
             rows += `|✅[${st.items.length}](#${lnk})`
           }
-          if (st.group == "manual" || st.group == "review") {
-            if (previous == "false") {
-              rows += `||${state}[${st.items.length}](#${lnk})`
-            } else {
-              rows += `|${state}[${st.items.length}](#${lnk})`
-            }
-        
-          }
-           previous = st.group
 
-          if (st.group == "review") {
-            rows += `||🔍[${st.items.length}](#${lnk})`
+          if (st.group == "manual" || st.group == "review") {
+            if (previous == 'true' && previousControl == control.group) {
+              rows += `|${state}[${st.items.length}](#${lnk})`
+            } else {
+              rows += `||${state}[${st.items.length}](#${lnk})`
+            }
+              
           }
+          previousControl = control.group
+          previous = st.group
+          
+
+        /*   if (st.group == "review") {
+            rows += `||🔍[${st.items.length}](#${lnk})`
+          } */
   
-  
+          
           if (st.items[0].controlId.match('ASB_')) {
             st.items.forEach(it => {
               
