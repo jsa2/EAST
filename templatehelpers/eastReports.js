@@ -377,9 +377,10 @@ var sb = b.items[0][0].group.toLowerCase()
           details+="\r\n"
           //
 
+         /* This is only for inline debugging
           if (control.group.match('LogicApps_Connections') && st.group == "review") {
             console.log()
-          }
+          } */
        
           if (st.group == 'false') {
             rows += `❌[${st.items.length}](#${lnk})`
