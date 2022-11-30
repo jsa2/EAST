@@ -13,7 +13,7 @@ const { runner } = require("../../../plugins/pluginRunner")
 
 //AzNodeRest
 module.exports = async function (item) {
-var returnObject = new returnObjectInit(item,__filename.split('/').pop())
+let returnObject = new returnObjectInit(item,__filename.split('/').pop())
 
 
 //var tkn = await runner('az account get-access-token --resource=6dae42f8-4368-4678-94ff-3960e28e3630 --query accessToken --output json')

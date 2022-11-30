@@ -1,0 +1,5 @@
+{
+"ControlId": "databricks_auditClustersForNoIsolation",
+"Category": "Data",
+"Description": "Audits Databricks clusters for potential privilege elevation, based on [advisory](https://www.databricks.com/blog/2022/10/10/admin-isolation-shared-clusters.html) <br> - This control requires typically permissions beyond reader"
+}

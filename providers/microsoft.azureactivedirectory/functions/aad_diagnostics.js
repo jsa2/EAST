@@ -15,7 +15,7 @@ let logsToInspect = [
     'NonInteractiveUserSignInLogs'
 ]
 
-var returnObject = new returnObjectInit(item,__filename.split('/').pop())
+let returnObject = new returnObjectInit(item,__filename.split('/').pop())
 returnObject.name = item.name
 returnObject.id = item.name
 item.id = `/${item.name}/providers/Microsoft.Authorization`

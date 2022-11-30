@@ -10,7 +10,7 @@ provider="microsoft.apimanagement"
 node diagnosticSettings.js --name $name --provider $provider
 
 
-name="databricks_skuCheck"
+name="databricks_auditClustersForNoIsolation"
 provider="microsoft.databricks"
 node controlTemplate.js --name $name --provider $provider
 
@@ -177,4 +177,10 @@ node controlTemplateSubProvider.js --name $name --provider $provider
 
 name="vnet_peerings"
 provider="microsoft.network/virtualnetworks"
+node controlTemplateSubProvider.js --name $name --provider $provider
+
+
+## Init SubProvider
+name="relay_new"
+provider="microsoft.relay/namespaces"
 node controlTemplateSubProvider.js --name $name --provider $provider

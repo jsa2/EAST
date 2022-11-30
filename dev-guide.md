@@ -128,7 +128,7 @@ new responseSchema(functionResult, controlDefinition)
 const { returnObjectInit } = require("../../../plugins/nodeSrc/returnObjectInit")
 
 module.exports = async function (item) {
-var returnObject = new returnObjectInit(item,__filename.split('/').pop())
+let returnObject = new returnObjectInit(item,__filename.split('/').pop())
 returnObject.isHealthy=true
 if (item?.properties?.networkProfile?.networkPlugin.match('kubenet')) {
     returnObject.isHealthy=false

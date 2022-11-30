@@ -20,6 +20,8 @@ This tool is licensed under [MIT license](https://github.com/jsa2/EAST/blob/publ
 **Table of contents**
 
 - [Extensible Azure Security Tool](#extensible-azure-security-tool)
+- [Collaborators](#collaborators)
+- [Release notes](#release-notes)
 - [Important](#important)
 - [Tool operation](#tool-operation)
   - [Depedencies](#depedencies)
@@ -44,6 +46,28 @@ This tool is licensed under [MIT license](https://github.com/jsa2/EAST/blob/publ
     - [Azure RBAC baseline authorization](#azure-rbac-baseline-authorization)
   - [Contributing](#contributing)
     - [Other](#other)
+
+---
+
+
+# Release notes
+
+- Preview branch introduced
+
+  
+  Changes:
+  - Installation now accounts for use of Azure Cloud Shell's updated version in regards to depedencies (Cloud Shell has now Node.JS v 16 version installed)
+  - Checking of Databricks cluster types as per [advisory](https://www.databricks.com/blog/2022/10/10/admin-isolation-shared-clusters.html) <br>
+    - Audits Databricks clusters for potential privilege elevation - This control requires typically permissions on the databricks cluster"
+  - Content.json is has now key and content based sorting. This enables doing delta checks with ``git diff HEAD^1`` ¹ as content.json has predetermined order of results
+
+    ![image](https://user-images.githubusercontent.com/58001986/197983364-d2fab6fd-03a1-45e4-9817-1c30886166f3.png)
+
+  > ¹ ⚠️ Word of caution, if want to check deltas of content.json, then content.json will need to be "unignored" from [``.gitignore``](.gitignore) exposing results to any upstream you might have configured. 
+   >> Use this feature with caution, and ensure you don't have public upstream set for the branch you are using this feature for
+
+
+- Change of programming patterns to avoid possible race conditions with larger datasets. This is mostly changes of using ``var``  to ``let`` in `` for await`` -style loops
 
 ---
 
@@ -184,6 +208,28 @@ EAST is not focused to provide automated report generation, as it provides mostl
 - While focus is not on the reporting, this repo includes example automation for report creation with pandoc to ease reading of the results in single document format.
 
 
+While this tool does not distribute pandoc, it can be used when creation of the reports, thus the following citation is added: https://github.com/jgm/pandoc/blob/master/CITATION.cff
+  
+```
+cff-version: 1.2.0
+title: Pandoc
+message: "If you use this software, please cite it as below."
+type: software
+url: "https://github.com/jgm/pandoc"
+authors:
+  - given-names: John
+    family-names: MacFarlane
+    email: jgm@berkeley.edu
+    orcid: 'https://orcid.org/0000-0003-2557-9090'
+  - given-names: Albert
+    family-names: Krewinkel
+    email: tarleb+github@moltkeplatz.de
+    orcid: '0000-0002-9455-0796'
+  - given-names: Jesse
+    family-names: Rosenthal
+    email: jrosenthal@jhu.edu
+```
+
 ---
 
 
@@ -199,11 +245,7 @@ This part has guide how to run this either on BASH@linux, or BASH on Azure Cloud
 **Fire and forget prerequisites on cloud shell**
 
 ```bash
-curl -o- https://raw.githubusercontent.com/jsa2/EAST/public/sh/initForuse.sh | bash;
-# Force reload of NVM
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" 
-# This loads nvm
+curl -o- https://raw.githubusercontent.com/jsa2/EAST/preview/sh/initForuse.sh | bash;
 
 ``` 
 
@@ -214,15 +256,7 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 **Prerequisites**
 ```bash
 
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
-
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-
-nvm install 14
-
-nvm use 14
-git clone https://github.com/jsa2/EAST
+git clone https://github.com/jsa2/EAST --branch preview
 cd EAST;
 npm install
 
@@ -256,7 +290,6 @@ cd EAST
 # replace the subid below with your subscription ID!
 subId=6193053b-408b-44d0-b20f-4e29b9b67394
 # 
-nvm use 14
 node ./plugins/main.js --batch=10 --nativescope=true --roleAssignments=true --helperTexts=true --checkAad=true --scanAuditLogs --composites --subInclude=$subId
 
 ```

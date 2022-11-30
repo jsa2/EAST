@@ -10,7 +10,7 @@ const { getAADCAPol } = require("../../../plugins/nodeSrc/aadHelpers")
 
 //AzNodeRest
 module.exports = async function (item) {
-var returnObject = new returnObjectInit(item,__filename.split('/').pop())
+let returnObject = new returnObjectInit(item,__filename.split('/').pop())
 //console.log(stashOrig)
 returnObject.metadata={} 
 returnObject.isHealthy="manual"

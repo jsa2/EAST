@@ -10,7 +10,7 @@ const { runner } = require("../../../plugins/pluginRunner")
 //AzNodeRest
 module.exports = async function (item) {
 
-var returnObject = new returnObjectInit(item,__filename.split('/').pop())
+let returnObject = new returnObjectInit(item,__filename.split('/').pop())
 
 var token = await runner('az account get-access-token --resource=https://database.windows.net/ --query accessToken --output json')
 

@@ -9,7 +9,7 @@ const { returnObjectInit } = require("../../../plugins/nodeSrc/returnObjectInit"
 module.exports = async function (item) {
 
     //https://docs.microsoft.com/en-us/rest/api/sql/2021-02-01-preview/databases/list-by-server
-var returnObject = new returnObjectInit(item,__filename.split('/').pop())
+let returnObject = new returnObjectInit(item,__filename.split('/').pop())
 
 if (item?.id.match('databases')) {
     returnObject.metadata = item?.properties

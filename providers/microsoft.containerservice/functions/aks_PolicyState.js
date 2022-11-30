@@ -10,7 +10,7 @@ const { azNodeRestRef, azNodeRestRefDyn } = require("../../../plugins/nodeSrc/no
 
 //AzNodeRest
 module.exports = async function (item) {
-var returnObject = new returnObjectInit(item,__filename.split('/').pop())
+let returnObject = new returnObjectInit(item,__filename.split('/').pop())
 //console.log(stashOrig)
 let states2 = await runner(`az policy state list --resource ${item.id} --filter "ComplianceState eq 'NonCompliant' or ComplianceState eq 'Compliant' " `)
 /* let states = await runner(`az policy state list --resource ${item.id} --filter "policyAssignmentId eq '/providers/Microsoft.Management/managementGroups/033794f5-7c9d-4e98-923d-7b49114b7ac3/providers/Microsoft.Authorization/policyAssignments/9683ccf416114d6f9761a44' and policyDefinitionId eq '/providers/Microsoft.Authorization/policyDefinitions/233a2a17-77ca-4fb1-9b6b-69223d272a44'"`)

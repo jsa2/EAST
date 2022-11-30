@@ -1,15 +1,15 @@
 
 const fs = require('fs')
 const path = require('path')
-const {argv} = require('yargs')
+const { argv } = require('yargs')
 
 createTempl()
 
 async function createTempl() {
 
     try {
-       
-var emptyFunction = `
+
+        var emptyFunction = `
 
 const { AzNodeRest } = require("../../../../plugins/nodeSrc/east")
 const { returnObjectInit } = require("../../../../plugins/nodeSrc/returnObjectInit")
@@ -36,7 +36,7 @@ return returnObject
 
 
 
-var emptyControl =`{
+        var emptyControl = `{
 "ControlId": "${argv.name}",
 "Category": "EXAMPLE: Authentication strength, Attack surface reduction",
 "Description": "EXAMPLE: Ensure The Service calls downstream resources with managed identity"
@@ -50,27 +50,41 @@ var emptyControl =`{
 
         //console.log(dest)
 
+        //Start with rootFolder, as one might not exist in the first place
+        try {
+
+            var root = dest.split('/')[0] + '/' + dest.split('/')[1]
+            fs.mkdirSync(root)
+            fs.writeFileSync(`${path.join(`${root}`, '.apiVersion.json')}`, `{"apiversion":"2021-04-01-preview"}`)
+        } catch (error) {
+            console.log('folder exists', 'trying to create subfolders if needed')
+        }
+
+
+
         try {
             fs.mkdirSync(dest)
-            fs.writeFileSync(`${path.join(`${dest}`,'.apiVersion.json')}`,`{"apiversion":"2021-04-01-preview"}`)
-           } catch (error) {
-            console.log('folder exists','trying to create subfolders if needed')
-           }
+            fs.writeFileSync(`${path.join(`${dest}`, '.apiVersion.json')}`, `{"apiversion":"2021-04-01-preview"}`)
+        } catch (error) {
+            console.log('folder exists', 'trying to create subfolders if needed')
+        }
 
-           try {
-        
+        try {
+
             fs.mkdirSync(`${path.join(`${dest}/controls`)}`)
             fs.mkdirSync(`${path.join(`${dest}/functions`)}`)
-           } catch (error) {
-            console.log('folder exists','trying to create controls if needed')
-          
-           }
+        } catch (error) {
+            console.log('folder exists', 'trying to create controls if needed')
 
-           try {  fs.writeFileSync(`${path.join(`${dest}/controls`,argv.name)}.json`,emptyControl)
-           fs.writeFileSync(`${path.join(`${dest}/functions`,argv.name)}.js`,emptyFunction)} catch (error) {
-            console.log('folder exists','trying to create controls if needed')
-          
-           }
+        }
+
+        try {
+            fs.writeFileSync(`${path.join(`${dest}/controls`, argv.name)}.json`, emptyControl)
+            fs.writeFileSync(`${path.join(`${dest}/functions`, argv.name)}.js`, emptyFunction)
+        } catch (error) {
+            console.log('folder exists', 'trying to create controls if needed')
+
+        }
 
 
     } catch (error) {

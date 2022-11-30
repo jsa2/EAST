@@ -18,7 +18,7 @@ async function sd (src) {
     let returnable = [] 
     let token = await getLaAPItoken()
 
-    for await (sds of processed) {
+    for await (let sds of processed) {
 
         
         let returnObject =new newObjectCreater(sds)
@@ -36,7 +36,7 @@ async function sd (src) {
                     Authorization: `Bearer ${token}`
                 },
                 data:{
-                    "query": "AzureDiagnostics \n| distinct OperationName, CallerIPAddress, identity_claim_appid_g, httpStatusCode_d  \n | take 1000",
+                    "query": "AzureDiagnostics | distinct OperationName, CallerIPAddress, identity_claim_appid_g, httpStatusCode_d  | sort by CallerIPAddress asc | take 1000",
                 }
             }
     
@@ -98,7 +98,15 @@ module.exports = async function (src) {
                 }
             }
     
-            let {tables} = await AzNodeRest(undefined,undefined,undefined,queryOpts) 
+            let {tables} = await AzNodeRest(undefined,undefined,undefined,queryOpts)
+            
+            tables[0]?.rows.sort((a,b) => {
+                
+               if (JSON.stringify(a) > JSON.stringify(b)  ) {
+                    return -1
+               }
+
+            })
     
             returnObject.metadata={callers:tables[0]?.rows}
             returnObject.isHealthy="review"

@@ -8,7 +8,7 @@ const { runner } = require("../../../plugins/pluginRunner")
 module.exports = async function (item) {
     
 item.id = `/subscriptions/${item.name}/providers/microsoft.authorization`
-var returnObject = new returnObjectInit(item,__filename.split('/').pop())
+let returnObject = new returnObjectInit(item,__filename.split('/').pop())
 
 var subName = JSON.parse(process.env.subs).find(m => m.id == item.name)?.subName
 

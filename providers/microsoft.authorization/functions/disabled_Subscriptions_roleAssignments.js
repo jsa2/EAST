@@ -21,7 +21,7 @@ item.id = `/subscriptions/${item.name}/providers/microsoft.authorization`
 var subName = JSON.parse(process.env.subs).find(m => m.id == item.name)?.subName
 
 
-var returnObject = new returnObjectInit(item,__filename.split('/').pop())
+let returnObject = new returnObjectInit(item,__filename.split('/').pop())
 
 var {apiversion} = getProviderApiVersion(item.id)
 var {value} = await AzNodeRest(`${item.id}/roleAssignments?$filter=atScope()`,apiversion)

@@ -7,7 +7,7 @@ const { returnObjectInit } = require("../../../../plugins/nodeSrc/returnObjectIn
 //AzNodeRest
 module.exports = async function (item) {
     
-var returnObject = new returnObjectInit (item,__filename.split('/').pop())
+let returnObject = new returnObjectInit (item,__filename.split('/').pop())
 
 let WAFEnabled = item.properties.frontendEndpoints.filter(s => s?.properties?.webApplicationFirewallPolicyLink?.id)
 .map(s =>s.properties.webApplicationFirewallPolicyLink ) || "no WAF"

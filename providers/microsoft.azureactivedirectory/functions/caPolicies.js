@@ -9,7 +9,7 @@ module.exports = async function (item) {
 
  var data = await getCaPolicies()
 
- var returnObject = new returnObjectInit(item,__filename.split('/').pop())
+ let returnObject = new returnObjectInit(item,__filename.split('/').pop())
 returnObject.name = item.name
 returnObject.id = item.name
 
