@@ -7,8 +7,8 @@ const { checkDoesItApply } = require("../../../plugins/nodeSrc/microsoftwebhelpe
 module.exports = async function (item) {
 
     var graphToken = await getGraphToken()
-    var returnObject = {}
-    var returnObject = new returnObjectInit(item,__filename.split('/').pop())
+    ;
+    let returnObject = new returnObjectInit(item,__filename.split('/').pop())
 
     var skip = checkDoesItApply(item,returnObject)
     if (skip) {
@@ -50,22 +50,22 @@ module.exports = async function (item) {
     }
 
     
-    for await (sb of subs) {
+    for await (let sb of subs) {
 
             // get existing roleChecks
-            var {roles} = await checkRoles(sb)
+            let {roles} = await checkRoles(sb)
             //if (roles) {require('fs').writeFileSync('roles.json',JSON.stringify(roles))}
             //console.log(r)
             var opt = {
                 url:`https://management.azure.com/subscriptions/${sb.id}/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=assignedTo('${item?.identity.principalId || userAssigned[0].principalId}')`
             }
           //  console.log(opt.url)
-            var {value} = await AzNodeRest(undefined,undefined,undefined,opt)
+            let {value} = await AzNodeRest(undefined,undefined,undefined,opt)
             if (value.length > 0) {
                value.map((role) => {
                 
                 console.log(role.id)
-                var roleMatch = roles.find((match) => match.id == role?.properties.roleDefinitionId)
+                let roleMatch = roles.find((match) => match.id == role?.properties.roleDefinitionId)
                 role.RoleName = roleMatch?.properties?.roleName || 'no match'
                 })
                 

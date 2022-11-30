@@ -5,7 +5,7 @@ const { getAzWebAppConfig } = require("../../../plugins/nodeSrc/webAppConfig")
 module.exports = async function (item) {
 
    
-    var returnObject = new returnObjectInit(item,__filename.split('/').pop())
+    let returnObject = new returnObjectInit(item,__filename.split('/').pop())
 
 
     let configs =  await getAzWebAppConfig(item)

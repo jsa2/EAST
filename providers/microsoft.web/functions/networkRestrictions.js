@@ -4,7 +4,7 @@ const { checkDoesItApply } = require("../../../plugins/nodeSrc/microsoftwebhelpe
 //AzNodeRest
 module.exports = async function (item) {
 
-var returnObject = new returnObjectInit(item,__filename.split('/').pop())
+let returnObject = new returnObjectInit(item,__filename.split('/').pop())
 
 var skip = checkDoesItApply(item,returnObject)
 if (skip) {

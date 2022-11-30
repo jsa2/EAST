@@ -7,8 +7,8 @@ const { checkDoesItApply } = require("../../../plugins/nodeSrc/microsoftwebhelpe
 module.exports = async function (item) {
 
     var graphToken = await getGraphToken()
-    var returnObject = {}
-    var returnObject = new returnObjectInit(item,__filename.split('/').pop())
+    ;
+    let returnObject = new returnObjectInit(item,__filename.split('/').pop())
 
  var subs = JSON.parse(process.env.subs)
 

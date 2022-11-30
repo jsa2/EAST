@@ -16,7 +16,7 @@ async function test (src)  {
     var token = await getGraphToken()
     var throttleCount = 7
     var c = 0
-    for await (app of apps.flat(1)) {
+    for await (let app of apps.flat(1)) {
          console.log(app.principalId)
         c++
         if (c % throttleCount == 0) {
@@ -77,7 +77,7 @@ module.exports = async function (src){
     var token = await getGraphToken()
     var throttleCount = 7
     var c = 0
-    for await (app of apps.flat(1)) {
+    for await (let app of apps.flat(1)) {
          console.log(app.principalId)
         c++
         if (c % throttleCount == 0) {

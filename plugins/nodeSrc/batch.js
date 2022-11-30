@@ -1,18 +1,18 @@
 
-var waitT = require('util').promisify(setTimeout)
+const waitT = require('util').promisify(setTimeout)
 const {argv} = require('yargs')
 
 async function batchThrottled (burstCount, arrayOfObjects) {
 
-var promArra = []
-var returnObject = []
+const promArra = []
+const returnObject = []
 let i = 0
 
-    for await ({runContext} of arrayOfObjects) {
+    for await (let {runContext} of arrayOfObjects) {
         i++
        // console.log(i)
 
-        var {fn, schema, mode, resourceId} = runContext
+        let {fn, schema, mode, resourceId} = runContext
         
         if (i % burstCount == 0) {
             //batch

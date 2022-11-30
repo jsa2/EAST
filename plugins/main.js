@@ -14,6 +14,7 @@ const chalk = require('chalk')
 const { getAADIamToken } = require('./nodeSrc/getToken')
 const { clearEASTTokenCache } = require('./nodeSrc/deletetokens')
 const { reprocess } = require('./nodeSrc/reprocess')
+const { orderAllKeysOnAlphaBet } = require('./nodeSrc/orderValues')
 process.env.checkMFA = true
 
 
@@ -165,7 +166,7 @@ if (argv.shuffle) {
          try {
          
             let composites = fs.readdirSync('./composites').filter(c => !c.toLowerCase().match('disabled'))
-            for await (comp of composites) {
+            for await (let comp of composites) {
       
                let compRes =await require(`../composites/${comp}`)(wa) 
                if (Array.isArray(compRes) && compRes.length > 0) {
@@ -192,6 +193,18 @@ if (argv.shuffle) {
        wa = reprocess(wa)
       // allows rerunning failed scans, overwrites existing JSON
    }
+
+   /* wa.sort((a,b) => {
+
+      if (a?.id.toLowerCase() > b?.id.toLowerCase()) {
+         return -1;
+       } else {
+         return 0
+       }
+      
+   }) */
+
+   orderAllKeysOnAlphaBet(wa)
 
    fs.writeFileSync('content.json', beautify(JSON.stringify(wa),{ indent_size: 2, space_in_empty_paren: true }))
   

@@ -7,7 +7,7 @@ const { returnObjectInit } = require("../../../../plugins/nodeSrc/returnObjectIn
 //AzNodeRest
 module.exports = async function (item) {
 
-var returnObject = new returnObjectInit(item,__filename.split('/').pop())
+let returnObject = new returnObjectInit(item,__filename.split('/').pop())
 
 
 if (item?.properties?.ipConfiguration) {

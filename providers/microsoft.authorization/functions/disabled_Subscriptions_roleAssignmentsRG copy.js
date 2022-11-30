@@ -34,7 +34,7 @@ async function test (item) {
   var subName = JSON.parse(process.env.subs).find(m => m.id == item.name)?.subName
   
   
-  var returnObject = new returnObjectInit(item,__filename.split('/').pop())
+  let returnObject = new returnObjectInit(item,__filename.split('/').pop())
   
   var {apiversion} = getProviderApiVersion(item.id)
   let scope =await runner(`az group list --subscription "${subName}"`)
@@ -178,7 +178,7 @@ item.id = `/subscriptions/${item.name}/providers/microsoft.authorization`
 var subName = JSON.parse(process.env.subs).find(m => m.id == item.name)?.subName
 
 
-var returnObject = new returnObjectInit(item,__filename.split('/').pop())
+let returnObject = new returnObjectInit(item,__filename.split('/').pop())
 
 var {apiversion} = getProviderApiVersion(item.id)
 let scope =await runner(`az group list --subscription "${subName}"`)

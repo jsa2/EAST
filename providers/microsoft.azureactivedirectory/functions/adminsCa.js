@@ -12,7 +12,7 @@ module.exports = async function (item) {
 
 var data = await main()
 
-var returnObject = new returnObjectInit(item,__filename.split('/').pop())
+let returnObject = new returnObjectInit(item,__filename.split('/').pop())
 returnObject.name = item.name
 returnObject.id = item.name
 
@@ -106,6 +106,16 @@ admins.forEach((item) =>  item.value.map((user,index) => {
 
  item.value[index] = rtrn
 }))
+
+admins.sort((a,b) => {
+
+  if (a?.refInfo < b?.refInfo ) {
+    return -1;
+} else {
+    return 0
+}
+
+})
 
 let results = admins.filter(item => item.value.length > 0)
 

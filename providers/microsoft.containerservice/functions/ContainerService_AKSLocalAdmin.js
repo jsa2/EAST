@@ -7,7 +7,7 @@ const { runner } = require("../../../plugins/pluginRunner")
 //AzNodeRest
 module.exports = async function (item) {
 
-var returnObject = new returnObjectInit(item,__filename.split('/').pop())
+let returnObject = new returnObjectInit(item,__filename.split('/').pop())
 
 if (!item?.id.match('managedclusters')) {
     returnObject.metadata = item?.properties

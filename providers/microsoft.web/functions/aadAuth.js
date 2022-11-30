@@ -12,7 +12,7 @@ module.exports = async function (item) {
 
 var graphToken = await getGraphToken()
 
-var returnObject = new returnObjectInit(item,__filename.split('/').pop())
+let returnObject = new returnObjectInit(item,__filename.split('/').pop())
 
 var {apiversion} = getProviderApiVersion(item.id)
 

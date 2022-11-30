@@ -18,7 +18,7 @@ if (   process.env.checkMFA == 'true') {
 }
 
 
-var returnObject = new returnObjectInit(item,__filename.split('/').pop())
+let returnObject = new returnObjectInit(item,__filename.split('/').pop())
 returnObject.name = item.name
 returnObject.id = item.name
 

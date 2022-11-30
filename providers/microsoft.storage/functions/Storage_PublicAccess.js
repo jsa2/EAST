@@ -6,7 +6,7 @@ const {argv} = require('yargs')
 //AzNodeRest
 module.exports = async function (item) {
 
-var returnObject = {}
+;
 
 var {apiversion} = getProviderApiVersion(item.id)
 

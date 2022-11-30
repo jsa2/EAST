@@ -8,8 +8,8 @@ module.exports = async function (item) {
 
   
     var graphToken = await getGraphToken()
-    var returnObject = {}
-    var returnObject = new returnObjectInit(item,__filename.split('/').pop())
+    ;
+    let returnObject = new returnObjectInit(item,__filename.split('/').pop())
 
 
     if (!item?.id.match('/microsoft.compute/virtualmachines') ||item?.id.match('/extensions') ) {

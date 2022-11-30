@@ -30,6 +30,33 @@ async function getToken() {
 
 }
 
+async function getDataBricksToken() {
+
+    try {
+
+        const token = require('../session/adbToken.json')
+        const decoded = decode(token)
+        const now = Date.now().valueOf() / 1000
+        //https://stackoverflow.com/a/55706292 (not using full verification, as the token is not meant to be validated in this tool, but in Azure API)
+        if (typeof decoded.exp !== 'undefined' && decoded.exp < now) {
+            throw new Error(`token expired: ${JSON.stringify(decoded)}`)
+        }
+        if (typeof decoded.nbf !== 'undefined' && decoded.nbf > now) {
+            throw new Error(`token expired: ${JSON.stringify(decoded)}`)
+        }
+
+        return token
+
+    } catch (error) {
+        var token = await require('../pluginRunner').runner('az account get-access-token --resource=2ff814a6-3304-4ab8-85cb-cd0e6f879c1d --query accessToken --output json')
+        fs.writeFileSync(path.join('plugins','/session/adbToken.json'),JSON.stringify(token))
+        return token || error
+
+    }
+
+
+}
+
 
 async function getGraphToken() {
 
@@ -225,4 +252,4 @@ async function getLaAPItoken () {
 
 }
 
-module.exports={getToken,getGraphToken,getAADtoken,getAADIamToken, getGraphTokenReducedScope,getAKStoken,getAzDevopsToken,getLaAPItoken}
+module.exports={getToken,getGraphToken,getAADtoken,getAADIamToken, getGraphTokenReducedScope,getAKStoken,getAzDevopsToken,getLaAPItoken,getDataBricksToken}

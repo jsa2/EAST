@@ -6,7 +6,7 @@ const { checkDoesItApply } = require("../../../plugins/nodeSrc/microsoftwebhelpe
 //AzNodeRest
 module.exports = async function (item) {
 //https://docs.microsoft.com/en-us/rest/api/appservice/web-apps/get-scm-allowed
-var returnObject = new returnObjectInit(item,__filename.split('/').pop())
+let returnObject = new returnObjectInit(item,__filename.split('/').pop())
 
 var {apiversion} = getProviderApiVersion(item.id)
 

@@ -11,7 +11,7 @@ const { graph } = require("../../../plugins/nodeSrc/graph")
 //AzNodeRest
 module.exports = async function (item) {
 
-var returnObject = new returnObjectInit(item,__filename.split('/').pop())
+let returnObject = new returnObjectInit(item,__filename.split('/').pop())
 
 item.id = `/subscriptions/${item.name}/providers/microsoft.authorization`
 

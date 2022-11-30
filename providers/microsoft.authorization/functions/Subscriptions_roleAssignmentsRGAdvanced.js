@@ -17,10 +17,10 @@ module.exports = async function (item) {
   item.id = `/subscriptions/${item.name}/providers/microsoft.authorization`
   
   
-  var subName = JSON.parse(process.env.subs).find(m => m.id == item.name)?.subName
+  let subName = JSON.parse(process.env.subs).find(m => m.id == item.name)?.subName
   //
   
-  var returnObject = new returnObjectInit(item,__filename.split('/').pop())
+  let returnObject = new returnObjectInit(item,__filename.split('/').pop())
   
  // var {apiversion} = getProviderApiVersion(item.id)
   let scope =await runner(`az group list --subscription "${subName}"`)
@@ -34,7 +34,7 @@ module.exports = async function (item) {
   var value = []
   if (argv.includeRG) {
 
-    for await (gr of scope) {
+    for await (let gr of scope) {
       let {value:vals} = await AzNodeRest(`${gr.id}/providers/Microsoft.Authorization/roleAssignments?$filter=atScope()`,"2021-04-01-preview")
       console.log('enum of RG ',gr.id)
       vals.forEach(v => value.push(v))
@@ -147,7 +147,7 @@ if (s.refInfo.roleInfo.id) {
    var uniqUcheckSPn = new Set(checkSPn)
   
    
-  for await (spn of uniqUcheckSPn.values()) {
+  for await (let spn of uniqUcheckSPn.values()) {
     batch.push({id:spn})
   }
   
@@ -167,7 +167,7 @@ if (s.refInfo.roleInfo.id) {
   const mfaBatch = []
   
   if (process.env.checkMFA == "true")  {
-    for await (user of uniqU.values()) {
+    for await (let user of uniqU.values()) {
   
     
       batch.push({id:user})
@@ -242,8 +242,8 @@ async function batchObjectsGroup (res) {
   results.map((item) => delete item.runContext)
   
   // Check for one layer of nesting for users and SPN's - OTOH we could call the same function in loop, but it creates complexity I dont need here 
-  var newRound =results[0].value.filter(s => s["@odata.type"] == "#microsoft.graph.group")
-  if (newRound.length > 0) {
+  var newRound =results[0]?.value.filter(s => s["@odata.type"] == "#microsoft.graph.group")
+  if (newRound?.length > 0) {
     newRound.map(s => {
       s.principalId=s.id
       s["@odata.type"] = "processed"
