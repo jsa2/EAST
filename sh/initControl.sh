@@ -184,3 +184,8 @@ node controlTemplateSubProvider.js --name $name --provider $provider
 name="relay_new"
 provider="microsoft.relay/namespaces"
 node controlTemplateSubProvider.js --name $name --provider $provider
+
+
+name="webApp_"
+provider="microsoft.keyvault"
+node controlTemplate.js --name $name --provider $provider
