@@ -97,6 +97,7 @@ admins.forEach((item) =>  item.value.map((user,index) => {
  }
 
  let rtrn = {
+  oid:user?.id,
    role:item?.refInfo,
    object: `${user.userPrincipalName || user.displayName} - ${user['@odata.type']}`,
    basicAuth: mfaForUser?.statuses?.basicAuth?.appliedPol.length || "no eval, or using security defaults",

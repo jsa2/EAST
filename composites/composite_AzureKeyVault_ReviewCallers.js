@@ -36,7 +36,7 @@ async function sd (src) {
                     Authorization: `Bearer ${token}`
                 },
                 data:{
-                    "query": "AzureDiagnostics | distinct OperationName, CallerIPAddress, identity_claim_appid_g, httpStatusCode_d  | sort by CallerIPAddress asc | take 1000",
+                    "query": "AzureDiagnostics | distinct OperationName, CallerIPAddress, identity_claim_xms_mirid_s, identity_claim_appid_g, httpStatusCode_d  | sort by CallerIPAddress asc | take 1000",
                 }
             }
     
@@ -93,7 +93,12 @@ module.exports = async function (src) {
                 data:{
                     "query": `AzureDiagnostics
                     | where TimeGenerated > now() -30d
-                    | summarize ['events'] = count(), ['Source'] =make_set(strcat(CallerIPAddress, '-', OperationName, ":", httpStatusCode_d)) by identity_claim_appid_g
+                    | summarize ['events'] = count(), ['Source']=make_set(strcat(CallerIPAddress, '-', OperationName, ":", httpStatusCode_d),10) 
+                    by iff(
+                    isnotempty(
+                    identity_claim_xms_mirid_s),identity_claim_xms_mirid_s, 
+                    iff(isnotempty( identity_claim_appid_g),identity_claim_appid_g,'failed at 401')
+                    )
                     | top 10 by events`,
                 }
             }
