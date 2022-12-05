@@ -7,6 +7,7 @@ const { checkDoesItApply } = require("../../../plugins/nodeSrc/microsoftwebhelpe
 const { returnObjectInit } = require("../../../plugins/nodeSrc/returnObjectInit")
 const {argv} = require('yargs')
 const { graph } = require("../../../plugins/nodeSrc/graph")
+const { inMemoryList } = require("../../../plugins/nodeSrc/inmemoryDb")
 
 //AzNodeRest
 module.exports = async function (item) {
@@ -35,11 +36,16 @@ if ( typeof(argv.scanAuditLogs) == "number" ) {
 //var q = `eventTimestamp ge '${d2.toISOString()}'  and eventTimestamp le '${d1.toISOString()}'  and eventChannels eq 'Admin, Operation'`
 var q = `eventTimestamp ge '${d2.toISOString()}'  and eventTimestamp le '${d1.toISOString()}'  and eventChannels eq 'Admin, Operation' and status eq 'Started'`
 let data 
-try {data = await AzNodeRest(`${item.id.split('/providers/')[0]}/providers/Microsoft.Insights/eventtypes/management/values?$filter=${q}`,'2015-04-01')} catch(error) {
-
+try {
+    data = await AzNodeRest(`${item.id.split('/providers/')[0]}/providers/Microsoft.Insights/eventtypes/management/values?$filter=${q}`,'2015-04-01')
+    inMemoryList(data?.value)
+} catch(error) {
+    
     returnObject.metadata = {message:"Unable to perform automatic scan log checks", error}
     return returnObject
 }
+
+ 
 
 let results = []
 item.isHealthy=true
