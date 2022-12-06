@@ -45,12 +45,12 @@ module.exports =  function (it,control) {
       
           if (ite.mfaResults?.basicAuth?.appliedPol.length == 0 ||ite.mfaResults?.MFAstatus?.appliedPol.length == 0 ) {
             let sd2 = beautify(JSON.stringify(ite.mfaResults),{ indent_size: 2, space_in_empty_paren: true })
-            if (c == 0) {
+          
               details += `######### ❌ Security Failures`
               details+="\r\n"
               details+="\r\n"
           
-            }
+            
             c++
             details+="\r\n"
             details+=" **Object can bypass MFA or basic Auth policy**"
