@@ -340,7 +340,7 @@ var sb = b.items[0][0].group.toLowerCase()
 
 
         status.forEach((st) => {
-         // var previous 
+         var previous 
           //console.log(control.group)
          
           
