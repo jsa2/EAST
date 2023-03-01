@@ -1,0 +1,5 @@
+{
+"ControlId": "Subscriptions_PreventSubscriptionTransfer",
+"Category": "Access",
+"Description": "Don't allow transfer of subscriptions outside the tenant by default. Malicious actor could transfer the subscription to another tenant, while the billing relationship will remain within the compromized tenant"
+}
