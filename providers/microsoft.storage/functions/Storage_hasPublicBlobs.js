@@ -17,13 +17,14 @@ returnObject.name = item.name
 returnObject.id = item.id
 
 
-console.log('waiting before enumeration of containers, to avoid throttling')
 
 let storage
 let errorProp
 
 if (!argv.SkipStorageThrottling) {
     await waitT(getRandomInt(500,10000))
+    
+console.log('waiting before enumeration of containers, to avoid throttling')
 }
 
 

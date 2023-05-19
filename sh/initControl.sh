@@ -184,3 +184,9 @@ node controlTemplateSubProvider.js --name $name --provider $provider
 name="relay_new"
 provider="microsoft.relay/namespaces"
 node controlTemplateSubProvider.js --name $name --provider $provider
+
+
+
+name="storage_crossTenantReplication"
+provider="microsoft.storage"
+node controlTemplate.js --name $name --provider $provider
