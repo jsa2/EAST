@@ -1,5 +1,5 @@
 {
 "ControlId": "fn_runtimeVersion",
 "Category": "Access",
-"Description": "Functions versions 2,3 are have reached EOL on 2022. \r\n. Recommendation is to update to supported function runtime version https://learn.microsoft.com/en-us/azure/azure-functions/functions-versions"
+"Description": "Function versions 2,3 have reached EOL on 2022. \r\n. Recommendation is to update to supported function runtime version https://learn.microsoft.com/en-us/azure/azure-functions/functions-versions"
 }
