@@ -190,3 +190,8 @@ node controlTemplateSubProvider.js --name $name --provider $provider
 name="storage_crossTenantReplication"
 provider="microsoft.storage"
 node controlTemplate.js --name $name --provider $provider
+
+
+name="fn_runtimeVersion"
+provider="microsoft.web"
+node controlTemplate.js --name $name --provider $provider
