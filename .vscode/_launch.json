@@ -11,22 +11,22 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-//"program": "${workspaceFolder}/plugins/main.js",
-  "program": "${file}",
+"program": "${workspaceFolder}/plugins/main.js",
+ // "program": "${file}",
             "args":  [
                 "--batch=10",   
                 //"--tag=svc=aksdev",
                 "--nativescope=true",
                 "--roleAssignments",
-               // "--checkAad",
+                "--checkAad",
                // "--helperTexts",
-            //    "--subInclude=6193053b-408b-44d0-b20f-4e29b9b67394",
-                "--namespace=null",
-                //"--notIncludes=44ee6398gb8abb6d0",
+              /*   "--subInclude=6193053b-408b-44d0-b20f-4e29b9b67394", */
+                //"--namespace=diagsettings",
+               /*  "--notIncludes=storage", */
                 //"--policy",
                 "--nx",
-                //"--asb",
-                "--scanAuditLogs=1",
+                "--asb",
+                "--scanAuditLogs",
                 "--composites",
                "--clearTokens",
                //"--azdevops=thx138",

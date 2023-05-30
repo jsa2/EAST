@@ -52,6 +52,13 @@ This tool is licensed under [MIT license](https://github.com/jsa2/EAST/blob/publ
 
 # Release notes
 
+v 0.5
+- Refactors:
+  - Managed Identity role and Azure AD Assignments are now done via single module, previous version was showing it's age, and the logic was not correct anymore. New module is [``miGeneral.js``](/plugins/nodeSrc/miGeneral.js) 
+  - ASB is not ASB anymore, it is now Microsoft cloud security benchmark, see [``query.js``](/plugins/nodeSrc/query.js)
+
+
+v 0.4
 - Preview branch introduced
 
   

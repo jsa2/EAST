@@ -2,7 +2,7 @@ module.exports = {
     query:`securityresources
     | where type == "microsoft.security/regulatorycompliancestandards/regulatorycompliancecontrols/regulatorycomplianceassessments"
     | extend complianceStandardId = replace( "-", " ", extract(@'/regulatoryComplianceStandards/([^/]*)', 1, id))
-    | where complianceStandardId ==  "Azure Security Benchmark"
+    | where complianceStandardId ==  "Microsoft cloud security benchmark"
     | extend failedResources = toint(properties.failedResources), passedResources = toint(properties.passedResources),skippedResources = toint(properties.skippedResources)
     | where failedResources + passedResources + skippedResources > 0 or properties.assessmentType == "MicrosoftManaged"
     | join kind = leftouter(
