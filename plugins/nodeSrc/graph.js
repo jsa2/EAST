@@ -213,7 +213,7 @@ var promArra = []
 var returnObject = []
 let i = 0
 
-    for await (item of arrayOfObjects) {
+    for await ( let item of arrayOfObjects) {
         i++
         console.log(i)
 

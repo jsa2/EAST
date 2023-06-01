@@ -1,24 +1,17 @@
-
 const { default: axios } = require("axios");
 const { responseSchema } = require("./functionResponseSchema");
 const { getToken } = require("./getToken");
 const {argv} = require('yargs')
 
-
 const query = require("./query");
 
-
-
-var sub = [
+let sub = [
     "3539c2a2-cd25-48c6-b295-14e59334ef1c",
     "6193053b-408b-44d0-b20f-4e29b9b67394",
     "6c052e74-e3b3-401b-8734-fafc98c8cf83"
 ]
 
-//resourceGraphGovernanceData(sub).then((data) => console.log(data))
-
-//max unitsize is 1000
-var unitSize = 1000
+let unitSize = 1000
 
 async function resourceGraphGovernanceData (subscriptions) {
 
@@ -26,8 +19,8 @@ if (argv?.subInclude) {
     subscriptions = argv.subInclude.split(',')
 }
 
-    var token = await getToken()
-    var data = {
+    let token = await getToken()
+    let data = {
         subscriptions,
         "options": {
             "$skip": 0,
@@ -38,7 +31,7 @@ if (argv?.subInclude) {
         query:query.query
     }
 
-    var options = {
+    let options = {
         method:"post",
         url:'https://management.azure.com/providers/Microsoft.ResourceGraph/resources?api-version=2018-09-01-preview',
         headers: {authorization: `Bearer ${token}`},
@@ -46,7 +39,7 @@ if (argv?.subInclude) {
     }
     
      await govData(options)
-     var asbR =[]
+     let asbR =[]
      results.map((item) => {
  
         if ( item.complianceState.toLowerCase() == "failed") {
@@ -55,7 +48,6 @@ if (argv?.subInclude) {
             item.isHealthy=true
         }
 
-    
        asbR.push (new responseSchema({
             id:item.resourceId,
             isHealthy:item.isHealthy,
@@ -63,21 +55,20 @@ if (argv?.subInclude) {
             fileName:`ASB_${item.recommendationDisplayName.replace(new RegExp(' ','g'),'_')}`,
             metadata:{asb:JSON.stringify(item)}
         },{Description:item.description}))
-       // return response
 
     }) 
 
      return asbR
 }
 
-var batch = []
-var i = 0
-var results = []
+let batch = []
+let i = 0
+let results = []
 
 async function govData (options) {
 
-    var skip =unitSize 
-    var {data} = await axios(options)
+    let skip = unitSize 
+    let {data} = await axios(options)
     if (data.data.length  == 0) {
         return []
     }
@@ -85,13 +76,12 @@ async function govData (options) {
         data.data.forEach(item => results.push(item))
         return
     }
-    var {totalRecords} =data 
+    let {totalRecords} = data 
     data.data.forEach((item) => results.push(item))
 
-    var last = totalRecords % unitSize
+    let last = totalRecords % unitSize
 
-    
-    var batchCount = (totalRecords -unitSize - last) / unitSize
+    let batchCount = (totalRecords -unitSize - last) / unitSize
     if (batchCount > 0)
     do  {
         i++
@@ -99,18 +89,15 @@ async function govData (options) {
         console.log(batch)
     } while (i !== batchCount)
     batch.push(last)
-    for await (unit of batch) {
+    for await (let unit of batch) {
         console.log(skip)
     options.data.options['$skip']=skip
-    var {data} = await axios(options)
-    var {totalRecords} =data 
+    let {data: newData} = await axios(options)
+    let {totalRecords: newTotalRecords} = newData 
     skip= skip + unit
-    data.data.forEach((item) => results.push(item))
+    newData.data.forEach((item) => results.push(item))
     }
 
- }
-
-
+}
 
 module.exports={resourceGraphGovernanceData}
-

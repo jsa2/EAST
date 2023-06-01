@@ -7,7 +7,7 @@ const {argv} = require('yargs')
 //AzNodeRest
 module.exports = async function (item) {
 
-;
+
 
 var {apiversion} = getProviderApiVersion(item.id)
 
@@ -39,7 +39,7 @@ storage = await AzNodeRest(`${item.id}/blobServices/default/containers?`,apivers
  */
 
 returnObject.isHealthy=true
-if (storage?.value.length > 0) {
+if (storage?.value?.length > 0) {
 
    
     var isPublic = storage.value.filter((container) => container.properties.publicAccess == "Blob" || container.properties.publicAccess == "Container").map(storage => `${storage.name} - Public:${storage.properties.publicAccess}`)

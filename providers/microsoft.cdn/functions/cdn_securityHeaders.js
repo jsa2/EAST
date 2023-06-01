@@ -17,7 +17,7 @@ try {
 
     const {value:rules} = await AzNodeRest(`${item.id}/ruleSets?`,'2021-06-01')
 
-    for await (rule of rules) {
+    for await (let rule of rules) {
 
         ruleList.push(await AzNodeRest(`${item.id}/ruleSets/${rule.name}/rules`,'2021-06-01'))
     }

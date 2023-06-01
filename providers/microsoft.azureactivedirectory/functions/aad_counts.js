@@ -29,7 +29,7 @@ async function mains () {
 
 let ar = [ {'item':"devices"},{'item':"groups"},{'item':"applications"},{'item':"users"}]
 
-for await  (cat of ar) {
+for await  (let cat of ar) {
     
     let opt = {
         responseType: 'json',
